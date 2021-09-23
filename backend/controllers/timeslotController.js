@@ -3,17 +3,23 @@ const Schedule = require("../models/Schedule");
 
 //CRUD
 //Create: Create Timeslot
-module.exports.createTimeslot_post = async (req,res) => {
-    const newTimeslot = new Timeslot({...req.body, attendees: [req.body.ownerID]});
-    Schedule.findByIdAndUpdate(req.body.ownerID,{$push:{timeslots:[newTimeslot._id]}})
-    res.json(newTimeslot);
-}
+module.exports.createTimeslot_post = async (req, res) => {
+  const newTimeslot = new Timeslot({
+    ...req.body,
+    attendees: [req.body.ownerId],
+  });
+  await newTimeslot.save();
+  Schedule.findByIdAndUpdate(req.body.ownerId, {
+    $push: { timeslots: [newTimeslot._id] },
+  });
+  res.json(newTimeslot);
+};
 
 //Read: Get Timeslot Info
-module.exports.viewTimeslot_get = async (req,res) => {
-    const viewTimeslot = await Timeslot.find(req.body);
-    res.json(viewTimeslot);
-}
+module.exports.viewTimeslot_get = async (req, res) => {
+  const viewTimeslot = await Timeslot.find(req.body);
+  res.json(viewTimeslot);
+};
 
 //Update: To edit isActive/isOpen of timeslot
 //body structure
@@ -21,10 +27,10 @@ module.exports.viewTimeslot_get = async (req,res) => {
 //     _id: ObjID or wtv
 //     statusChange: {isActive/isOpen:true/false}
 // }
-module.exports.editTimeslotBookedStatus_put = async (req,res) => {
-    await Timeslot.findByIdAndUpdate(req.body._id,req.body.statusChange);
-    res.json({status:"ok",message:`updated ${req.body.statusChange}`});
-}
+module.exports.editTimeslotBookedStatus_put = async (req, res) => {
+  await Timeslot.findByIdAndUpdate(req.body._id, req.body.statusChange);
+  res.json({ status: "ok", message: `updated ${req.body.statusChange}` });
+};
 
 //Update: To edit timeStart/timeEnd of timeslot
 //body structure
@@ -33,34 +39,48 @@ module.exports.editTimeslotBookedStatus_put = async (req,res) => {
 //     newTimeStart: date obj
 //     newTimeEnd: date obj
 // }
-module.exports.editTimeslotDuration_put = async (req,res) => {
-    if ( req.body.newTimeStart > req.body.newTimeEnd ){
-        res.json({status:"failed",message:"time end cannot be less than time start"})
-    } else {
-        //$each instead of 2?
-        await Timeslot.findByIdAndUpdate(req.body._id,{timeStart:req.body.newTimeStart});
-        await Timeslot.findByIdAndUpdate(req.body._id,{timeEnd:req.body.newTimeEnd});
-        res.json({status:"ok",message:"updated time"});
-    };
-}
+module.exports.editTimeslotDuration_put = async (req, res) => {
+  if (req.body.newTimeStart > req.body.newTimeEnd) {
+    res.json({
+      status: "failed",
+      message: "time end cannot be less than time start",
+    });
+  } else {
+    //$each instead of 2?
+    await Timeslot.findByIdAndUpdate(req.body._id, {
+      timeStart: req.body.newTimeStart,
+    });
+    await Timeslot.findByIdAndUpdate(req.body._id, {
+      timeEnd: req.body.newTimeEnd,
+    });
+    res.json({ status: "ok", message: "updated time" });
+  }
+};
 
 //Update: To add/remove attendees of timeslot
-module.exports.editTimeSlotAttendees_put = async (req,res) => {
-    if (req.params.action === "push"){
-        await Timeslot.findByIdAndUpdate(req.body._id,{$push:{attendees:req.body.attendeeID}});
-        res.json({status:"ok",message:"pushed attendee"});
-    } else {
-        await Timeslot.findByIdAndUpdate(req.body._id,{$pull:{attendees:req.body.attendeeID}});
-        res.json({status:"ok",message:"pulled attendee"});
-    }
-}
+module.exports.editTimeSlotAttendees_put = async (req, res) => {
+  if (req.params.action === "push") {
+    await Timeslot.findByIdAndUpdate(req.body._id, {
+      $push: { attendees: req.body.attendeeID },
+    });
+    res.json({ status: "ok", message: "pushed attendee" });
+  } else {
+    await Timeslot.findByIdAndUpdate(req.body._id, {
+      $pull: { attendees: req.body.attendeeID },
+    });
+    res.json({ status: "ok", message: "pulled attendee" });
+  }
+};
 
 //Delete: Remove Timeslot
-module.exports.deleteTimeslot_put = async (req,res) => {
-    await Timeslot.findByIdAndDelete(req.body.timeslotID);
-    await Schedule.updateOne({ownerID:req.body.ownerID},{$pull:{timeslots:req.body.timeslotID}});
-    res.json({status:"ok",msg:"Deleted from timeslot and schedule"})
-}
+module.exports.deleteTimeslot_put = async (req, res) => {
+  await Timeslot.findByIdAndDelete(req.body.timeslotID);
+  await Schedule.updateOne(
+    { ownerID: req.body.ownerID },
+    { $pull: { timeslots: req.body.timeslotID } }
+  );
+  res.json({ status: "ok", msg: "Deleted from timeslot and schedule" });
+};
 
 // router.post('/api/timeslot', async (req, res) => {
 //   const timeslot = new Timeslot({
