@@ -13,7 +13,7 @@ const handleErrors = (err) => {
     if (err.message === "incorrect email") {
         errors.email = "that email is not registered";
     }
-    // incorrect email
+    // incorrect password
     if (err.message === "incorrect password") {
         errors.password = "that password is incorrect";
     }
@@ -60,7 +60,7 @@ module.exports.signup_post = async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        const user = await User.create({ email, password });
+        const user = new User({ email, password });
 
         // create new friendList
         const friendList = await FriendList.create(
@@ -73,7 +73,7 @@ module.exports.signup_post = async (req, res) => {
             { ownerId: user._id }
         )
         user.schedule = schedule._id
-
+        
         await user.save();
 
         const token = createToken(user._id);
