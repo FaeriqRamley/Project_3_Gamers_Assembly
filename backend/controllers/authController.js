@@ -1,6 +1,8 @@
 require("dotenv").config();
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
+const Schedule = require('../models/Schedule')
+const FriendList = require('../models/FriendList')
 
 // handle errors
 const handleErrors = (err) => {
@@ -59,9 +61,25 @@ module.exports.signup_post = async (req, res) => {
 
     try {
         const user = await User.create({ email, password });
+
+        // create new friendList
+        const friendList = await FriendList.create(
+            { ownerId: user._id }
+        )
+        user.friendList = friendList._id
+        
+        // create new schedule
+        const schedule = await Schedule.create(
+            { ownerId: user._id }
+        )
+        user.schedule = schedule._id
+
+        await user.save();
+
         const token = createToken(user._id);
         res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
-        res.status(201).json({ user: user });
+
+        res.status(201).json({ user });
     } catch (err) {
         const errors = handleErrors(err);
         res.status(400).json({ errors });
@@ -76,7 +94,7 @@ module.exports.login_post = async (req, res) => {
         const user = await User.login(email, password);
         const token = createToken(user._id);
         res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
-        res.status(200).json({ user: user });
+        res.status(200).json({ user });
     } catch (err) {
         const errors = handleErrors(err);
         res.status(400).json({ errors });
