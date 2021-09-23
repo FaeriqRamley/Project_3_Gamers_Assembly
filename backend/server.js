@@ -2,17 +2,20 @@ require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
-const { requireAuth, checkUser} = require("./middleware/authMiddleware");
 const authRoutes = require("./routes/authRoutes");
-const Games = require("./models/Games");
-
 const friendsListRoutes = require("./routes/friendsListRoutes");
 const scheduleRoutes = require("./routes/scheduleRoutes");
 const timeslotRoutes = require("./routes/timeslotRoutes");
 const userRoutes = require("./routes/userRoutes");
+const Games = require("./models/Games");
+const { 
+    requireAuth, 
+    checkUser
+} = require("./middleware/authMiddleware");
+
+const app = express();
 
 // middleware
-const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 app.use(cookieParser());
