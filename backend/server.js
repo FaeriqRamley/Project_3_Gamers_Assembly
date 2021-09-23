@@ -41,3 +41,4 @@ app.get("/test",(req,res)=> {
 app.get('*', checkUser);
 app.use(authRoutes);
 app.use("/api/timeslot",timeslotRoutes);
+app.use("/api/schedule",scheduleRoutes);

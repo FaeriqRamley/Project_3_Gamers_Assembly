@@ -5,7 +5,7 @@ const ScheduleSchema = new Schema(
   {
     _id: { type: String, required: true },
     ownerId: {type: mongoose.Schema.Types.ObjectId, ref: 'UserModel'},
-    timeslots: {type: mongoose.Schema.Types.ObjectId, ref: 'Timeslot'} 
+    timeslots: [{type: mongoose.Schema.Types.ObjectId, ref: 'Timeslot'}] 
   },
   { timestamps: true },
 );
