@@ -1,5 +1,5 @@
-const Timeslot = require("../models/timeslotSchema");
-const Schedule = require("../models/scheduleSchema");
+const Timeslot = require("../models/Timeslot");
+const Schedule = require("../models/Schedule");
 
 //CRUD
 //Create
