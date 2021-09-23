@@ -18,5 +18,4 @@ const ScheduleSchema = new Schema(
 );
 
 const Schedule = mongoose.model("Schedule", ScheduleSchema);
-
 module.exports = Schedule;
