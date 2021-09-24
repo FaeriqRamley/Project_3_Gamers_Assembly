@@ -2,7 +2,7 @@ export default async function Post(url, data) {
     // Default options are marked with *
     const response = await fetch(url, {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
-        credentials: "same-origin/include", // include, *same-origin, omit
+        credentials: "include", // include, *same-origin, omit
         headers: {
             "Content-Type": "application/json",
         },
