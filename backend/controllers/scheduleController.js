@@ -1,5 +1,5 @@
 const Schedule = require("../models/Schedule");
-
+const Invite = require("../models/Invite");
 module.exports.createSchedule_post = async (req,res) => {
     await Schedule.create(
         {
@@ -16,6 +16,7 @@ module.exports.getSchedule_get = async (req,res) => {
 };
 
 module.exports.createTimeslotInvite_post = async (req,res) => {
+    
     await Schedule.findOneAndUpdate({ownerId:req.body.senderId}, {$push:{sentNotifications:{...req.body, status: "Pending"}}});
     await Schedule.findOneAndUpdate({ownerId:req.body.receiverId}, {$push:{receivedNotifications:{...req.body, status: "Pending"}}});
     res.json({status:"ok",message:"Successfully added"});

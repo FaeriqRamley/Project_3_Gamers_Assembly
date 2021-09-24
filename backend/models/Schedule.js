@@ -9,20 +9,14 @@ const ScheduleSchema = new Schema(
         },
         sentNotifications: [
             {
-                senderId: {type:Schema.Types.ObjectId,required:true},
-                receiverId: {type:Schema.Types.ObjectId,required:true},
-                timeslotId: {type:Schema.Types.ObjectId,required:true},
-                gameId: {type:String},
-                status: {type:String,required:true},
+                type: Schema.Types.ObjectId,
+                ref: "Invite"
             }
         ],
         receivedNotifications: [
             {
-                senderId: {type:Schema.Types.ObjectId,required:true},
-                receiverId: {type:Schema.Types.ObjectId,required:true},
-                timeslotId: {type:Schema.Types.ObjectId,required:true},
-                gameId: {type:String},
-                status: {type:String,required:true},
+                type: Schema.Types.ObjectId,
+                ref: "Invite"
             }
         ],
         timeslots: [
