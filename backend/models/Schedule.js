@@ -7,6 +7,18 @@ const ScheduleSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: "UserModel",
         },
+        sentNotifications: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "Invite"
+            }
+        ],
+        receivedNotifications: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "Invite"
+            }
+        ],
         timeslots: [
             {
                 type: Schema.Types.ObjectId,
