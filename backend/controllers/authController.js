@@ -63,18 +63,20 @@ module.exports.signup_post = async (req, res) => {
         const user = new User({ email, password });
 
         // create new friendList
-        const friendList = await FriendList.create(
+        const friendList = new FriendList(
             { ownerId: user._id }
         )
         user.friendList = friendList._id
         
         // create new schedule
-        const schedule = await Schedule.create(
+        const schedule = new Schedule(
             { ownerId: user._id }
         )
         user.schedule = schedule._id
         
         await user.save();
+        await friendList.save();
+        await schedule.save();
 
         const token = createToken(user._id);
         res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
