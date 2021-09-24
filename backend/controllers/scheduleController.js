@@ -23,4 +23,20 @@ module.exports.createTimeslotInvite_post = async (req,res) => {
 
 module.exports.respondTimeslotInvite_put = async (req,res) => {
 
+    // const senderSchedule = await Schedule.find({ownerId:req.body.senderId});
+    // const receiverSchedule = await Schedule.find({ownerId:req.body.receiverId});
+    // const senderIndex = senderSchedule.sentNotifications.findIndex((invite) => invite._id === req.body.inviteId);
+    // const receiverIndex = senderSchedule.sentNotifications.findIndex((invite) => invite._id === req.body.inviteId);
+
+    if (req.params.response === "Decline"){
+        await Schedule.updateOne(
+            { "ownerId":req.body.senderId, "sentNotifications._id": req.body.inviteId },
+            { $set: {"sentNotifications.$.status":"Declined"}}
+        )
+        res.json({status:"ok",message:"successfully declined"})
+    } else if (req.params.response === "Accept"){
+        res.json({status:"ok",message:"successfully accepted"})
+    } else {
+        res.json({status:"failed",message:"Response not recognized"})
+    }
 }
