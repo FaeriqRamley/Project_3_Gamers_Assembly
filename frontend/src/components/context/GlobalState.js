@@ -1,31 +1,31 @@
-import React, { createContext, useReducer, useContext, useEffect } from "react";
-import rootReducer from "./rootReducer";
+// import React, { createContext, useReducer, useContext, useEffect } from "react";
+// import rootReducer from "./rootReducer";
 
 
 
-const initState = {
-    schedule: {},
+// const initState = {
+//     schedule: {},
     
-    profile: {},
+//     profile: {},
     
-    friendList: {},
+//     friendList: {},
     
 
-};
+// };
 
-const GlobalContext = createContext(initState);
+// const GlobalContext = createContext(initState);
 
-export const useGlobalContext = () => {
-    return useContext(GlobalContext);
-};
+// export const useGlobalContext = () => {
+//     return useContext(GlobalContext);
+// };
 
-export default function GlobalProvider({ children }) {
-    const [state, dispatch] = useReducer(rootReducer, initState);
-
-
-    useEffect(() => {
+// export default function GlobalProvider({ children }) {
+//     const [state, dispatch] = useReducer(rootReducer, initState);
 
 
+//     useEffect(() => {
 
-    })
-// userprofile, userSchedule, userFriendlist
+
+
+//     })
+// // userprofile, userSchedule, userFriendlist
