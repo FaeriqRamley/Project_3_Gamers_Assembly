@@ -1,3 +1,5 @@
+const FriendList = require("../models/FriendList");
+
 //Get friend list
 router.get('/api/friendList', async (req, res) => {
     const Friends = await FriendList.find();

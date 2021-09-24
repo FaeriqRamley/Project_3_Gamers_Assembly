@@ -1,5 +1,0 @@
-
-// Put these 3 lines in .env but wait to change
-MONGO_URI=mongodb://localhost:27017/gamersAssembly
-PORT=5000
-JWT_SECRET=775323a877d5e680dd0b20e9497d28c8544104db5edb79ff52f06d734d38d15a3cc84867c2c99301d410304981e6cddf81203950810638f0edd792cabc767b61
