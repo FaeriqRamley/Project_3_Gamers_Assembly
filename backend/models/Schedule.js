@@ -7,7 +7,7 @@ const ScheduleSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: "UserModel",
         },
-        sentNotification: [
+        sentNotifications: [
             {
                 senderId: {type:Schema.Types.ObjectId,required:true},
                 receiverId: {type:Schema.Types.ObjectId,required:true},
@@ -16,7 +16,7 @@ const ScheduleSchema = new Schema(
                 status: {type:String,required:true},
             }
         ],
-        receivedNotification: [
+        receivedNotifications: [
             {
                 senderId: {type:Schema.Types.ObjectId,required:true},
                 receiverId: {type:Schema.Types.ObjectId,required:true},
