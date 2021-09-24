@@ -14,6 +14,6 @@ router.post("/", createTimeslot_post);
 router.put("/edit/booked_status", editTimeslotBookedStatus_put);
 router.put("/edit/duration", editTimeslotDuration_put);
 router.put("/edit/attendees/:action", editTimeSlotAttendees_put);
-router.delete("/delete", deleteTimeslot_put);
+router.delete("/", deleteTimeslot_put);
 
 module.exports = router;

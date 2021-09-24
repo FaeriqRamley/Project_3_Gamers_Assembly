@@ -4,6 +4,8 @@ const Schema = mongoose.Schema;
 const timeslotSchema = new mongoose.Schema(
   {
     ownerId: { type: String, required: true },
+    gameId: { type:String },
+    maxPlayers: { type:Number },
     timeStart: { Date },
     timeEnd: { Date },
     duration: { type: Number, min: 0 },

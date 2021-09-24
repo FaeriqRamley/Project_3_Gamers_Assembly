@@ -9,7 +9,7 @@ module.exports.createTimeslot_post = async (req, res) => {
     attendees: [req.body.ownerId],
   });
   await newTimeslot.save();
-  Schedule.findByIdAndUpdate(req.body.ownerId, {
+  await Schedule.updateOne({ownerId: req.body.ownerId}, {
     $push: { timeslots: [newTimeslot._id] },
   });
   res.json(newTimeslot);
@@ -61,26 +61,30 @@ module.exports.editTimeslotDuration_put = async (req, res) => {
 module.exports.editTimeSlotAttendees_put = async (req, res) => {
   if (req.params.action === "push") {
     await Timeslot.findByIdAndUpdate(req.body._id, {
-      $push: { attendees: req.body.attendeeID },
+      $push: { attendees: req.body.attendeeId },
     });
     res.json({ status: "ok", message: "pushed attendee" });
   } else {
     await Timeslot.findByIdAndUpdate(req.body._id, {
-      $pull: { attendees: req.body.attendeeID },
+      $pull: { attendees: req.body.attendeeId },
     });
     res.json({ status: "ok", message: "pulled attendee" });
   }
 };
 
+
 //Delete: Remove Timeslot
 module.exports.deleteTimeslot_put = async (req, res) => {
-  await Timeslot.findByIdAndDelete(req.body.timeslotID);
-  await Schedule.updateOne(
-    { ownerID: req.body.ownerID },
-    { $pull: { timeslots: req.body.timeslotID } }
+  //Delete timeslot from timeslot db
+  await Timeslot.findByIdAndDelete(req.body.timeslotId);
+  //Remove timeslot ID from owner's schedule
+  await Schedule.findOneAndUpdate(
+    { ownerId: req.body.ownerId },
+    { $pull: { "timeslots": {$in: [req.body.timeslotId]} } }
   );
   res.json({ status: "ok", msg: "Deleted from timeslot and schedule" });
 };
+//-------------------------------------------------
 
 // router.post('/api/timeslot', async (req, res) => {
 //   const timeslot = new Timeslot({

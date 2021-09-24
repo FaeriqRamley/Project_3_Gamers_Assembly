@@ -4,5 +4,6 @@ const {getSchedule_get,createSchedule_post} = require("../controllers/scheduleCo
 
 router.get("/",getSchedule_get);
 router.post("/",createSchedule_post);
-
+router.get("/scheduleNotif",()=>{});
+router.get("/populate/timeslot",()=>{});
 module.exports = router;
