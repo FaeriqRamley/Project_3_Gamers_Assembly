@@ -7,6 +7,24 @@ const ScheduleSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: "UserModel",
         },
+        sentNotification: [
+            {
+                senderId: {type:Schema.Types.ObjectId,required:true},
+                receiverId: {type:Schema.Types.ObjectId,required:true},
+                timeslotId: {type:Schema.Types.ObjectId,required:true},
+                gameId: {type:String},
+                status: {type:String,required:true},
+            }
+        ],
+        receivedNotification: [
+            {
+                senderId: {type:Schema.Types.ObjectId,required:true},
+                receiverId: {type:Schema.Types.ObjectId,required:true},
+                timeslotId: {type:Schema.Types.ObjectId,required:true},
+                gameId: {type:String},
+                status: {type:String,required:true},
+            }
+        ],
         timeslots: [
             {
                 type: Schema.Types.ObjectId,
