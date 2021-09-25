@@ -1,17 +1,19 @@
 import React from "react";
 import { Form, Input, Button } from "antd";
 import { MailOutlined, LockOutlined } from "@ant-design/icons";
-import Post from "../hooks/Post"
+import { logIn } from "../../store/actions/authActions";
+import { connect } from "react-redux"
+import { Redirect } from "react-router-dom"
 
-export default function LogIn() {
+function LogIn(props) {
     // const [form] = Form.useForm();
 
     const onFinish = async (values) => {
-        console.log("Received values of form: ", values);
-        Post("/login", values).then((data) => {
-            console.log(data);
-        });
+        props.logIn(values)
     }
+
+    const { auth } = props
+    if (auth.user) return <Redirect to="/dashboard" />
 
     return (
         <>
@@ -63,3 +65,17 @@ export default function LogIn() {
         </>
     );
 }
+
+const mapStateToProps = (state) => {
+    return {
+      auth: state.auth
+    }
+  }
+  
+  const mapDispatchToProps = (dispatch)=> {
+    return {
+      logIn: (creds) => dispatch(logIn(creds))
+    }
+  }
+
+  export default connect(mapStateToProps, mapDispatchToProps)(LogIn);

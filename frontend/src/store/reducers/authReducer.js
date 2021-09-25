@@ -5,7 +5,7 @@ const initState = {
 
 const authReducer = (state = initState, action) => {
     switch (action.type) {
-        case "LOGIN_FAILURE":
+        case "LOGIN_FAILED":
             console.log('login failed', action.payload)
             return {
                 ...state,
@@ -14,7 +14,6 @@ const authReducer = (state = initState, action) => {
 
         case "LOGIN_SUCCESS":
             console.log('login success');
-            console.log(action.payload)
             return {
                 user: action.payload,
                 authError: null
@@ -32,6 +31,19 @@ const authReducer = (state = initState, action) => {
             }
         case "SIGNUP_FAILED":
             console.log('signup failed');
+            return {
+                ...state,
+                authError: action.payload
+            }
+
+        case "USER_AUTHORIZED":
+            console.log('user authorized');
+            return {
+                user: action.payload,
+                authError: null
+            }
+        case "USER_NOT_AUTHORIZED":
+            console.log('user not authorized');
             return {
                 ...state,
                 authError: action.payload

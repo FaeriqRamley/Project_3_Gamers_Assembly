@@ -1,19 +1,19 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { connect } from "react-redux"
 
 function Landing(props) {
-    const { user } = props
-    console.log(user)
+    console.log(props.auth)
     return (
         <div>
+            This is Landing
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
     return {
-        user: state.auth.user
+        auth: state.auth
     }
 }
 
-export default connect(mapStateToProps)(Landing);
+export default connect(mapStateToProps)(Landing)

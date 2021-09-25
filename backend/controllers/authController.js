@@ -108,3 +108,14 @@ module.exports.logout_get = (req, res) => {
     res.cookie("jwt", "", { maxAge: 1 });
     res.redirect("/");
 };
+
+// load user
+module.exports.user_get = async (req, res) => {
+    try {
+        const user = await User.findById(req.user._id)
+        res.status(200).json({ user })
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ msg: "status 500" })
+    }
+}

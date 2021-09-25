@@ -12,7 +12,7 @@ const requireAuth = (req, res, next) => {
                 console.log(err.message);
                 res.redirect('/login');
             } else {
-                console.log(decodedToken);
+                console.log("requireAuth", decodedToken);
                 next();
             }
         })
@@ -29,18 +29,21 @@ const checkUser = (req, res, next) => {
         jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
             if (err) {
                 console.log(err.message);
-                res.locals.user = null;
-                next();
+                return res.status(403).json({ msg: "invalid token"})
+                // res.locals.user = null;
+                // next();
             } else {
-                console.log(decodedToken);
+                console.log('checkUser', decodedToken);
                 let user = await User.findById(decodedToken.id);
                 res.locals.user = user
+                req.user = user
                 next();
             }
         })
     } else {
-        res.locals.user = null;
-        next();
+        // res.locals.user = null;
+        // next();
+        return res.status(401).json({ msg: "no token found"})
     }
 }
 

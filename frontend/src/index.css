@@ -42,7 +42,8 @@ body {
 }
 
 .navbar-dark .navbar-nav .nav-link.active {
-  color: #D8DEE9;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .form-container {
