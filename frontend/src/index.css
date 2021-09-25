@@ -41,7 +41,77 @@ body {
   color: rgba(163, 190, 140, 0.7);
 }
 
-
 .navbar-dark .navbar-nav .nav-link.active {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.form-container {
+  display: flex;
+  margin-top: 5rem;
+  justify-content: center;
+}
+
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab {
+  /* color: #D8DEE9; */
+  background: #3B4252;
+  border:none;
+  border-bottom: 2px solid #2E3440;;
+  opacity: 1;
+}
+
+.ant-tabs-top > .ant-tabs-nav::before {
+  border-bottom: 2px solid #2E3440;
+}
+
+/* active tabs */
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #88C0D0;
+}
+.ant-tabs-tab-btn:active {
+  color: #88C0D0;
+}
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab-active {
+  background: #3B4252;
+  border: none;
+  opacity: 1;
+}
+.ant-tabs-card.ant-tabs-top > .ant-tabs-nav .ant-tabs-tab-active {
+  border-bottom-color: #88C0D0;
+  border-bottom: 2px solid #88C0D0;
+}
+
+.ant-tabs-tab:hover {
+  color: #88C0D0;
+}
+
+.ant-tabs {
   color: #D8DEE9;
+  padding: 1rem;
+  background: #3B4252;
+  border: 1px solid #2E3440;
+}
+
+.ant-form {
+  padding: 1rem;
+}
+
+.ant-input {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+.error-message {
+  color: #BF616A;
+  text-align: center;
+}
+
+.ant-btn-primary {
+  background: #5E81AC;
+  border-color: #5E81AC;
+  border-radius: 0.25rem;
+}
+
+.ant-btn-primary:hover {
+  background: #2E3440;
+  border-color: #2E3440;
 }
