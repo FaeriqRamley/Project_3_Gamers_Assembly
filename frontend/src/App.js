@@ -8,7 +8,7 @@ import Query from "./components/query/Query";
 import { useDispatch } from "react-redux";
 import { userAuth } from "./store/actions/authActions"
 
-export default function App() {
+export default function App() { 
     const dispatch = useDispatch();
     
     useEffect(() => {

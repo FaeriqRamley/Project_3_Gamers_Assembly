@@ -6,20 +6,20 @@ import { connect } from "react-redux"
 import { Redirect } from "react-router-dom"
 
 function LogIn(props) {
-    // const [form] = Form.useForm();
+    const [form] = Form.useForm();
 
     const onFinish = async (values) => {
         props.logIn(values)
     }
 
-    const { auth } = props
-    if (auth.user) return <Redirect to="/dashboard" />
+    const { user, authError } = props.auth
+    if (user) return <Redirect to="/dashboard" />
 
     return (
         <>
             <Form
                 layout="vertical"
-                // form={form}
+                form={form}
                 name="login"
                 onFinish={onFinish}
                 scrollToFirstError
@@ -61,6 +61,9 @@ function LogIn(props) {
                         Log in
                     </Button>
                 </Form.Item>
+                { authError
+                ? <div className="error-message">{authError}</div>
+                : null }
             </Form>
         </>
     );

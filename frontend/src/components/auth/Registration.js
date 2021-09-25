@@ -10,9 +10,10 @@ function Registration(props) {
     const onFinish = async (values) => {
         props.signUp(values);
     };
-    
-    const { auth } = props
-    if (auth.user) return <Redirect to="/" />
+
+    const { user, authError } = props.auth
+    if (user) return <Redirect to="/dashboard" />
+
     return (
         <>
             <Form
@@ -115,6 +116,9 @@ function Registration(props) {
                         Register
                     </Button>
                 </Form.Item>
+                { authError
+                ? <div className="error-message">{authError}</div>
+                : null }
             </Form>
         </>
     );

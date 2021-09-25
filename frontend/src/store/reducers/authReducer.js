@@ -9,7 +9,7 @@ const authReducer = (state = initState, action) => {
             console.log('login failed', action.payload)
             return {
                 ...state,
-                authError: 'Login failed'
+                authError: action.payload
             }
 
         case "LOGIN_SUCCESS":
@@ -29,8 +29,9 @@ const authReducer = (state = initState, action) => {
                 user: action.payload,
                 authError: null
             }
+
         case "SIGNUP_FAILED":
-            console.log('signup failed');
+            console.log('signup failed', action.payload);
             return {
                 ...state,
                 authError: action.payload
@@ -43,10 +44,10 @@ const authReducer = (state = initState, action) => {
                 authError: null
             }
         case "USER_NOT_AUTHORIZED":
-            console.log('user not authorized');
+            console.log('user not authorized', action.payload);
             return {
                 ...state,
-                authError: action.payload
+                authError: null
             }
 
         default:

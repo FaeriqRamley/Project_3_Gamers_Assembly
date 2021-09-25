@@ -14,14 +14,12 @@ export const logIn = (credentials) => {
             const data = await res.json();
 
             if (res.status === 400) {
-                console.log(data.errors)
-                throw Error(data)
+                throw Error(data.errors)
             }
             
             console.log('login user data', data)
             dispatch({ type: "LOGIN_SUCCESS", payload: data })
         } catch (err) {
-            console.log('login error', err.data)
             dispatch({ type: "LOGIN_FAILED", payload: err.message })
         }
     }
@@ -29,7 +27,7 @@ export const logIn = (credentials) => {
 
 // user log out
 export const logOut = () => {
-    return dispatch => {
+    return async (dispatch, getState) => {
         fetch("/logout", {
             method: "GET",
             credentials: "include",
@@ -60,13 +58,13 @@ export const signUp = (credentials) => {
             const data = await res.json();
 
             if (res.status === 400) {
-                console.log(data.errors)
+                throw Error(data.errors)
             }
 
             console.log('this is data', data)
             dispatch({ type: "SIGNUP_SUCCESS", payload: data })
         } catch (err) {
-            dispatch({ type: "SIGNUP_FAILED", payload: err })
+            dispatch({ type: "SIGNUP_FAILED", payload: err.message })
         }
     }
 }
@@ -85,7 +83,7 @@ export const userAuth = () => {
             })
 
             const data = await res.json();
-            
+
             // if token not found
             if (res.status === 401) {
                 throw Error("Unauthorized: no token found")

@@ -100,6 +100,10 @@ body {
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
 }
+.error-message {
+  color: #BF616A;
+  text-align: center;
+}
 
 .ant-btn-primary {
   background: #5E81AC;
