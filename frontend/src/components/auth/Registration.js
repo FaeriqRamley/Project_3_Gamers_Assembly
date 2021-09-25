@@ -1,17 +1,18 @@
 import { Form, Input, Button } from "antd";
 import { UserOutlined, MailOutlined, LockOutlined } from "@ant-design/icons";
-import Post from "../hooks/Post";
+import { signUp } from "../../store/actions/authActions";
+import { connect } from "react-redux"
+import { Redirect } from "react-router-dom"
 
-export default function Registration() {
+function Registration(props) {
     const [form] = Form.useForm();
 
     const onFinish = async (values) => {
-        console.log("Received values of form: ", values);
-        Post("/signup", values).then((data) => {
-            console.log(data);
-        });
+        props.signUp(values);
     };
-
+    
+    const { auth } = props
+    if (auth.user) return <Redirect to="/" />
     return (
         <>
             <Form
@@ -109,12 +110,7 @@ export default function Registration() {
                         placeholder="Confirm Password"
                     />
                 </Form.Item>
-                <Form.Item
-                // wrapperCol={{
-                //     xs: { span: 24, offset: 0 },
-                //     sm: { span: 4, offset: 10 }
-                // }}
-                >
+                <Form.Item>
                     <Button block="true" type="primary" htmlType="submit">
                         Register
                     </Button>
@@ -123,3 +119,17 @@ export default function Registration() {
         </>
     );
 }
+
+const mapStateToProps = (state) => {
+    return {
+      auth: state.auth
+    }
+  }
+  
+  const mapDispatchToProps = (dispatch)=> {
+    return {
+      signUp: (creds) => dispatch(signUp(creds))
+    }
+  }
+
+  export default connect(mapStateToProps, mapDispatchToProps)(Registration);

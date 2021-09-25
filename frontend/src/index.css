@@ -51,29 +51,6 @@ body {
   justify-content: center;
 }
 
-/* .ant-tabs {
-  padding: 1rem;
-  background: #434C5E;
-  border: 1px solid #2E3440;
-}
-.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab {
-  color: #2E3440;
-  background: #D8DEE9;
-  border: 1px solid #D8DEE9;
-}
-.ant-tabs-card.ant-tabs-top > .ant-tabs-nav .ant-tabs-tab-active {
-  border-bottom-color: #8FBCBB;
-}
-
-.ant-tabs-tab:hover {
-  color: #5E81AC;
-}
-
-.ant-tabs-tabpane {
-  padding: 1.5rem;
-} */
-
-
 .ant-tabs-card > .ant-tabs-nav .ant-tabs-tab {
   /* color: #D8DEE9; */
   background: #3B4252;
@@ -86,6 +63,7 @@ body {
   border-bottom: 2px solid #2E3440;
 }
 
+/* active tabs */
 .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
   color: #88C0D0;
 }

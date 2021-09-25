@@ -1,4 +1,3 @@
-import React, { useState,useEffect } from "react";
 import { Tabs } from 'antd'
 import Registration from "./Registration";
 import LogIn from "./LogIn"
