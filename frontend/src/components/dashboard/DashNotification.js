@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import {Row,Col,Typography} from 'antd';
 import CallApi from '../hooks/CallApi';
 import dummyInvites from './dummyInvites';
+import NotificationCard from './NotificationCard';
 const {Title} = Typography;
 
 function NotificationFeed() {
@@ -27,24 +28,31 @@ function NotificationFeed() {
             console.log("mounted");
             const newNotificationInfo = [];
             for (const invite of invites){
-                console.log(invite);
+                // console.log(invite);
                 const resSender = await fetch(`/api/users/user/61502529197584848369a0b7`);
                 const senderData = await resSender.json();
-                console.log("senderData",senderData);
+                // console.log("senderData",senderData);
                 // const gameName = await CallApi(Add the game database calling api);
-                let gameName = "BlackShot";
-                const resTimeslot = await fetch(`/api/timeslot/${invite.timeslotId}`);
-                const timeslotData = await resTimeslot.json();
-                console.log("timeslotData",timeslotData[0]);
+                if (invite.inviteType === "Timeslot Invite"){
+                    let gameName = "BlackShot";
+                    const resTimeslot = await fetch(`/api/timeslot/${invite.timeslotId}`);
+                    const timeslotData = await resTimeslot.json();
+                    // console.log("timeslotData",timeslotData[0]);
 
-                newNotificationInfo.push({
-                    senderName: senderData.handleId,
-                    inviteType: invite.inviteType,
-                    gameName: gameName,
-                    dayStart: timeslotData[0].timeStart.split("T")[0],
-                    timeStart: timeslotData[0].timeStart.split("T")[1],
-                    timeEnd: timeslotData[0].timeEnd.split("T")[1],
-                })
+                    newNotificationInfo.push({
+                        senderName: senderData.handleId,
+                        inviteType: invite.inviteType,
+                        gameName: gameName,
+                        dayStart: timeslotData[0].timeStart.split("T")[0],
+                        timeStart: timeslotData[0].timeStart.split("T")[1],
+                        timeEnd: timeslotData[0].timeEnd.split("T")[1],
+                    })                    
+                } else {
+                    newNotificationInfo.push({
+                        senderName: senderData.handleId,
+                        inviteType: invite.inviteType
+                    }) 
+                }
             }
             setNotificationInfo(newNotificationInfo);
         } else {
@@ -56,11 +64,13 @@ function NotificationFeed() {
     return (
         <Row style={{padding:"10px"}} >
             <Col span={24}><h5>Notifications</h5></Col>
-            <Row justify="center" gutter={[0,16]}>
-                {notificationInfo.map((data)=>{
-                    return JSON.stringify(data)
-                })}
-            </Row>
+            <Col span={24}>
+                <Row justify="center" gutter={[0,16]}>
+                    {notificationInfo.map((data,index)=>{
+                        return <NotificationCard key={index} data={data}/>
+                    })}
+                </Row>
+            </Col>
         </Row>
     )
 }
