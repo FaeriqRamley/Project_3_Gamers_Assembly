@@ -24,7 +24,7 @@ function Registration(props) {
                 scrollToFirstError
             >
                 <Form.Item
-                    name="username"
+                    name="userName"
                     rules={[
                         {
                             required: true,

@@ -6,52 +6,92 @@ body {
   font-weight: 500;
 }
 
+/* navigation bar */
 .navigationbar {
   background-color: #2E3440;
+}
+.navbar-brand {
+  margin-left: 0.5rem;
+}
+@media (min-width: 601px) {
+  .navbar-expand-lg .navbar-nav .nav-link {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  .navbar-nav .nav-link {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+.nav-link {
+  border: none;
+  border-radius: 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(235, 203, 139, 1);
+}
+.navbar-dark .navbar-nav .nav-link:hover {
+  background-color: #3B4252;
+  border-radius: 0.5rem;
+  border: none;
+  color: rgba(235, 203, 139, 1);
+}
+.navbar-dark .navbar-nav .show>.nav-link {
+  color: rgba(235, 203, 139, 1);
+  /* background-color: #3B4252;
+  border-radius: 0.5rem;
+  border: none; */
+}
+.dropdown-menu {
+  font-size: 14px;
+  color: #2E3440;
+  background-color: #D8DEE9;
+}
+.dropdown-item:focus, .dropdown-item:hover {
+  background-color: #ECEFF4;
+}
+.dropdown-item.active {
+  color: #2E3440;
+  background-color: #ECEFF4;
 }
 
 .navbar-dark .navbar-nav .nav-link.nav-dashboard {
   color: rgba(191, 97, 106, 1);
 }
-.navbar-dark .navbar-nav .nav-link.nav-dashboard:hover {
-  color: rgba(191, 97, 106, 0.7);
-}
 .navbar-dark .navbar-nav .nav-link.nav-search {
   color: rgba(208, 135, 112, 1);
-}
-.navbar-dark .navbar-nav .nav-link.nav-search:hover {
-  color: rgba(208, 135, 112, 0.7);
 }
 .navbar-dark .navbar-nav .nav-link.nav-logout {
   color: rgba(180, 142, 173, 1);
 }
-.navbar-dark .navbar-nav .nav-link.nav-logout:hover {
-  color: rgba(180, 142, 173, 0.7);
-}
 .navbar-dark .navbar-nav .nav-link.nav-register {
   color: rgba(235, 203, 139, 1);
-}
-.navbar-dark .navbar-nav .nav-link.nav-register:hover {
-  color:rgba(235, 203, 139, 0.7);
 }
 .navbar-dark .navbar-nav .nav-link.nav-login {
   color: rgba(163, 190, 140, 1);
 }
-.navbar-dark .navbar-nav .nav-link.nav-login:hover {
-  color: rgba(163, 190, 140, 0.7);
-}
 
 .navbar-dark .navbar-nav .nav-link.active {
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  background-color: #3B4252;
+  border-radius: 0.5rem;
+  border: none;
 }
 
+/* form */
 .form-container {
   display: flex;
   margin-top: 5rem;
   justify-content: center;
 }
 
+/* card tab */
 .ant-tabs-card > .ant-tabs-nav .ant-tabs-tab {
   /* color: #D8DEE9; */
   background: #3B4252;
@@ -92,6 +132,7 @@ body {
   border: 1px solid #2E3440;
 }
 
+/* form */
 .ant-form {
   padding: 1rem;
 }
@@ -105,13 +146,38 @@ body {
   text-align: center;
 }
 
+/* button css */
 .ant-btn-primary {
+  color: #ECEFF4;
   background: #5E81AC;
+  background-color: #5E81AC;
   border-color: #5E81AC;
   border-radius: 0.25rem;
 }
 
 .ant-btn-primary:hover {
+  color: #ECEFF4;
   background: #2E3440;
   border-color: #2E3440;
+}
+
+/* card css */
+.ant-card {
+  background: #434C5E;
+}
+.ant-card-head {
+  color: #D8DEE9;
+  border-bottom: #2E3440;
+}
+.ant-card-bordered {
+  border-color: #2E3440;
+}
+
+/* modal */
+.ant-modal-content {
+  background-color: #ECEFF4;
+}
+
+.ant-modal-confirm-body .ant-modal-confirm-content {
+  color: #2E3440;
 }

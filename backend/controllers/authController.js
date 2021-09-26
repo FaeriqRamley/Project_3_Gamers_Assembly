@@ -1,8 +1,9 @@
 require("dotenv").config();
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
-const Schedule = require('../models/Schedule')
-const FriendList = require('../models/FriendList')
+const Schedule = require('../models/Schedule');
+const FriendList = require('../models/FriendList');
+const bcrypt = require('bcrypt');
 
 // handle errors
 const handleErrors = (err) => {
@@ -57,10 +58,14 @@ module.exports.login_get = (req, res) => {
 
 // signup post
 module.exports.signup_post = async (req, res) => {
-    const { email, password } = req.body;
+    const { userName, email, password } = req.body;
 
     try {
-        const user = new User({ email, password });
+        const user = new User({ 
+            userName, 
+            email, 
+            password
+        });
 
         // create new friendList
         const friendList = new FriendList(
@@ -113,6 +118,28 @@ module.exports.logout_get = (req, res) => {
 module.exports.user_get = async (req, res) => {
     try {
         const user = await User.findById(req.user._id)
+        res.status(200).json({ user })
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ msg: "status 500" })
+    }
+}
+
+// change password 
+module.exports.changePassword_put = async (req, res) => {
+    let { newPassword } = req.body;
+    console.log(newPassword)
+    console.log(req.user._id)
+    try {
+        const salt = await bcrypt.genSalt();
+        newPassword = await bcrypt.hash(newPassword, salt);
+
+        const user = await User.findByIdAndUpdate(
+            req.user._id, 
+            { $set: { password: newPassword }
+        })
+
+        console.log(user)
         res.status(200).json({ user })
     } catch (err) {
         console.log(err)

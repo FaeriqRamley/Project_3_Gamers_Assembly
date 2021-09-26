@@ -30,20 +30,15 @@ const checkUser = (req, res, next) => {
             if (err) {
                 console.log(err.message);
                 return res.status(403).json({ msg: "invalid token"})
-                // res.locals.user = null;
-                // next();
             } else {
                 console.log('checkUser', decodedToken);
                 let user = await User.findById(decodedToken.id);
-                res.locals.user = user
                 req.user = user
                 next();
             }
         })
     } else {
-        // res.locals.user = null;
-        // next();
-        return res.status(401).json({ msg: "no token found"})
+        return res.status(401).json({ msg: "no token found" })
     }
 }
 

@@ -7,6 +7,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import Query from "./components/query/Query";
 import { useDispatch } from "react-redux";
 import { userAuth } from "./store/actions/authActions"
+import ChangePasswordForm from "./components/auth/ChangePasswordForm";
 
 export default function App() { 
     const dispatch = useDispatch();
@@ -28,6 +29,7 @@ export default function App() {
                 <Route path="/register">
                     <AuthForms tab={"register"} />
                 </Route>
+                <Route path="/changepassword" component={ChangePasswordForm} />
             </Switch>
         </>
     );
