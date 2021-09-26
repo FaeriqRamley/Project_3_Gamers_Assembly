@@ -10,7 +10,7 @@ function Landing(props) {
   console.log(props.auth);
   return (
     <React.Fragment>
-      <div className="container">
+      <div className="container-header">
         <Row>
           <Col span={8}></Col>
           <Col span={8} className="site-container">

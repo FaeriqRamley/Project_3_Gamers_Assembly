@@ -1,7 +1,8 @@
 .site-page-header {
   border: 0px solid black;
 }
-.container {
+.container-header {
+  padding: 50px;
   text-align: center;
   border: 0px;
 }
