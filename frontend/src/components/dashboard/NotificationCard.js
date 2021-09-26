@@ -5,7 +5,7 @@ function NotificationCard(props) {
     console.log(props.data)
     const cardStyle = {
         backgroundColor: "#2E3440",
-        color: "#eceff4",
+        color: "#D8DEE9",
         boxShadow:"1px 1px 4px rgba(0,0,0,0.9)",
         borderRadius: "0.25rem",
         padding:"5px"
@@ -25,7 +25,7 @@ function NotificationCard(props) {
 
     return (
         <Col style={cardStyle} span={20}>
-            <h6 style={{marginBottom:"2px"}}>{props.data.senderName}</h6>
+            <h6 style={{marginBottom:"2px",color:"#eceff4"}}>{props.data.senderName}</h6>
             {body}
             <Row justify="space-around">
                 <Col><Button style={{backgroundColor:"#A3BE8C",border:"black"}} shape="round">

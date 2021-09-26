@@ -1,5 +1,5 @@
 import React from 'react'
-import {Row,Col,Typography,Image,Divider} from 'antd';
+import {Row,Col,Typography,Image,Divider,Button} from 'antd';
 import styles from './feedNewsCard.module.css';
 
 const {Title,Text,Link} = Typography
@@ -16,7 +16,7 @@ function FeedNewsCard(props) {
         <Col style={cardStyle} span={16}>
             <Row justify="center" style={{margin:"10px 0px"}} gutter={[16,8]}>
                 <Col span={24} style={{textAlign:"left",marginTop:"5px"}}>
-                    <h3 style={{margin:"auto"}}>{props.data.source.name}</h3>
+                    <h3 style={{margin:"auto",color:"#eceff4"}}>{props.data.source.name}</h3>
                     <p>{props.data.publishedAt.split("T")[0]}</p>
                 </Col>
                 <Col style={{padding:"0"}}>
@@ -37,9 +37,11 @@ function FeedNewsCard(props) {
                 </Col>
                 <Divider style={{margin:"auto",backgroundColor:"rgb(202,203,204)",minWidth:"95%",width:"95%"}}/>
                 <Col span={22}>
-                    <Row justify="space-between">
-                        <Col>Like Button | Dislike Button</Col>
-                        <Col>Coment Button | Share Button</Col>
+                    <Row justify="space-between" style={{color:'white'}}>
+                        <Col><Button type="text" style={{color:'white'}}>Like</Button></Col>
+                        <Col><Button type="text" style={{color:'white'}}>Disike</Button></Col>
+                        <Col><Button type="text" style={{color:'white'}}>Comment</Button></Col>
+                        <Col><Button type="text" style={{color:'white'}}>Share</Button></Col>
                     </Row>
                 </Col>
             </Row>
