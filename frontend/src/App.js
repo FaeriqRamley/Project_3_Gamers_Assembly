@@ -1,39 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-import { useEffect } from 'react';
-import {useSelector,useDispatch} from 'react-redux';
-import {addUser,addFriend} from './store/actions';
+import "./App.css";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addUser, addFriend, loadUserDetails } from "./store/actions";
+import UserDetails from "./components/userdetails/userDetailsLayout";
+import UserCard from "./components/userdetails/userCard";
+import Landing from "./components/landing/landing";
 
 function App() {
-  const user = useSelector(state => state.user);
-  const friendList = useSelector(state=> state.friendList);
+  const user = useSelector((state) => state.user);
+  const friendList = useSelector((state) => state.friendList);
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     dispatch(addUser("bob"));
     dispatch(addFriend("hello"));
+    // dispatch(loadUserDetails);
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          {user}
-        </p>
-        <p>
-          {JSON.stringify(friendList)}
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <UserDetails />
+    </React.Fragment>
   );
 }
 
