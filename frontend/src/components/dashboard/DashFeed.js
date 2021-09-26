@@ -13,7 +13,6 @@ function DashFeed() {
                     (data) => <FeedNewsCard data={data}/>
                 )} */}
             </Row>
-
         </Row>
     )
 }
