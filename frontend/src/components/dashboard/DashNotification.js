@@ -17,11 +17,15 @@ function NotificationFeed() {
     //     return () => clearInterval(getInvites);
 
     // },[])
+    
 
     return (
         <Row style={{padding:"10px"}} >
             <Col span={24}><h5>Notifications</h5></Col>
             <Row justify="center" gutter={[0,16]}>
+                {invites.map((invite) => {
+                    
+                })}
             </Row>
         </Row>
     )
