@@ -1,4 +1,4 @@
-export default articles = [
+export default [
     {
         "title": "5 ways Karmine Corp changed League of Legends esports in 2021",
         "description": "League of Legends: Throughout 2021, French organization Karmine Corp, who competes in France’s La Ligue Française de League of Legends, have directly and indirectly changed the competitive landscape of League of Legends esports more than any EUM squad as a unit has been able to do previously.",
