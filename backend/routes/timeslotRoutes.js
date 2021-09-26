@@ -9,7 +9,7 @@ const {
   deleteTimeslot_put,
 } = require("../controllers/timeslotController");
 
-router.get("/", viewTimeslot_get);
+router.get("/:id", viewTimeslot_get);
 router.post("/", createTimeslot_post);
 router.put("/edit/booked_status", editTimeslotBookedStatus_put);
 router.put("/edit/duration", editTimeslotDuration_put);
