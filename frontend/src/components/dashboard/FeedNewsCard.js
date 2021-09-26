@@ -10,10 +10,11 @@ function FeedNewsCard(props) {
         color: "#eceff4",
         boxShadow:"1px 1px 4px rgba(0,0,0,0.9)",
         borderRadius: "0.25rem",
+        minWidth:"410px"
     }
 
     return (
-        <Col style={cardStyle} span={16}>
+        <Col style={cardStyle} span={13}>
             <Row justify="center" style={{margin:"10px 0px"}} gutter={[16,8]}>
                 <Col span={24} style={{textAlign:"left",marginTop:"5px"}}>
                     <h3 style={{margin:"auto",color:"#eceff4"}}>{props.data.source.name}</h3>
