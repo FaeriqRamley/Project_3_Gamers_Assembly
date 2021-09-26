@@ -7,7 +7,7 @@ export default function AuthForms({ tab }) {
 
     return (
         <div className="form-container">
-            <Tabs defaultActiveKey={tab} type="card" style={{ width: 400 }} >
+            <Tabs defaultActiveKey={tab} style={{ width: 400 }} >
                 <TabPane tab="Log in" key="login">
                     <LogIn />
                 </TabPane>

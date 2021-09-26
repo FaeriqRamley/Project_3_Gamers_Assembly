@@ -8,6 +8,7 @@ import Query from "./components/query/Query";
 import { useDispatch } from "react-redux";
 import { userAuth } from "./store/actions/authActions"
 import ChangePasswordForm from "./components/auth/ChangePasswordForm";
+import UserDetails from "./components/userdetails/UserDetails";
 
 export default function App() { 
     const dispatch = useDispatch();
@@ -23,6 +24,7 @@ export default function App() {
                 <Route exact path="/" component={Landing} />
                 <Route path="/dashboard" component={Dashboard} />
                 <Route path="/search" component={Query} />
+                <Route path="/user/:id" component={UserDetails} />
                 <Route path="/login">
                     <AuthForms tab={"login"} />
                 </Route>
