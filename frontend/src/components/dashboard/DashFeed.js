@@ -9,9 +9,9 @@ function DashFeed() {
         <Row style={{padding:"10px"}} >
             <Col span={24}><h2>News Feed</h2></Col>
             <Row justify="center" gutter={[0,32]}>
-                {newsData.map(
+                {/* {newsData.map(
                     (data) => <FeedNewsCard data={data}/>
-                )}
+                )} */}
             </Row>
 
         </Row>
