@@ -1,11 +1,10 @@
 import React from 'react'
 import {Row,Col,Typography} from 'antd';
 import FeedNewsCard from './FeedNewsCard';
-import newsData from './newsData';
+import newsData from './dummyNewsData';
 const {Title} = Typography;
 
 function DashFeed() {
-    console.log(newsData);
     return (
         <Row style={{padding:"10px"}} >
             <Col span={24}><h2>News Feed</h2></Col>

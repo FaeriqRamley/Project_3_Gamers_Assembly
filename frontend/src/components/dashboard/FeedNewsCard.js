@@ -15,15 +15,16 @@ function FeedNewsCard(props) {
     return (
         <Col style={cardStyle} span={16}>
             <Row justify="center" style={{margin:"10px 0px"}} gutter={[16,8]}>
-                <Col style={{marginTop:"5px"}}>
+                <Col span={24} style={{textAlign:"left",marginTop:"5px"}}>
                     <h3 style={{margin:"auto"}}>{props.data.source.name}</h3>
+                    <p>{props.data.publishedAt.split("T")[0]}</p>
                 </Col>
                 <Col style={{padding:"0"}}>
                     <Image width="100%" src={props.data.image}/>
                 </Col>
-                <a href={props.data.source.url}>
-                    <Col>
-                        <h6>{props.data.source.url} | {props.data.publishedAt.split("T")[0]}</h6>
+                <a href={props.data.source.url} target="_blank">
+                    <Col span={24} style={{width:"100%"}}>
+                        <h6>{props.data.source.url.split("//")[1]}</h6>
                         <h5 style={{margin:"0"}} level={5}>{props.data.title}</h5>
                     </Col>
                 </a>
