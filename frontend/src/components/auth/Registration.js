@@ -1,8 +1,8 @@
 import { Form, Input, Button } from "antd";
 import { UserOutlined, MailOutlined, LockOutlined } from "@ant-design/icons";
 import { signUp } from "../../store/actions/authActions";
-import { connect } from "react-redux"
-import { Redirect } from "react-router-dom"
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 function Registration(props) {
     const [form] = Form.useForm();
@@ -11,8 +11,8 @@ function Registration(props) {
         props.signUp(values);
     };
 
-    const { user, authError } = props.auth
-    if (user) return <Redirect to="/dashboard" />
+    const { user, authError } = props.auth;
+    if (user) return <Redirect to="/dashboard" />;
 
     return (
         <>
@@ -116,9 +116,9 @@ function Registration(props) {
                         Register
                     </Button>
                 </Form.Item>
-                { authError
-                ? <div className="error-message">{authError}</div>
-                : null }
+                {authError ? (
+                    <div className="error-message">{authError}</div>
+                ) : null}
             </Form>
         </>
     );
@@ -126,14 +126,14 @@ function Registration(props) {
 
 const mapStateToProps = (state) => {
     return {
-      auth: state.auth
-    }
-  }
-  
-  const mapDispatchToProps = (dispatch)=> {
-    return {
-      signUp: (creds) => dispatch(signUp(creds))
-    }
-  }
+        auth: state.auth,
+    };
+};
 
-  export default connect(mapStateToProps, mapDispatchToProps)(Registration);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        signUp: (creds) => dispatch(signUp(creds)),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Registration);

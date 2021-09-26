@@ -2,18 +2,18 @@ import React from "react";
 import { Form, Input, Button } from "antd";
 import { MailOutlined, LockOutlined } from "@ant-design/icons";
 import { logIn } from "../../store/actions/authActions";
-import { connect } from "react-redux"
-import { Redirect } from "react-router-dom"
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 function LogIn(props) {
     const [form] = Form.useForm();
 
     const onFinish = async (values) => {
-        props.logIn(values)
-    }
+        props.logIn(values);
+    };
 
-    const { user, authError } = props.auth
-    if (user) return <Redirect to="/dashboard" />
+    const { user, authError } = props.auth;
+    if (user) return <Redirect to="/dashboard" />;
 
     return (
         <>
@@ -61,9 +61,9 @@ function LogIn(props) {
                         Log in
                     </Button>
                 </Form.Item>
-                { authError
-                ? <div className="error-message">{authError}</div>
-                : null }
+                {authError ? (
+                    <div className="error-message">{authError}</div>
+                ) : null}
             </Form>
         </>
     );
@@ -71,14 +71,14 @@ function LogIn(props) {
 
 const mapStateToProps = (state) => {
     return {
-      auth: state.auth
-    }
-  }
-  
-  const mapDispatchToProps = (dispatch)=> {
-    return {
-      logIn: (creds) => dispatch(logIn(creds))
-    }
-  }
+        auth: state.auth,
+    };
+};
 
-  export default connect(mapStateToProps, mapDispatchToProps)(LogIn);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        logIn: (creds) => dispatch(logIn(creds)),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LogIn);
