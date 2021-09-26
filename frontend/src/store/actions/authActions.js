@@ -100,3 +100,31 @@ export const userAuth = () => {
         }
     }
 }
+
+// change password
+export const changePassword = (credentials) => {
+    console.log('change password actions')
+    return async (dispatch, getState) => {
+        try {
+            const res = await fetch("/auth/changepassword", { 
+                method: "PUT",
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(credentials)
+            })
+
+            const data = await res.json();
+
+            if (res.status === 500) {
+                throw Error(data.errors)
+            }
+
+            console.log('this is data', data)
+            dispatch({ type: "CHANGE_PASSWORD_SUCCESS", payload: data })
+        } catch (err) {
+            dispatch({ type: "CHANGE_PASSWORD_FAILED", payload: err.message })
+        }
+    }
+}

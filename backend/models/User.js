@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema(
         },
         firstName: String,
         lastName: String,
-        handleId: String,
+        userName: String,
         location: String,
         bio: { type: String, maxlength: 150 },
         rating: [{ type: String, max: 5, min: 0 }],

@@ -1,5 +1,5 @@
 import React from "react";
-import { Nav } from "react-bootstrap";
+import { Nav, NavDropdown } from "react-bootstrap";
 import { connect } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
 import { logOut } from "../../store/actions/authActions";
@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom"
 
 function SignedInLinks(props) {
     const history = useHistory();
+    const { userName } = props.auth.user.user
 
     const handleLogOut = () => {
         props.logOut();
@@ -27,18 +28,29 @@ function SignedInLinks(props) {
                 </LinkContainer>
             </Nav>
             <Nav>
-                <Nav.Link className="nav-logout" onClick={handleLogOut}>
-                    Log out
-                </Nav.Link>
+                <NavDropdown className="nav-user" title={userName} id="collasible-nav-dropdown">
+                    <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
+                    <LinkContainer to="/changepassword">
+                        <NavDropdown.Item>Change Password</NavDropdown.Item>
+                    </LinkContainer>
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item onClick={handleLogOut}>Log out</NavDropdown.Item>
+                </NavDropdown>
             </Nav>
         </>
     );
 }
 
-const mapStateToDispatch = (dispatch) => {
+const mapStateToProps = (state) => {
+    return {
+        auth: state.auth
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
     return {
         logOut: () => dispatch(logOut())
     }
 }
 
-export default connect(null, mapStateToDispatch)(SignedInLinks)
+export default connect(mapStateToProps, mapDispatchToProps)(SignedInLinks)
