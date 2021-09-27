@@ -8,6 +8,7 @@ const {Title} = Typography;
 
 function NotificationFeed() {
     const auth = useSelector(state => state.auth);
+    const [fetchedInvites,setFetchedInvites] = useState([]);
     const [invites, setInvites] = useState([]);
     const [notificationInfo,setNotificationInfo] = useState([]);
     const [userLoaded,setUserLoaded] = useState(false);
@@ -26,12 +27,21 @@ function NotificationFeed() {
             const getInvites = setInterval( async ()=>{
                 const receivedInvitesRes = await fetch(`/api/invites/received/${currentUser._id}`);
                 const newInviteList = await receivedInvitesRes.json();
-                setInvites(newInviteList);
-            },2000)
+                setFetchedInvites(newInviteList);
+            },1000)
             
             return () => clearInterval(getInvites);
         }
     },[userLoaded])
+
+    useEffect(()=> {
+        console.log("This is running");
+        if(fetchedInvites.length !== invites.length){
+            console.log(fetchedInvites.length);
+            console.log(invites.length);
+            setInvites(fetchedInvites);
+        }
+    },[fetchedInvites])
     
     useEffect(async () => {
         if(isMounted){
