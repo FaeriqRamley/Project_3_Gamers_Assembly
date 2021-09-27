@@ -52,7 +52,7 @@ function UserSchedule(props) {
     }
     
     return (
-        <div style={{width:"1000px",height:"600px"}}>
+        <div className="calendar-container">
             <FullCalendar
                 plugins={[ timeGridPlugin,interactionPlugin ]}
                 timeZone= 'UTC'

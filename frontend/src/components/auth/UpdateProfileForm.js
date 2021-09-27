@@ -1,15 +1,16 @@
 import { useState } from "react";
-import { Card, Form, Input, Button, Modal  } from "antd";
+import { Card, Form, Input, Button, Modal, Select } from "antd";
 import { UserOutlined, MailOutlined } from "@ant-design/icons";
 import { updateProfile, userAuth } from "../../store/actions/authActions";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom"
+import countries from "../../lib/countries";
 
 function UpdateProfileForm(props) {
     const [loading, setLoading] = useState(false);
     const [form] = Form.useForm();
     const { user, authError } = props.auth;
-
+    const { Option } = Select;
     const history = useHistory();
 
     const success = () => {
@@ -89,6 +90,22 @@ function UpdateProfileForm(props) {
                             }
                             placeholder="Last name"
                         />
+                    </Form.Item>
+                    <Form.Item
+                        name="location"
+                    >
+                        <Select placeholder="Location">
+                            {countries.map(el => { 
+                                return ( 
+                                    <>
+                                        <Option value={el}>
+                                            {el}
+                                        </Option>
+                                    </>
+                                    )
+                                }
+                            )}
+                        </Select>
                     </Form.Item>
                     <Form.Item
                         name="bio"
