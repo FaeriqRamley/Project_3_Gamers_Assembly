@@ -3,7 +3,7 @@ import "antd/dist/antd.css";
 import { Card } from "antd";
 import styles from "./userCard.css";
 
-function UserCard() {
+function UserCard(props) {
   const { Meta } = Card;
   return (
     <React.Fragment>
@@ -18,9 +18,9 @@ function UserCard() {
             />
           }
         >
-          <Meta title="UserName" description="language" />
-          <Meta description="age" />
-          <Meta description="rating" />
+          <Meta title= {props.data.userName} />
+          <Meta description={props.data.email} />
+          <Meta description={props.data.rating}/>
         </Card>
       </div>
     </React.Fragment>
