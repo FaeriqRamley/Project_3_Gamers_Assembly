@@ -5,6 +5,7 @@ import { getUserById } from "../../store/actions/userActions";
 import { userAuth } from "../../store/actions/authActions";
 import { useParams } from "react-router-dom";
 import useGetUserId from "../hooks/useGetUserId";
+import UserSchedule from "../scheduler/UserSchedule";
 
 function UserProfile(props) {
     const { TabPane } = Tabs;
@@ -24,7 +25,7 @@ function UserProfile(props) {
                         }
                     </TabPane>
                     <TabPane tab="Schedule" key="2">
-                        Schedule goes here
+                        <UserSchedule data={data}/>
                     </TabPane>
                     <TabPane tab="Match History" key="3">
                         Coming soon!

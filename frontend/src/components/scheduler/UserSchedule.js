@@ -23,8 +23,7 @@ function UserSchedule(props) {
 
     useEffect(() => {
         const fetchInterval = setInterval(async()=>{
-            console.log("here");
-            const timeslotRes = await fetch(`/api/timeslot/61513f1b1906a9aa06782d5b`);
+            const timeslotRes = await fetch(`/api/timeslot/byOwnerId/${props.data._id}`);
             const timeslotList = await timeslotRes.json();
             setFetchedTimeslot(timeslotList);
         },4000)

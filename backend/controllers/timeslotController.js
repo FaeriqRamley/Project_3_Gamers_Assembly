@@ -21,6 +21,11 @@ module.exports.viewTimeslot_get = async (req, res) => {
   res.json(viewTimeslot);
 };
 
+module.exports.viewTimeslotById_get = async (req, res) => {
+  const viewTimeslot = await Timeslot.findById(req.params.id);
+  res.json(viewTimeslot);
+};
+
 //Update: To edit isActive/isOpen of timeslot
 //body structure
 // {

@@ -48,6 +48,7 @@ function NotificationFeed() {
             // console.log(invites);
             const newNotificationInfo = [];
             for (const invite of invites){
+                console.log(invite);
                 const resSender = await fetch(`/api/users/user/${invite.senderId}`);
                 const senderData = await resSender.json();
                 // console.log("sender");
@@ -55,18 +56,18 @@ function NotificationFeed() {
                 
                 if (invite.inviteType === "Timeslot Invite"){
                     // const gameName = await CallApi(Add the game database calling api);
-                    const resTimeslot = await fetch(`/api/timeslot/${invite.timeslotId}`);
+                    const resTimeslot = await fetch(`/api/timeslot/byTimeslotId/${invite.timeslotId}`);
                     const timeslotData = await resTimeslot.json();
-                    // console.log("timeslotData",timeslotData[0]);
+                    console.log("timeslotData",timeslotData);
 
                     newNotificationInfo.push({
                         senderName: senderData.userName,
                         inviteType: invite.inviteType,
                         inviteId: invite._id,
                         gameName: "Dota 2",
-                        dayStart: timeslotData[0].timeStart.split("T")[0],
-                        timeStart: timeslotData[0].timeStart.split("T")[1],
-                        timeEnd: timeslotData[0].timeEnd.split("T")[1],
+                        dayStart: timeslotData.timeStart.split("T")[0],
+                        timeStart: timeslotData.timeStart.split("T")[1],
+                        timeEnd: timeslotData.timeEnd.split("T")[1],
                     })
                 } else {
                     newNotificationInfo.push({
