@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { userAuth } from "./store/actions/authActions";
 import ChangePasswordForm from "./components/auth/ChangePasswordForm";
 import UserDetails from "./components/userdetails/UserDetails";
-
+import UserSchedule from "./components/scheduler/UserSchedule";
 export default function App() {
   const dispatch = useDispatch();
 
@@ -33,6 +33,7 @@ export default function App() {
           <AuthForms tab={"register"} />
         </Route>
         <Route path="/changepassword" component={ChangePasswordForm} />
+        <Route path="/scheduler" component={UserSchedule} />
       </Switch>
     </>
   );
