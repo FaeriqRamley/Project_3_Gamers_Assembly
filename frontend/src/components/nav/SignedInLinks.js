@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 
 function SignedInLinks(props) {
   const history = useHistory();
-  const { userName } = props.auth.user.user;
+  const { user } = props.auth.user;
 
   const handleLogOut = () => {
     props.logOut();
@@ -26,16 +26,16 @@ function SignedInLinks(props) {
       <Nav>
         <NavDropdown
           className="nav-user"
-          title={userName}
+          title={user.userName}
           id="collasible-nav-dropdown"
         >
-          <LinkContainer to="/profile">
+          <LinkContainer to={`/profile/${user._id}`}>
             <NavDropdown.Item>Profile</NavDropdown.Item>
           </LinkContainer>
+          <NavDropdown.Divider />
           <LinkContainer to="/changepassword">
             <NavDropdown.Item>Change Password</NavDropdown.Item>
           </LinkContainer>
-          <NavDropdown.Divider />
           <NavDropdown.Item onClick={handleLogOut}>Log out</NavDropdown.Item>
         </NavDropdown>
       </Nav>

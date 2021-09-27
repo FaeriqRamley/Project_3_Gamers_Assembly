@@ -179,3 +179,50 @@ body {
 .ant-modal-confirm-body .ant-modal-confirm-content {
   color: #2E3440;
 }
+
+/* user page */
+.profile-container {
+  display:flex;
+  margin-top: 5rem;
+  justify-content: center;
+}
+
+.profile-tabs {
+  width: 75vw;
+  height: 75vh;
+}
+
+@media screen and (max-width: 600px) {
+  .profile-container {
+    display:flex;
+    margin-top: 2rem;
+    justify-content: center;
+  }
+  .profile-tabs {
+    width: 85vw;
+    height: 85vh;
+  }
+}
+
+.loading-spinner {
+  position: absolute;
+  z-index: 10000;
+}
+
+/* user page > profile */
+.card-container {
+  padding: 1rem;
+}
+
+.avatar-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-wrapper {
+  padding: 2rem;
+}
+
+.profile-wrapper, .profile-wrapper h4 {
+  color: #D8DEE9;
+}
