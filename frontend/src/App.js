@@ -8,7 +8,7 @@ import Query from "./components/query/Query";
 import { useDispatch } from "react-redux";
 import { userAuth } from "./store/actions/authActions";
 import ChangePasswordForm from "./components/auth/ChangePasswordForm";
-import UserDetails from "./components/userdetails/userDetails";
+import UserDetails from "./components/userdetails/UserDetails";
 
 export default function App() {
   const dispatch = useDispatch();
