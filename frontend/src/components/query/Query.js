@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Card, Input } from "semantic-ui-react";
+import UserCard from "../userdetails/userCard";
 
 export default function Query() {
   const [APIData, setAPIData] = useState([]);
