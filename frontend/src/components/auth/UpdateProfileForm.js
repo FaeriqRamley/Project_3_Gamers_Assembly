@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Card, Form, Input, Button, Modal  } from "antd";
-import { UserOutlined, MailOutlined, EditOutlined } from "@ant-design/icons";
+import { UserOutlined, MailOutlined } from "@ant-design/icons";
 import { updateProfile, userAuth } from "../../store/actions/authActions";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom"

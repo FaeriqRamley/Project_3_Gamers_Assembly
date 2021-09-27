@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
+import { Spin } from "antd";
 import Navigation from "./components/nav/Navigation";
 import AuthForms from "./components/auth/AuthForms";
 import Landing from "./components/landing/Landing";
@@ -12,12 +13,12 @@ import UserProfile from "./components/userprofile/UserProfile";
 import UpdateProfileForm from "./components/auth/UpdateProfileForm"
 
 export default function App() {
-    const [loading, setLoading] = useState(null)
+    const [loading, setLoading] = useState(true)
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(userAuth()).then(()=>{
-            setLoading(true)
+            setLoading(false)
         })
     }, [dispatch]);
 
@@ -25,6 +26,10 @@ export default function App() {
         <>
             <Navigation />
             {loading ? (
+                <div className="spin-large">
+                    <Spin size="large" />
+                </div>
+            ) : ( 
                 <Switch>
                     <Route exact path="/" component={Landing} />
                     <Route path="/dashboard" component={Dashboard} />
@@ -39,8 +44,6 @@ export default function App() {
                     <Route path="/changepassword" component={ChangePasswordForm} />
                     <Route path="/updateprofile" component={UpdateProfileForm} />
                 </Switch>
-            ) : ( 
-                <p>loading..</p>
             )}
         </>
     );

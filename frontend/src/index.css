@@ -5,6 +5,12 @@ body {
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
 }
+/* */
+.spin-large {
+  display: flex;
+  margin-top: 15rem;
+  justify-content: center;
+}
 
 /* navigation bar */
 .navigationbar {

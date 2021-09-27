@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Tabs, Spin } from "antd";
 import UserProfileCard from "./UserProfileCard";
 import { connect } from "react-redux"
