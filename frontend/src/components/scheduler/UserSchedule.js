@@ -20,21 +20,6 @@ function UserSchedule(props) {
     const [visible,setVisible] = useState(false);
     const [fetchedTimeslots,setFetchedTimeslot] = useState([]);
     const [timeslotDisplay,setTimeslotDisplay] = useState([]);
-    
-    useEffect(() => {
-        setTimeslotDisplay([
-            {
-                title: 'Event Title1',
-                start: '2021-09-27T13:13:55.008',
-                end: '2021-09-27T15:13:55.008',
-            },
-            {
-                title: 'Event Title2',
-                start: '2015-03-17T13:13:55-0400',
-                end: '2015-03-19T13:13:55-0400'
-            }
-        ])
-    }, [])
 
     useEffect(() => {
         const fetchInterval = setInterval(async()=>{
@@ -57,6 +42,7 @@ function UserSchedule(props) {
                 end: timeslot.timeEnd
             })
         }
+
         console.log(temp);
         setTimeslotDisplay(temp);
     }, [fetchedTimeslots])
