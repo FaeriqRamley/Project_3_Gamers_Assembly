@@ -117,7 +117,7 @@ function UpdateProfileForm(props) {
                         ]}
                     >
                         <Input.TextArea
-                            placeholder="Introduce yourself!"
+                            placeholder="Bio"
                         />
                     </Form.Item>
                     <Form.Item>
