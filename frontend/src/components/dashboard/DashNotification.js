@@ -50,28 +50,28 @@ function NotificationFeed() {
                 const senderData = await resSender.json();
                 console.log("sender");
                 console.log(senderData);
-                // console.log("senderData",senderData);
-                // const gameName = await CallApi(Add the game database calling api);
-                // if (invite.inviteType === "Timeslot Invite"){
-                //     let gameName = "BlackShot";
-                //     const resTimeslot = await fetch(`/api/timeslot/${invite.timeslotId}`);
-                //     const timeslotData = await resTimeslot.json();
-                //     // console.log("timeslotData",timeslotData[0]);
+                
+                if (invite.inviteType === "Timeslot Invite"){
+                    // const gameName = await CallApi(Add the game database calling api);
+                    let gameName = "BlackShot";
+                    const resTimeslot = await fetch(`/api/timeslot/${invite.timeslotId}`);
+                    const timeslotData = await resTimeslot.json();
+                    console.log("timeslotData",timeslotData[0]);
 
-                //     newNotificationInfo.push({
-                //         senderName: senderData.userName,
-                //         inviteType: invite.inviteType,
-                //         gameName: gameName,
-                //         dayStart: timeslotData[0].timeStart.split("T")[0],
-                //         timeStart: timeslotData[0].timeStart.split("T")[1],
-                //         timeEnd: timeslotData[0].timeEnd.split("T")[1],
-                //     })                    
+                    newNotificationInfo.push({
+                        senderName: senderData.userName,
+                        inviteType: invite.inviteType,
+                        gameName: gameName,
+                        dayStart: timeslotData[0].timeStart.split("T")[0],
+                        timeStart: timeslotData[0].timeStart.split("T")[1],
+                        timeEnd: timeslotData[0].timeEnd.split("T")[1],
+                    })
                 // } else {
                 //     newNotificationInfo.push({
                 //         senderName: senderData.handleId,
                 //         inviteType: invite.inviteType
                 //     }) 
-                // }
+                }
             }
             setNotificationInfo(newNotificationInfo);
         } else {
