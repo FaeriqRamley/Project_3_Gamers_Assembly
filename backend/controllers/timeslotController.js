@@ -72,7 +72,6 @@ module.exports.editTimeSlotAttendees_put = async (req, res) => {
   }
 };
 
-
 //Delete: Remove Timeslot
 module.exports.deleteTimeslot_put = async (req, res) => {
   //Delete timeslot from timeslot db
@@ -84,34 +83,4 @@ module.exports.deleteTimeslot_put = async (req, res) => {
   );
   res.json({ status: "ok", msg: "Deleted from timeslot and schedule" });
 };
-//-------------------------------------------------
 
-// router.post('/api/timeslot', async (req, res) => {
-//   const timeslot = new Timeslot({
-//     _id: req.body.id,
-//     ownerID: req.body.ownerID,
-//     timeStart: req.body.timeStart,
-//     timeEnd: req.body.timeEnd,
-//     duration: req.body.duration,
-//     isActive: true,
-//   })
-
-//   await timeslot.save();
-//   Schedule.update()
-//   res.json({status: 'ok', msg: "saved"})
-// })
-
-// //Update
-// router.put('/api/schedule/timeslot/:id', async (req,res) => {
-//   updateTimeslot = await Schedule.find({_id: req.params.id})
-//   if(updateTimeslot[0].timeStart > 0) {
-//     await Schedule.findOneAndUpdate(
-//       {_id: req.params.id},
-//       {$inc: {timeStart: req.body.timeStart}},
-//       {$inc: {timeEnd: req.body.timeEnd}},
-//       {$inc: {duration: req.body.duration}}
-//     )
-//   }
-// })
-
-// //Delete

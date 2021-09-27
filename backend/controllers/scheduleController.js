@@ -44,12 +44,23 @@ module.exports.respondTimeslotInvite_put = async (req,res) => {
         res.json({status:"ok",message:"successfully declined"});
 
     } else if (req.params.response === "Accept"){
-        //Change Invite's status to "Declined"
+        //Change Invite's status to "Accepted"
         await Invite.findByIdAndUpdate(inviteId,{$set:{status:"Accepted"}});
-        //Add timeslot reference to sender's timeslots
-        await Schedule.findOneAndUpdate( {ownerId:senderId},{$push:{timeslots:mongoose.Types.ObjectId(timeslotId)}})
-        //Add sender's ID to the timeslot's attendees
-        await Timeslot.findByIdAndUpdate(timeslotId,{$push:{attendees:senderId.toString()}})
+
+
+        const inviteTimeslot = await Timeslot.findById(timeslotId);
+        console.log(inviteTimeslot);
+        // Default case: another user invites timeslot owner | Alternate case: timeslot owner invites user
+        let joinerId = senderId;
+        if(inviteTimeslot.ownerId !== receiverId.toString()){
+            joinerId = receiverId;
+        }
+        //Add timeslot reference to joiner's timeslots
+        await Schedule.findOneAndUpdate( {ownerId:joinerId},{$push:{timeslots:mongoose.Types.ObjectId(timeslotId)}})
+        //Add joiner's ID to the timeslot's attendees
+        await Timeslot.findByIdAndUpdate(timeslotId,{$push:{attendees:joinerId.toString()}})
+
+        
         //Remove invite from receiver's received notifications array (cause he's already seen it)
         await Schedule.findOneAndUpdate({ownerId:receiverId},{$pull:{receivedNotifications:inviteId}})
         res.json({status:"ok",message:"successfully accepted"});
@@ -63,4 +74,4 @@ module.exports.removeRespondedTimeslotInvite_delete = async (req,res) => {
     await Schedule.findOneAndUpdate({ownerId:req.body.senderId},{$pull:{sentNotifications:req.body.inviteId}});
     await Invite.findByIdAndDelete(req.body.inviteId);
     res.json({status:"ok",messaged:"Removed invite from db and reference from sender's schedule"})
-} 
+}
