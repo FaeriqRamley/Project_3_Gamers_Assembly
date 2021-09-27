@@ -28,11 +28,11 @@ function FeaturedUsers() {
 
   console.log(APIData);
 
-  let profilePicture = APIData.map((e, i) => {
+  let profilePicture = APIData.map((item, i) => {
     return (
       <Col className="featured-col" span={4}>
         <button>
-          <Tooltip placement="bottom" title={<UserCard />}>
+          <Tooltip placement="bottom" title={<UserCard data={item} />}>
             <img
               className="featured-img"
               src={APIData[i].profilePic}
