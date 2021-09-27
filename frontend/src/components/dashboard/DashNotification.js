@@ -1,7 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import {Row,Col,Typography} from 'antd';
 import CallApi from '../hooks/CallApi';
-import dummyInvites from './dummyInvites';
 import NotificationCard from './NotificationCard';
 import { useSelector } from 'react-redux';
 const {Title} = Typography;
