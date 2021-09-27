@@ -39,12 +39,7 @@ export default function Query() {
         {searchInput.length > 1
           ? filteredResults.map((item) => {
               return (
-                <Card>
-                  <Card.Content>
-                    <Card.Header>{item.userName}</Card.Header>
-                    <Card.Description>{item.email}</Card.Description>
-                  </Card.Content>
-                </Card>
+               <UserCard data={item} />
               );
             })
           : APIData.map((item) => {
