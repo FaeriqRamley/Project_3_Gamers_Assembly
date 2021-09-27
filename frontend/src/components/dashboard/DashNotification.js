@@ -23,54 +23,48 @@ function NotificationFeed() {
 
     useEffect(() => {
         if(currentUser){
-            console.log(userLoaded);
             const getInvites = setInterval( async ()=>{
-                console.log("fetching...")
-                console.log(currentUser._id);
                 const receivedInvitesRes = await fetch(`/api/invites/received/${currentUser._id}`);
                 const newInviteList = await receivedInvitesRes.json();
-                console.log(newInviteList);
-                if(newInviteList.length !== invites.length){setInvites(newInviteList)}
-                
-            },10000)
+                setInvites(newInviteList);
+            },2000)
             
             return () => clearInterval(getInvites);
         }
-
-        
     },[userLoaded])
     
     useEffect(async () => {
         if(isMounted){
-            console.log(invites);
+            console.log("invite change detected");
+            // console.log(invites);
             const newNotificationInfo = [];
             for (const invite of invites){
-                // console.log(invite);
                 const resSender = await fetch(`/api/users/user/${invite.senderId}`);
                 const senderData = await resSender.json();
-                console.log("sender");
-                console.log(senderData);
+                // console.log("sender");
+                // console.log(senderData);
                 
                 if (invite.inviteType === "Timeslot Invite"){
                     // const gameName = await CallApi(Add the game database calling api);
-                    let gameName = "BlackShot";
                     const resTimeslot = await fetch(`/api/timeslot/${invite.timeslotId}`);
                     const timeslotData = await resTimeslot.json();
-                    console.log("timeslotData",timeslotData[0]);
+                    // console.log("timeslotData",timeslotData[0]);
 
                     newNotificationInfo.push({
                         senderName: senderData.userName,
                         inviteType: invite.inviteType,
-                        gameName: gameName,
+                        inviteId: invite._id,
+                        gameName: "Dota 2",
                         dayStart: timeslotData[0].timeStart.split("T")[0],
                         timeStart: timeslotData[0].timeStart.split("T")[1],
                         timeEnd: timeslotData[0].timeEnd.split("T")[1],
                     })
-                // } else {
-                //     newNotificationInfo.push({
-                //         senderName: senderData.handleId,
-                //         inviteType: invite.inviteType
-                //     }) 
+                } else {
+                    newNotificationInfo.push({
+                        senderName: senderData.handleId,
+                        inviteType: invite.inviteType,
+                        inviteId: invite._id
+                    })
                 }
             }
             setNotificationInfo(newNotificationInfo);

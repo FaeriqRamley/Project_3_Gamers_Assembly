@@ -1,8 +1,11 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {Row,Col,Button} from 'antd';
-
+import CallApi from '../hooks/CallApi';
 function NotificationCard(props) {
-    console.log(props.data)
+    // console.log("init card");
+    // console.log(props.data);
+    const [loading,setLoading] = useState(false);
+
     const cardStyle = {
         backgroundColor: "#2E3440",
         color: "#D8DEE9",
@@ -23,15 +26,28 @@ function NotificationCard(props) {
         </>
     }
 
+    const handleClick = async (e) => {
+        e.preventDefault();
+        console.log(e.target.innerText);
+        console.log(props.data.inviteId);
+        setLoading(true);
+        await CallApi(`/api/schedule/respondInvite/${e.target.innerText}`,"PUT",{inviteId:props.data.inviteId})
+        const temp = setInterval(() => {
+           setLoading(false);
+           clearInterval(temp)
+        }, 2000);
+        
+    }
+
     return (
         <Col style={cardStyle} span={20}>
             <h6 style={{marginBottom:"2px",color:"#eceff4"}}>{props.data.senderName}</h6>
             {body}
             <Row justify="space-around">
-                <Col><Button style={{backgroundColor:"#A3BE8C",border:"black"}} shape="round">
+                <Col><Button style={{backgroundColor:"#A3BE8C",border:"black"}} shape="round" onClick={handleClick} loading={loading}>
                     Accept
                 </Button></Col>
-                <Col><Button style={{backgroundColor:"#BF616A",border:"black"}} shape="round">
+                <Col><Button style={{backgroundColor:"#BF616A",border:"black"}} shape="round" onClick={handleClick} loading={loading}>
                     Decline
                 </Button></Col>
             </Row>
