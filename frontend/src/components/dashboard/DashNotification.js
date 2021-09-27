@@ -3,60 +3,79 @@ import {Row,Col,Typography} from 'antd';
 import CallApi from '../hooks/CallApi';
 import dummyInvites from './dummyInvites';
 import NotificationCard from './NotificationCard';
+import { useSelector } from 'react-redux';
 const {Title} = Typography;
 
 function NotificationFeed() {
+    const auth = useSelector(state => state.auth);
     const [invites, setInvites] = useState([]);
     const [notificationInfo,setNotificationInfo] = useState([]);
-    const [isMount,setMount] = useState(true);
+    const [userLoaded,setUserLoaded] = useState(false);
+    const [currentUser,setCurrentUser] = useState(null);
+    const [isMounted,setMounted] = useState(false);
 
     useEffect(()=>{
-        setInvites(dummyInvites);
-    },[])
+        if(auth.user){
+            setCurrentUser(auth.user.user);
+            setUserLoaded(true);
+        }
+    },[auth])
 
-    // // useEffect(() => {
-    // //     const getInvites = setInterval(()=>{
-    // //         const newInviteList = Insert Fetch Here;
-    // //         if(newInviteList !== invites){setInvites(newInviteList)}
-    // //         
-    // //     }),1500)
-    // //     return () => clearInterval(getInvites);
-    // // },[])
+    useEffect(() => {
+        if(currentUser){
+            console.log(userLoaded);
+            const getInvites = setInterval( async ()=>{
+                console.log("fetching...")
+                console.log(currentUser._id);
+                const receivedInvitesRes = await fetch(`/api/invites/received/${currentUser._id}`);
+                const newInviteList = await receivedInvitesRes.json();
+                console.log(newInviteList);
+                if(newInviteList.length !== invites.length){setInvites(newInviteList)}
+                
+            },10000)
+            
+            return () => clearInterval(getInvites);
+        }
+
+        
+    },[userLoaded])
     
     useEffect(async () => {
-        if(isMount){
-            console.log("mounted");
+        if(isMounted){
+            console.log(invites);
             const newNotificationInfo = [];
             for (const invite of invites){
                 // console.log(invite);
-                const resSender = await fetch(`/api/users/user/61502529197584848369a0b7`);
+                const resSender = await fetch(`/api/users/user/${invite.senderId}`);
                 const senderData = await resSender.json();
+                console.log("sender");
+                console.log(senderData);
                 // console.log("senderData",senderData);
                 // const gameName = await CallApi(Add the game database calling api);
-                if (invite.inviteType === "Timeslot Invite"){
-                    let gameName = "BlackShot";
-                    const resTimeslot = await fetch(`/api/timeslot/${invite.timeslotId}`);
-                    const timeslotData = await resTimeslot.json();
-                    // console.log("timeslotData",timeslotData[0]);
+                // if (invite.inviteType === "Timeslot Invite"){
+                //     let gameName = "BlackShot";
+                //     const resTimeslot = await fetch(`/api/timeslot/${invite.timeslotId}`);
+                //     const timeslotData = await resTimeslot.json();
+                //     // console.log("timeslotData",timeslotData[0]);
 
-                    newNotificationInfo.push({
-                        senderName: senderData.handleId,
-                        inviteType: invite.inviteType,
-                        gameName: gameName,
-                        dayStart: timeslotData[0].timeStart.split("T")[0],
-                        timeStart: timeslotData[0].timeStart.split("T")[1],
-                        timeEnd: timeslotData[0].timeEnd.split("T")[1],
-                    })                    
-                } else {
-                    newNotificationInfo.push({
-                        senderName: senderData.handleId,
-                        inviteType: invite.inviteType
-                    }) 
-                }
+                //     newNotificationInfo.push({
+                //         senderName: senderData.userName,
+                //         inviteType: invite.inviteType,
+                //         gameName: gameName,
+                //         dayStart: timeslotData[0].timeStart.split("T")[0],
+                //         timeStart: timeslotData[0].timeStart.split("T")[1],
+                //         timeEnd: timeslotData[0].timeEnd.split("T")[1],
+                //     })                    
+                // } else {
+                //     newNotificationInfo.push({
+                //         senderName: senderData.handleId,
+                //         inviteType: invite.inviteType
+                //     }) 
+                // }
             }
             setNotificationInfo(newNotificationInfo);
         } else {
-            setMount(true);
+            setMounted(true);
         }
         
     },[invites])

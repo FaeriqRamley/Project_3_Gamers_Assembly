@@ -10,7 +10,7 @@ function DashFeed() {
             <Col span={24}><h2>News Feed</h2></Col>
             <Row justify="center" gutter={[0,32]}>
                 {newsData.map(
-                    (data) => <FeedNewsCard data={data}/>
+                    (data,index) => <FeedNewsCard key={index} data={data}/>
                 )}
             </Row>
         </Row>
