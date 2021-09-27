@@ -17,10 +17,9 @@ function renderEventContent(eventInfo) {
 }
 
 function UserSchedule(props) {
-    const [isMounted,setMounted] = useState(false);
     const [visible,setVisible] = useState(false);
+    const [fetchedTimeslots,setFetchedTimeslot] = useState([]);
     const [timeslotDisplay,setTimeslotDisplay] = useState([]);
-    const [timeslotInfo,setTimeslotInfo] = useState([]);
     
     useEffect(() => {
         setTimeslotDisplay([
@@ -28,7 +27,6 @@ function UserSchedule(props) {
                 title: 'Event Title1',
                 start: '2021-09-27T13:13:55.008',
                 end: '2021-09-27T15:13:55.008',
-                invite: 'hello'
             },
             {
                 title: 'Event Title2',
@@ -43,12 +41,25 @@ function UserSchedule(props) {
             console.log("here");
             const timeslotRes = await fetch(`/api/timeslot/61513f1b1906a9aa06782d5b`);
             const timeslotList = await timeslotRes.json();
-            console.log(timeslotList);
-        },2000)
-        
+            setFetchedTimeslot(timeslotList);
+        },4000)
         return () => clearInterval(fetchInterval);
 
     },[])
+
+    useEffect(() => {
+        const temp = [];
+        for ( const timeslot of fetchedTimeslots){
+            console.log(timeslot);
+            temp.push({
+                title:"Game title here",
+                start: timeslot.timeStart,
+                end: timeslot.timeEnd
+            })
+        }
+        console.log(temp);
+        setTimeslotDisplay(temp);
+    }, [fetchedTimeslots])
     
     const showModal = (arg) => {
         
