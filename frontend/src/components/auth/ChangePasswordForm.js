@@ -58,7 +58,7 @@ function ChangePasswordForm(props) {
                             prefix={
                                 <LockOutlined className="site-form-item-icon" />
                             }
-                            placeholder="Password"
+                            placeholder="New Password"
                         />
                     </Form.Item>
                     <Form.Item
@@ -90,7 +90,7 @@ function ChangePasswordForm(props) {
                             prefix={
                                 <LockOutlined className="site-form-item-icon" />
                             }
-                            placeholder="Confirm Password"
+                            placeholder="Confirm New Password"
                         />
                     </Form.Item>
                     <Form.Item>

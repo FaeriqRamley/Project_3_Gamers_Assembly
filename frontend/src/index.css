@@ -91,34 +91,23 @@ body {
   justify-content: center;
 }
 
-/* card tab */
-.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab {
-  /* color: #D8DEE9; */
-  background: #3B4252;
-  border:none;
-  border-bottom: 2px solid #2E3440;;
-  opacity: 1;
-}
-
+/* tab */
 .ant-tabs-top > .ant-tabs-nav::before {
   border-bottom: 2px solid #2E3440;
 }
 
-/* active tabs */
+.ant-tabs-tab, .ant-tabs-tab + .ant-tabs-tab {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
 .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
   color: #88C0D0;
+  text-shadow: none;
 }
+
 .ant-tabs-tab-btn:active {
   color: #88C0D0;
-}
-.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab-active {
-  background: #3B4252;
-  border: none;
-  opacity: 1;
-}
-.ant-tabs-card.ant-tabs-top > .ant-tabs-nav .ant-tabs-tab-active {
-  border-bottom-color: #88C0D0;
-  border-bottom: 2px solid #88C0D0;
 }
 
 .ant-tabs-tab:hover {
@@ -130,6 +119,10 @@ body {
   padding: 1rem;
   background: #3B4252;
   border: 1px solid #2E3440;
+}
+
+.ant-tabs-ink-bar {
+  background: #88C0D0;
 }
 
 /* form */
@@ -155,12 +148,17 @@ body {
   border-radius: 0.25rem;
 }
 
-.ant-btn-primary:hover {
+.ant-btn-primary:hover, .ant-btn:hover, .ant-btn:focus {
   color: #ECEFF4;
-  background: #2E3440;
-  border-color: #2E3440;
+  background: #4d6a8d;
+  border-color: #4d6a8d;
 }
 
+/* spinner */
+.center-spinner {
+  display: flex;
+  justify-content: center;
+}
 /* card css */
 .ant-card {
   background: #434C5E;

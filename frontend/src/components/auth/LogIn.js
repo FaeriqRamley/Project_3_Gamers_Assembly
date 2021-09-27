@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import { Form, Input, Button } from "antd";
 import { MailOutlined, LockOutlined } from "@ant-design/icons";
 import { logIn } from "../../store/actions/authActions";
@@ -6,10 +6,16 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 function LogIn(props) {
+    const [loading, setLoading] = useState(false);
     const [form] = Form.useForm();
 
     const onFinish = async (values) => {
-        props.logIn(values);
+        setLoading(true);
+        props.logIn(values).then(() => {
+            setTimeout(() => {
+                setLoading(false)
+            }, 1000);
+        });
     };
 
     const { user, authError } = props.auth;
@@ -57,7 +63,12 @@ function LogIn(props) {
                     />
                 </Form.Item>
                 <Form.Item>
-                    <Button block="true" type="primary" htmlType="submit">
+                    <Button 
+                        block="true" 
+                        type="primary" 
+                        htmlType="submit"
+                        loading={loading}
+                    >
                         Log in
                     </Button>
                 </Form.Item>
