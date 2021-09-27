@@ -18,9 +18,9 @@ function UserCard(props) {
             />
           }
         >
-          <Meta title= {props.data.userName} />
+          {/* <Meta title= {props.data.userName} />
           <Meta description={props.data.email} />
-          <Meta description={props.data.rating}/>
+          <Meta description={props.data.rating}/> */}
         </Card>
       </div>
     </React.Fragment>
