@@ -33,6 +33,9 @@ function SignedInLinks(props) {
             <NavDropdown.Item>Profile</NavDropdown.Item>
           </LinkContainer>
           <NavDropdown.Divider />
+          <LinkContainer to="/updateprofile">
+            <NavDropdown.Item>Update Profile</NavDropdown.Item>
+          </LinkContainer>
           <LinkContainer to="/changepassword">
             <NavDropdown.Item>Change Password</NavDropdown.Item>
           </LinkContainer>

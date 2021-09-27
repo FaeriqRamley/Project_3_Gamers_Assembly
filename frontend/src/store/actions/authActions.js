@@ -127,3 +127,31 @@ export const changePassword = (credentials) => {
     }
   };
 };
+
+// update profile
+export const updateProfile = (credentials) => {
+    console.log("change password actions");
+    return async (dispatch, getState) => {
+      try {
+        const res = await fetch("/auth/updateprofile", {
+          method: "PUT",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(credentials),
+        });
+  
+        const data = await res.json();
+  
+        if (res.status === 500) {
+          throw Error(data.errors);
+        }
+  
+        console.log("this is updated data", data);
+        dispatch({ type: "UPDATE_PROFILE_SUCCESS", payload: data });
+      } catch (err) {
+        dispatch({ type: "UPDATE_PROFILE_FAILED", payload: err.message });
+      }
+    };
+  };

@@ -9,6 +9,7 @@ body {
 /* navigation bar */
 .navigationbar {
   background-color: #2E3440;
+  z-index: 9210384791264791826412;
 }
 .navbar-brand {
   margin-left: 0.5rem;
@@ -53,6 +54,7 @@ body {
   font-size: 14px;
   color: #2E3440;
   background-color: #D8DEE9;
+  z-index: 12034801284;
 }
 .dropdown-item:focus, .dropdown-item:hover {
   background-color: #ECEFF4;

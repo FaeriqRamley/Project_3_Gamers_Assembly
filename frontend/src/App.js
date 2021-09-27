@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { userAuth } from "./store/actions/authActions";
 import ChangePasswordForm from "./components/auth/ChangePasswordForm";
 import UserProfile from "./components/userprofile/UserProfile";
+import UpdateProfileForm from "./components/auth/UpdateProfileForm"
 
 export default function App() {
     const [loading, setLoading] = useState(null)
@@ -36,6 +37,7 @@ export default function App() {
                         <AuthForms tab={"register"} />
                     </Route>
                     <Route path="/changepassword" component={ChangePasswordForm} />
+                    <Route path="/updateprofile" component={UpdateProfileForm} />
                 </Switch>
             ) : ( 
                 <p>loading..</p>
