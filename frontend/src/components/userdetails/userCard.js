@@ -1,26 +1,21 @@
 import React from "react";
 import "antd/dist/antd.css";
 import { Card } from "antd";
-import styles from "./userCard.css";
+import "./userCard.css";
 
 function UserCard(props) {
+  console.log(props);
   const { Meta } = Card;
   return (
     <React.Fragment>
       <div>
         <Card
-          hoverable
           style={{ width: 240, background: "#182938" }}
-          cover={
-            <img
-              alt="example"
-              src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-            />
-          }
+          cover={<img alt="example" src={props.data.profilePic} />}
         >
-          <Meta title= {props.data.userName} />
+          <Meta title={props.data.userName} />
           <Meta description={props.data.email} />
-          <Meta description={props.data.rating}/>
+          <Meta description={props.data.rating} />
         </Card>
       </div>
     </React.Fragment>

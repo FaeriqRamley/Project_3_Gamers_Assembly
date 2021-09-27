@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Row, Col } from "antd";
 import "antd/dist/antd.css";
 import Carousel from "./carousel";
-import FeaturedUsers from "./featuredUsers";
-import styles from "./landing.css";
+import FeaturedUsers from "./FeaturedUsers";
+import "./landing.css";
 
-function Landing(props) {
-  console.log(props.auth);
+function Landing(data) {
   return (
     <React.Fragment>
       <div className="container-header">
@@ -22,7 +21,7 @@ function Landing(props) {
       <div className="carousel-container">
         <Carousel></Carousel>
       </div>
-      <FeaturedUsers />
+      <FeaturedUsers data={data} />
     </React.Fragment>
   );
 }
