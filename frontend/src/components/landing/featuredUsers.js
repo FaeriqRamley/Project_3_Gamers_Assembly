@@ -1,39 +1,58 @@
-import React from "react";
-import { Row, Col, Button, Tooltip } from "antd";
+import React, { useState, useEffect } from "react";
+import { Row, Col, Tooltip } from "antd";
 import "antd/dist/antd.css";
-import styles from "./landing.css";
+import "./landing.css";
 import UserCard from "../userdetails/userCard";
 
-function featuredUsers() {
-  let content = (
-    <Col className="featured-col" span={4}>
-      <button>
-        <Tooltip placement="bottom" title={<UserCard />}>
-          <img
-            className="featured-img"
-            src="https://images.unsplash.com/photo-1566650554919-44ec6bbe2518?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmVhdXRpZnVsJTIwYW5pbWFsfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
-            alt=""
-            type="button"
-            onClick=""
-          />
-        </Tooltip>
-      </button>
-    </Col>
-  );
+function FeaturedUsers() {
+  const [APIData, setAPIData] = useState([]);
+  const [error, setError] = useState(null);
+
+  const fetchPost = async () => {
+    const url = "http://localhost:5000/api/users/all/5";
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+
+      setAPIData(data);
+    } catch (err) {
+      setError(err.message);
+    }
+
+    console.log("error:", error);
+  };
+
+  useEffect(() => {
+    fetchPost();
+  }, []);
+
+  console.log(APIData);
+
+  let profilePicture = APIData.map((item, i) => {
+    return (
+      <Col className="featured-col" span={4}>
+        <button>
+          <Tooltip placement="bottom" title={<UserCard data={item} />}>
+            <img
+              className="featured-img"
+              src={APIData[i].profilePic}
+              alt=""
+              type="button"
+              onClick=""
+            />
+          </Tooltip>
+        </button>
+      </Col>
+    );
+  });
+
   return (
     <React.Fragment>
       <div className="featured-container">
-        <Row gutter={16}>
-          {content}
-          {content}
-          {content}
-          {content}
-          {content}
-          {content}
-        </Row>
+        <Row gutter={16}>{profilePicture}</Row>
       </div>
     </React.Fragment>
   );
 }
 
-export default featuredUsers;
+export default FeaturedUsers;

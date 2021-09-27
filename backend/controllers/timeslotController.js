@@ -17,7 +17,12 @@ module.exports.createTimeslot_post = async (req, res) => {
 
 //Read: Get Timeslot Info
 module.exports.viewTimeslot_get = async (req, res) => {
-  const viewTimeslot = await Timeslot.find({_id:req.params.id});
+  const viewTimeslot = await Timeslot.find({ownerId:req.params.id});
+  res.json(viewTimeslot);
+};
+
+module.exports.viewTimeslotById_get = async (req, res) => {
+  const viewTimeslot = await Timeslot.findById(req.params.id);
   res.json(viewTimeslot);
 };
 

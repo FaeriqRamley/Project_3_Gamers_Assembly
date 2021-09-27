@@ -5,10 +5,17 @@ body {
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
 }
+/* */
+.spin-large {
+  display: flex;
+  margin-top: 15rem;
+  justify-content: center;
+}
 
 /* navigation bar */
 .navigationbar {
   background-color: #2E3440;
+  z-index: 9210384791264791826412;
 }
 .navbar-brand {
   margin-left: 0.5rem;
@@ -53,6 +60,7 @@ body {
   font-size: 14px;
   color: #2E3440;
   background-color: #D8DEE9;
+  z-index: 12034801284;
 }
 .dropdown-item:focus, .dropdown-item:hover {
   background-color: #ECEFF4;
@@ -178,4 +186,51 @@ body {
 
 .ant-modal-confirm-body .ant-modal-confirm-content {
   color: #2E3440;
+}
+
+/* user page */
+.profile-container {
+  display:flex;
+  margin-top: 5rem;
+  justify-content: center;
+}
+
+.profile-tabs {
+  width: 75vw;
+  height: 75vh;
+}
+
+@media screen and (max-width: 600px) {
+  .profile-container {
+    display:flex;
+    margin-top: 2rem;
+    justify-content: center;
+  }
+  .profile-tabs {
+    width: 85vw;
+    height: 85vh;
+  }
+}
+
+.loading-spinner {
+  position: absolute;
+  z-index: 10000;
+}
+
+/* user page > profile */
+.card-container {
+  padding: 1rem;
+}
+
+.avatar-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-wrapper {
+  padding: 2rem;
+}
+
+.profile-wrapper, .profile-wrapper h4 {
+  color: #D8DEE9;
 }
