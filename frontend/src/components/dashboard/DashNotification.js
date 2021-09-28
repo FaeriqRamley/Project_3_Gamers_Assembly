@@ -29,12 +29,12 @@ function NotificationFeed() {
                 // const receivedInvitesRes = await fetch(`/api/invites/received/${currentUser._id}`);
                 // const newInviteList = await receivedInvitesRes.json();
                 // setFetchedInvites(newInviteList);
+                const allNotifs = []
+                const receivedNotifsRes = await fetch(`/api/schedule/populate/notifications`);
+                const receivedNotifsJSON = await receivedNotifsRes.json();
+                const receivedNotifs = receivedNotifsJSON.userSchedule;
+                console.log(receivedNotifs);
 
-                const receivedNotificationsRes = await fetch(`/api/schedule/populateOne/receivedNotifications`);
-                const receivedNotifications = await receivedNotificationsRes.json();
-                console.log(receivedNotifications.userSchedule.receivedNotifications);
-                const testRecNotif = receivedNotifications.userSchedule.receivedNotifications;
-                
 
             },5000)
             

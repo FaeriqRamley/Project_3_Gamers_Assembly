@@ -14,7 +14,7 @@ const {
 router.get("/",getSchedule_get);
 router.post("/",createSchedule_post);
 router.get("/populate/timeslot", checkUser, schedule_get);
-router.get("/populateOne/:collection", checkUser, scheduleWithPopulate_get);
+router.get("/populate/notifications", checkUser, scheduleWithPopulate_get);
 
 // Notification Routes
 router.post("/createInvite",createTimeslotInvite_post);

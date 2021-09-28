@@ -116,13 +116,20 @@ module.exports.schedule_get = async (req, res) => {
 };
 
 module.exports.scheduleWithPopulate_get = async (req, res) => {
-    console.log(req.user._id);
     try {
-        const userSchedule = await Schedule.findOne({ownerId:req.user._id}).populate(
-            req.params.collection
-        );
-        console.log("this is userSchedule");
-        console.log(userSchedule);
+        const userSchedule = await Schedule.findOne({ownerId:req.user._id}).populate({
+                path:"sentNotifications",populate:[
+                    {path:"receiverId",model:"User",select:["userName"]},
+                    {path:"senderId",model:"User",select:["userName"]},
+                    {path:"timeslotId",model:"Timeslot",select:["eventTitle","timeStart","timeEnd"]}
+                ]
+            }).populate({
+                path:"receivedNotifications",populate:[
+                    {path:"receiverId",model:"User",select:["userName"]},
+                    {path:"senderId",model:"User",select:["userName"]},
+                    {path:"timeslotId",model:"Timeslot",select:["eventTitle","timeStart","timeEnd"]}
+                ]
+            });
         res.status(200).json({ userSchedule })
     } catch (err) {
         console.log(err);
