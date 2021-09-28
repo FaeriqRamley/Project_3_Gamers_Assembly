@@ -2,7 +2,7 @@ import React from "react";
 import { Carousel } from "antd";
 import "antd/dist/antd.css";
 // import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-function carousel() {
+function MyCarousel() {
   const contentStyle = {
     height: "160px",
     color: "#fff",
@@ -38,4 +38,4 @@ function carousel() {
   );
 }
 
-export default carousel;
+export default MyCarousel;
