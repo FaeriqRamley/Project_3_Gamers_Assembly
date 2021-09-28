@@ -24,7 +24,6 @@ const AddTimeslotModal = (props) => {
         } catch(err){
             console.error(err.message);
         }
-        
         props.setVisible(false);
     };
 
