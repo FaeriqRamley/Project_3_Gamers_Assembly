@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Row, Col, Tooltip } from "antd";
 import "antd/dist/antd.css";
 import "./landing.css";
-import UserCard from "../userdetails/userCard";
+import UserCard from "../userdetails/UserCard";
 
 function FeaturedUsers() {
   const [APIData, setAPIData] = useState([]);
@@ -26,8 +26,6 @@ function FeaturedUsers() {
     fetchPost();
   }, []);
 
-  console.log(APIData);
-
   let profilePicture = APIData.map((item, i) => {
     return (
       <Col className="featured-col" span={4}>
@@ -46,10 +44,29 @@ function FeaturedUsers() {
     );
   });
 
+  function randomUserShuffle(profilePicture) {
+    var currentIndex = profilePicture.length,
+      temporaryValue,
+      randomIndex;
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = profilePicture[currentIndex];
+      profilePicture[currentIndex] = profilePicture[randomIndex];
+      profilePicture[randomIndex] = temporaryValue;
+    }
+    return profilePicture;
+  }
+
+  const limitFeatured = randomUserShuffle(profilePicture);
+  const newLimit = limitFeatured.slice(0, 6);
+
   return (
     <React.Fragment>
       <div className="featured-container">
-        <Row gutter={16}>{profilePicture}</Row>
+        <Row gutter={16} className="row">
+          {newLimit}
+        </Row>
       </div>
     </React.Fragment>
   );

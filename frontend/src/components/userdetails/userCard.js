@@ -4,8 +4,7 @@ import { Card } from "antd";
 import "./userCard.css";
 
 function UserCard(props) {
-  console.log(props);
-  const { Meta } = Card;
+  // const { Meta } = Card;
   return (
     <React.Fragment>
       <div>
@@ -13,9 +12,14 @@ function UserCard(props) {
           style={{ width: 240, background: "#182938" }}
           cover={<img alt="example" src={props.data.profilePic} />}
         >
-          <Meta title={props.data.userName} />
-          <Meta description={props.data.email} />
-          <Meta description={props.data.rating} />
+          <div>
+            <h1>{props.data.userName}</h1>
+            <h2>
+              {props.data.firstName} {props.data.lastName}
+            </h2>
+            <h3>{props.data.location}</h3>
+            <p className="bio">Bio: {props.data.bio}</p>
+          </div>
         </Card>
       </div>
     </React.Fragment>

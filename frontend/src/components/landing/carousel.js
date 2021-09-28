@@ -1,6 +1,5 @@
 import React from "react";
-import { Carousel, Icon, Button } from "antd";
-import moment from "moment";
+import { Carousel } from "antd";
 import "antd/dist/antd.css";
 // import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 function carousel() {

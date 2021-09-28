@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { Row, Col } from "antd";
 import "antd/dist/antd.css";
-import Carousel from "./carousel";
+import Carousel from "./Carousel";
 import FeaturedUsers from "./FeaturedUsers";
 import "./landing.css";
 
