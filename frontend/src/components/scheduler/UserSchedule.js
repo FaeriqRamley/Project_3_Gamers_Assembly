@@ -20,26 +20,38 @@ function UserSchedule(props) {
     const [fetchedTimeslots,setFetchedTimeslot] = useState([]);
     const [timeslotDisplay,setTimeslotDisplay] = useState([]);
     const [timeslotDetails,setTimeslotDetails] = useState([]);
-
+    const [rightSide,setRightSide] = useState("myCustomButton timeGridWeek")
     useEffect(() => {
         const fetchInterval = setInterval(async()=>{
             const timeslotRes = await fetch(`/api/timeslot/byOwnerId/${props.data._id}`);
             const timeslotList = await timeslotRes.json();
             setFetchedTimeslot(timeslotList);
-        },4000)
+        },1000)
         return () => clearInterval(fetchInterval);
-
     },[])
 
     useEffect(() => {
         const temp = [];
         for ( const timeslot of fetchedTimeslots){
             // console.log(timeslot);
-            temp.push({
-                title:"Game title here",
-                start: timeslot.timeStart,
-                end: timeslot.timeEnd,
-            })
+            if(timeslot.isOpen){
+                temp.push({
+                    title:"Game title here",
+                    start: timeslot.timeStart,
+                    end: timeslot.timeEnd,
+                    borderColor: "rgba(0,0,0,0)",
+                    backgroundColor: "#8FBCBB"
+                })
+            } else {
+                temp.push({
+                    title:"Game title here",
+                    start: timeslot.timeStart,
+                    end: timeslot.timeEnd,
+                    border: "none",
+                    borderColor: "rgba(0,0,0,0)",
+                    backgroundColor:"#2E3440"
+                })
+            }
         }
 
         // console.log(temp);
@@ -55,7 +67,15 @@ function UserSchedule(props) {
         setVisibleAdd(true);
     }
 
-
+    
+    useEffect(()=>{
+        console.log("checking guys")
+        if(props.data._id == props.user._id){
+            setRightSide("myCustomButton timeGridWeek")
+        } else{
+            setRightSide("timeGridWeek")
+        }
+    },[props])
     return (
         <div className="calendar-container">
             <FullCalendar
@@ -65,7 +85,7 @@ function UserSchedule(props) {
                 headerToolbar= {{
                     left: 'prev,next today',
                     center: 'title',
-                    right: 'myCustomButton timeGridWeek'
+                    right: rightSide
                 }}
                 eventClick={onClickShowTimeslotDetails}
                 events={timeslotDisplay}

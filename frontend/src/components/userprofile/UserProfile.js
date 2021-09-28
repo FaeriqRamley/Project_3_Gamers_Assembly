@@ -26,7 +26,7 @@ function UserProfile(props) {
                         }
                     </TabPane>
                     <TabPane tab="Schedule" key="2">
-                       {data && <UserSchedule data={data}/>}
+                       {data && <UserSchedule data={data} user={user}/>}
                     </TabPane>
                     <TabPane tab="Match History" key="3">
                         Coming soon!
