@@ -1,14 +1,11 @@
 import React,{useState,useEffect} from 'react'
-import {Row,Col,Typography} from 'antd';
-import CallApi from '../hooks/CallApi';
-import NotificationCard from './NotificationCard';
-import { useSelector,useDispatch } from 'react-redux';
-
-const {Title} = Typography;
+import {Row,Col} from 'antd';
+import { useSelector } from 'react-redux';
+import NotificationCardReceived from './NotificationCardReceived';
+import NotificationCardResponded from './NotificationCardResponded';
 
 function NotificationFeed() {
     const auth = useSelector(state => state.auth);
-    const dispatch = useDispatch();
     const [fetchedInvites,setFetchedInvites] = useState([]);
     const [invites, setInvites] = useState([]);
     const [notificationInfo,setNotificationInfo] = useState([]);
@@ -68,6 +65,7 @@ function NotificationFeed() {
                     notifType: notif.type,
                     status: item.status,
                     senderName: item.senderId.userName,
+                    senderId: item.senderId._id,
                     receiverName: item.receiverId.userName
                 }
                 
@@ -91,7 +89,12 @@ function NotificationFeed() {
             <Col span={24}>
                 <Row justify="center" gutter={[0,16]}>
                     {notificationInfo.map((data,index)=>{
-                        return <NotificationCard key={index} data={data}/>
+                        if(data.notifType==="received"){
+                            return <NotificationCardReceived key={index} data={data}/>
+                        } else {
+                            return <NotificationCardResponded key={index} data={data}/>
+                        }
+                        
                     })}
                 </Row>
             </Col>
