@@ -21,13 +21,17 @@ const TimeslotModal = (props) => {
   return (
     <>
         <Modal
-            title="Title"
+            title={props.data.title}
             visible={props.visible}
             onOk={handleOk}
             confirmLoading={confirmLoading}
             onCancel={handleCancel}
+            footer={[
+              <Button key={1}>Invite</Button>,
+              <Button key={2}>Edit Slot</Button>
+            ]}
         >
-            <p>{modalText}</p>
+          {JSON.stringify(props.data)}
         </Modal>
     </>
   );

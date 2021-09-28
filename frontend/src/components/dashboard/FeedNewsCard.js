@@ -1,8 +1,5 @@
 import React from 'react'
-import {Row,Col,Typography,Image,Divider,Button} from 'antd';
-import styles from './feedNewsCard.module.css';
-
-const {Title,Text,Link} = Typography
+import {Row,Col,Image,Divider,Button} from 'antd';
 function FeedNewsCard(props) {
     
     const cardStyle = {
@@ -23,7 +20,7 @@ function FeedNewsCard(props) {
                 <Col style={{padding:"0"}}>
                     <Image width="100%" src={props.data.image}/>
                 </Col>
-                <a href={props.data.source.url} target="_blank">
+                <a href={props.data.source.url} target="_blank" rel="noreferrer">
                     <Col span={24} style={{width:"100%"}}>
                         <h6>{props.data.source.url.split("//")[1]}</h6>
                         <h5 style={{margin:"0"}} level={5}>{props.data.title}</h5>

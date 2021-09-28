@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Row, Col } from "antd";
 import "antd/dist/antd.css";
-import Carousel from "./Carousel";
+import MyCarousel from "./MyCarousel";
 import FeaturedUsers from "./FeaturedUsers";
 import "./landing.css";
 
@@ -19,7 +19,7 @@ function Landing(data) {
         </Row>
       </div>
       <div className="carousel-container">
-        <Carousel></Carousel>
+        <MyCarousel></MyCarousel>
       </div>
       <FeaturedUsers data={data} />
     </React.Fragment>

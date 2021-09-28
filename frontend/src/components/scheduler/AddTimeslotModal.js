@@ -2,17 +2,17 @@ import { Modal,DatePicker,TimePicker,Form,Input} from 'antd';
 import React,{useState} from 'react';
 import moment from 'moment';
 import CallApi from '../hooks/CallApi';
+import convertTime from '../hooks/ConvertTime';
 
 const AddTimeslotModal = (props) => {
     const [confirmLoading, setConfirmLoading] = React.useState(false);
     const [modalText, setModalText] = React.useState('Content of the modal');
     const [form] = Form.useForm();
     const today = moment(Date.now());
+
     const onCreate = async (values) => {
         try{
-            const timeStart = new Date(values.dateStart.format().split("T")[0]+"T"+values.duration[0].format().split("T")[1])
-            const timeEnd = new Date(values.dateStart.format().split("T")[0]+"T"+values.duration[1].format().split("T")[1])
-            const duration = timeEnd.getHours() - timeStart.getHours();
+            const {timeStart,timeEnd,duration} = convertTime(values)
             const input = {
                 ownerId: props.userData._id,
                 timeStart,
