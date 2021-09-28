@@ -21,6 +21,7 @@ function UserSchedule(props) {
     const [timeslotDisplay,setTimeslotDisplay] = useState([]);
     const [timeslotDetails,setTimeslotDetails] = useState([]);
     const [rightSide,setRightSide] = useState("myCustomButton timeGridWeek")
+
     useEffect(() => {
         const fetchInterval = setInterval(async()=>{
             const timeslotRes = await fetch(`/api/timeslot/byOwnerId/${props.data._id}`);
@@ -33,49 +34,44 @@ function UserSchedule(props) {
     useEffect(() => {
         const temp = [];
         for ( const timeslot of fetchedTimeslots){
-            // console.log(timeslot);
-            if(timeslot.isOpen){
-                temp.push({
-                    title:"Game title here",
-                    start: timeslot.timeStart,
-                    end: timeslot.timeEnd,
-                    borderColor: "rgba(0,0,0,0)",
-                    backgroundColor: "#8FBCBB"
-                })
-            } else {
-                temp.push({
-                    title:"Game title here",
-                    start: timeslot.timeStart,
-                    end: timeslot.timeEnd,
-                    border: "none",
-                    borderColor: "rgba(0,0,0,0)",
-                    backgroundColor:"#2E3440"
-                })
+            const newObj = {
+                title:"Game title here",
+                start: timeslot.timeStart,
+                end: timeslot.timeEnd,
+                borderColor: "rgba(0,0,0,0)",
             }
+            if(timeslot.isOpen){
+                newObj["backgroundColor"] = "#8FBCBB"
+            } else {
+                newObj["backgroundColor"] = "#2E3440"
+            }
+            temp.push(newObj)
         }
 
-        // console.log(temp);
         setTimeslotDisplay(temp);
     }, [fetchedTimeslots])
     
     const onClickShowTimeslotDetails = async (arg) => {
-        console.log(arg.event._def);
-        setVisibleDetails(true);
+        console.log(arg.event);
+        setTimeslotDetails(arg.event);
+        const timer = setTimeout(()=>{
+            setVisibleDetails(true);
+        },500);
+        
     }
 
     const onClickShowAddTimeslot = () => {
         setVisibleAdd(true);
     }
-
     
     useEffect(()=>{
-        console.log("checking guys")
-        if(props.data._id == props.user._id){
+        if(props.data._id === props.user._id){
             setRightSide("myCustomButton timeGridWeek")
         } else{
             setRightSide("timeGridWeek")
         }
     },[props])
+
     return (
         <div className="calendar-container">
             <FullCalendar
