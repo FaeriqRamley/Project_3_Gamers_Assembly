@@ -99,7 +99,20 @@ module.exports.removeRespondedTimeslotInvite_delete = async (req, res) => {
     });
 };
 
-// schedule get w middleware
+// schedule get without middleware
+module.exports.getScheduleForUser_get = async (req, res) => {
+    try {
+        const userSchedule = await Schedule.findOne({ownerId:req.params.id}).populate(
+            "timeslots"
+        );
+        res.status(200).json({ userSchedule })
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ msg: "status 500" })
+    }
+};
+
+// schedule gets w middleware
 module.exports.schedule_get = async (req, res) => {
     console.log(req.user._id);
     try {
@@ -108,6 +121,28 @@ module.exports.schedule_get = async (req, res) => {
         );
         console.log("this is userSchedule");
         console.log(userSchedule);
+        res.status(200).json({ userSchedule })
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ msg: "status 500" })
+    }
+};
+
+module.exports.scheduleWithPopulate_get = async (req, res) => {
+    try {
+        const userSchedule = await Schedule.findOne({ownerId:req.user._id}).populate({
+                path:"sentNotifications",populate:[
+                    {path:"receiverId",model:"User",select:["userName"]},
+                    {path:"senderId",model:"User",select:["userName"]},
+                    {path:"timeslotId",model:"Timeslot",select:["eventTitle","timeStart","timeEnd"]}
+                ]
+            }).populate({
+                path:"receivedNotifications",populate:[
+                    {path:"receiverId",model:"User",select:["userName"]},
+                    {path:"senderId",model:"User",select:["userName"]},
+                    {path:"timeslotId",model:"Timeslot",select:["eventTitle","timeStart","timeEnd"]}
+                ]
+            });
         res.status(200).json({ userSchedule })
     } catch (err) {
         console.log(err);

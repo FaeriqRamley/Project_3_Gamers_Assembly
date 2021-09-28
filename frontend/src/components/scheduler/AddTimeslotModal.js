@@ -1,12 +1,10 @@
 import { Modal,DatePicker,TimePicker,Form,Input} from 'antd';
-import React,{useState} from 'react';
+import React from 'react';
 import moment from 'moment';
 import CallApi from '../hooks/CallApi';
 import convertTime from '../hooks/ConvertTime';
 
 const AddTimeslotModal = (props) => {
-    const [confirmLoading, setConfirmLoading] = React.useState(false);
-    const [modalText, setModalText] = React.useState('Content of the modal');
     const [form] = Form.useForm();
     const today = moment(Date.now());
 

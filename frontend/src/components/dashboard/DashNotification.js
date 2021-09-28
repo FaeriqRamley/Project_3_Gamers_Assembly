@@ -1,9 +1,8 @@
 import React,{useState,useEffect} from 'react'
-import {Row,Col,Typography} from 'antd';
-import CallApi from '../hooks/CallApi';
-import NotificationCard from './NotificationCard';
+import {Row,Col} from 'antd';
 import { useSelector } from 'react-redux';
-const {Title} = Typography;
+import NotificationCardReceived from './NotificationCardReceived';
+import NotificationCardResponded from './NotificationCardResponded';
 
 function NotificationFeed() {
     const auth = useSelector(state => state.auth);
@@ -24,17 +23,27 @@ function NotificationFeed() {
     useEffect(() => {
         if(currentUser){
             const getInvites = setInterval( async ()=>{
-                const receivedInvitesRes = await fetch(`/api/invites/received/${currentUser._id}`);
-                const newInviteList = await receivedInvitesRes.json();
-                setFetchedInvites(newInviteList);
-            },1000)
+                const allNotifs = []
+                const receivedNotifsRes = await fetch(`/api/schedule/populate/notifications`);
+                const receivedNotifsJSON = await receivedNotifsRes.json();
+                const receivedNotifs = receivedNotifsJSON.userSchedule.receivedNotifications;
+                const sentNotifs = receivedNotifsJSON.userSchedule.sentNotifications;
+                for (const notif of receivedNotifs){
+                    allNotifs.push({type:"received",item:notif});
+                }
+                for (const notif of sentNotifs){
+                    if(notif.status !== "Pending"){
+                        allNotifs.push({type:"responded",item:notif});
+                    }
+                }
+                setFetchedInvites(allNotifs);
+            },2000)
             
             return () => clearInterval(getInvites);
         }
-    },[userLoaded])
+    },[currentUser,userLoaded])
 
     useEffect(()=> {
-        console.log("This is running");
         if(fetchedInvites.length !== invites.length){
             console.log(fetchedInvites.length);
             console.log(invites.length);
@@ -44,40 +53,27 @@ function NotificationFeed() {
     
     useEffect(async () => {
         if(isMounted){
-            console.log("invite change detected");
-            // console.log(invites);
-            const newNotificationInfo = [];
-            for (const invite of invites){
-                console.log(invite);
-                const resSender = await fetch(`/api/users/user/${invite.senderId}`);
-                const senderData = await resSender.json();
-                // console.log("sender");
-                // console.log(senderData);
+            const tempArray = [];
+            for (const notif of invites){
+                const {item} = notif;
                 
-                if (invite.inviteType === "Timeslot Invite"){
-                    // const gameName = await CallApi(Add the game database calling api);
-                    const resTimeslot = await fetch(`/api/timeslot/byTimeslotId/${invite.timeslotId}`);
-                    const timeslotData = await resTimeslot.json();
-                    console.log("timeslotData",timeslotData);
-
-                    newNotificationInfo.push({
-                        senderName: senderData.userName,
-                        inviteType: invite.inviteType,
-                        inviteId: invite._id,
-                        gameName: "Dota 2",
-                        dayStart: timeslotData.timeStart.split("T")[0],
-                        timeStart: timeslotData.timeStart.split("T")[1],
-                        timeEnd: timeslotData.timeEnd.split("T")[1],
-                    })
-                } else {
-                    newNotificationInfo.push({
-                        senderName: senderData.handleId,
-                        inviteType: invite.inviteType,
-                        inviteId: invite._id
-                    })
+                const newObj = {
+                    inviteId: item._id,
+                    inviteType: item.inviteType,
+                    notifType: notif.type,
+                    status: item.status,
+                    senderName: item.senderId.userName,
+                    senderId: item.senderId._id,
+                    receiverName: item.receiverId.userName
                 }
+                
+                if (item.inviteType === "Timeslot Invite"){
+                    newObj["timeslotInfo"] = item.timeslotId;
+                }
+
+                tempArray.push(newObj);
             }
-            setNotificationInfo(newNotificationInfo);
+            setNotificationInfo(tempArray);
         } else {
             setMounted(true);
         }
@@ -90,7 +86,12 @@ function NotificationFeed() {
             <Col span={24}>
                 <Row justify="center" gutter={[0,16]}>
                     {notificationInfo.map((data,index)=>{
-                        return <NotificationCard key={index} data={data}/>
+                        if(data.notifType==="received"){
+                            return <NotificationCardReceived key={index} data={data}/>
+                        } else {
+                            return <NotificationCardResponded key={index} data={data}/>
+                        }
+                        
                     })}
                 </Row>
             </Col>

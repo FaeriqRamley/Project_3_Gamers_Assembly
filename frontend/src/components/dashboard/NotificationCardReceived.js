@@ -1,9 +1,9 @@
 import React,{useState} from 'react';
 import {Row,Col,Button} from 'antd';
 import CallApi from '../hooks/CallApi';
+
 function NotificationCard(props) {
-    // console.log("init card");
-    // console.log(props.data);
+    const notif = props.data;
     const [loading,setLoading] = useState(false);
 
     const cardStyle = {
@@ -15,10 +15,13 @@ function NotificationCard(props) {
     }
 
     let body= <p>Body here</p>
-    if (props.data.inviteType === "Timeslot Invite"){
+    if (notif.inviteType === "Timeslot Invite"){
+        const timeslot = props.data.timeslotInfo;
+        const {timeStart,timeEnd} = props.data.timeslotInfo;
         body = <>
-            <p style={{marginBottom:"2px"}}>Has invited you to play <span style={{color:"#D08770",textDecoration:"underline"}}>{props.data.gameName}</span></p>
-            <p>{props.data.dayStart} {props.data.timeStart.substring(0,5)}-{props.data.timeEnd.substring(0,5)}</p>
+            <p style={{marginBottom:"2px"}}>Has invited you to play <span style={{color:"#D08770",textDecoration:"underline"}}>{timeslot.eventTitle}</span></p>
+            <p>{timeStart.split("T")[0]}</p>
+            <p>{timeStart.split("T")[1].substring(0,5)}-{timeEnd.split("T")[1].substring(0,5)}</p>
         </>
     } else{
         body = <>
@@ -31,12 +34,10 @@ function NotificationCard(props) {
         console.log(e.target.innerText);
         console.log(props.data.inviteId);
         setLoading(true);
-        await CallApi(`/api/schedule/respondInvite/${e.target.innerText}`,"PUT",{inviteId:props.data.inviteId})
-        const temp = setInterval(() => {
+        await CallApi(`/api/schedule/respondInvite/${e.target.innerText}`,"PUT",{inviteId:notif.inviteId})
+        setTimeout(() => {
            setLoading(false);
-           clearInterval(temp)
         }, 2000);
-        
     }
 
     return (
@@ -55,4 +56,4 @@ function NotificationCard(props) {
     )
 }
 
-export default NotificationCard
+export default NotificationCard;

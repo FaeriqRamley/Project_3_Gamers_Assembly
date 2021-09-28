@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react";
+import React from "react";
 import { Row, Col, Avatar, Button, Divider,Form,Select} from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { connect } from "react-redux";
@@ -9,7 +9,7 @@ function UserProfileCard({ data,user,timeslots}) {
     const [form] = Form.useForm();
     
     const onFinish = async (values) => {
-        const res = await CallApi("/api/schedule/createInvite","POST",{
+        await CallApi("/api/schedule/createInvite","POST",{
             inviteType: "Timeslot Invite",
             senderId: user._id,
             receiverId: data._id,

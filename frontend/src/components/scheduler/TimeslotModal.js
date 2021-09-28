@@ -1,8 +1,8 @@
 import { Modal, Button } from 'antd';
 import React,{useState} from 'react';
 const TimeslotModal = (props) => {
-  const [confirmLoading, setConfirmLoading] = React.useState(false);
-  const [modalText, setModalText] = React.useState(JSON.stringify(props.data));
+  const [confirmLoading, setConfirmLoading] = useState(false);
+  const [modalText, setModalText] = useState(JSON.stringify(props.data));
 
   const handleOk = () => {
     setModalText(JSON.stringify(props.data));
@@ -31,7 +31,7 @@ const TimeslotModal = (props) => {
               <Button key={2}>Edit Slot</Button>
             ]}
         >
-          {JSON.stringify(props.data)}
+          {modalText}
         </Modal>
     </>
   );

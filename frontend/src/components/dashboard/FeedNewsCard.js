@@ -12,12 +12,12 @@ function FeedNewsCard(props) {
 
     return (
         <Col style={cardStyle} span={13}>
-            <Row justify="center" style={{margin:"10px 0px"}} gutter={[16,8]}>
+            <Row justify="center" style={{marginTop:"10px",marginBottom:"0px"}} gutter={[16,8]}>
                 <Col span={24} style={{textAlign:"left",marginTop:"5px"}}>
                     <h3 style={{margin:"auto",color:"#eceff4"}}>{props.data.source.name}</h3>
                     <p>{props.data.publishedAt.split("T")[0]}</p>
                 </Col>
-                <Col style={{padding:"0"}}>
+                <Col style={{paddingTop:"0",paddingRight:"0",paddingBottom:"0",paddingLeft:"0",}}>
                     <Image width="100%" src={props.data.image}/>
                 </Col>
                 <a href={props.data.source.url} target="_blank" rel="noreferrer">
