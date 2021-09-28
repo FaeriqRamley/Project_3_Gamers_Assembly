@@ -292,3 +292,7 @@ h2, a {
   font-weight: 500;
   color: #ECEFF4;
 }
+
+.fc .fc-timegrid-slot {
+  border-bottom: none!important;
+}
