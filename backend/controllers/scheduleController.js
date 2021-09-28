@@ -114,3 +114,18 @@ module.exports.schedule_get = async (req, res) => {
         res.status(500).json({ msg: "status 500" })
     }
 };
+
+module.exports.scheduleWithPopulate_get = async (req, res) => {
+    console.log(req.user._id);
+    try {
+        const userSchedule = await Schedule.findOne({ownerId:req.user._id}).populate(
+            req.params.collection
+        );
+        console.log("this is userSchedule");
+        console.log(userSchedule);
+        res.status(200).json({ userSchedule })
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ msg: "status 500" })
+    }
+};
