@@ -6,6 +6,7 @@ import { userAuth } from "../../store/actions/authActions";
 import { useParams } from "react-router-dom";
 import useGetUserId from "../hooks/useGetUserId";
 import UserSchedule from "../scheduler/UserSchedule";
+import { getSchedule } from "../../store/actions/scheduleActions"
 
 function UserProfile(props) {
     const { TabPane } = Tabs;
@@ -39,7 +40,8 @@ function UserProfile(props) {
 const mapStateToProps = (state) => {
     return {
         auth: state.auth,
-        user: state.user
+        user: state.user,
+        schedule: state.schedule,
     }
 }
 

@@ -8,8 +8,8 @@ import Dashboard from "./components/dashboard/Dashboard";
 import Query from "./components/query/Query";
 import { useDispatch } from "react-redux";
 import { userAuth } from "./store/actions/authActions";
+import { getSchedule } from "./store/actions/scheduleActions";
 import ChangePasswordForm from "./components/auth/ChangePasswordForm";
-
 import UserProfile from "./components/userprofile/UserProfile";
 import UpdateProfileForm from "./components/auth/UpdateProfileForm"
 
@@ -19,6 +19,7 @@ export default function App() {
 
     useEffect(() => {
         dispatch(userAuth()).then(()=>{
+            dispatch(getSchedule())
             setLoading(false)
         })
     }, [dispatch]);
