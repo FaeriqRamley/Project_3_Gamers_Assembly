@@ -3,7 +3,7 @@ import { Row, Col, Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { connect } from "react-redux";
 
-function UserProfileCard({ isCurrentUser, data }) {
+function UserProfileCard({ data }) {
     console.log(data)
     return (
         <div className="card-container">
@@ -20,7 +20,8 @@ function UserProfileCard({ isCurrentUser, data }) {
                             {data.userName}
                             {data.lastName ? '" ' + data.lastName : ''}
                         </h4>
-                        <p>Location</p>
+                        <p>{data.location ? data.location : ''}</p>
+                        <br></br>
                         <p>{data.bio}</p>
                     </div>
                 </Col>
