@@ -4,3 +4,19 @@
 .ant-card-meta-description {
   color: #d8dee9;
 }
+h1 {
+  font-size: x-large;
+  color: #d8dee9;
+}
+h2 {
+  font-size: large;
+  color: #d8dee9;
+}
+h3 {
+  font-size: medium;
+  color: #d8dee9;
+}
+p {
+  font-size: x-small;
+  color: #d8dee9;
+}

@@ -1,13 +1,10 @@
-.site-page-header {
-  border: 0px solid black;
-}
 .container-header {
   padding: 50px;
   text-align: center;
   border: 0px;
 }
 .site-container {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   font-size: 40px;
   color: #c86466;
 }
@@ -16,7 +13,7 @@
   background-size: cover;
 } */
 .carousel-container {
-  border: 1px solid black;
+  border: 1px solid #2e3440;
 }
 .featured-container {
   text-align: center;
@@ -24,15 +21,18 @@
   height: 400px;
 }
 .featured-col {
-  border: 1px solid black;
+  border: 1px solid transparent;
 }
 .featured-img {
   padding: 20px 0px 20px 0px;
   max-width: 100px;
-  max-height: 200px;
+  max-height: 100px;
   object-fit: fill;
 }
 button {
   background-color: transparent;
   border: 0px;
+}
+.row {
+  border: 1px solid #2e3440;
 }
