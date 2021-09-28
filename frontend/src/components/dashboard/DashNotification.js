@@ -37,14 +37,13 @@ function NotificationFeed() {
                     }
                 }
                 setFetchedInvites(allNotifs);
-            },5000)
+            },2000)
             
             return () => clearInterval(getInvites);
         }
     },[userLoaded])
 
     useEffect(()=> {
-        console.log("Checking for notification changes");
         if(fetchedInvites.length !== invites.length){
             console.log(fetchedInvites.length);
             console.log(invites.length);
@@ -54,7 +53,6 @@ function NotificationFeed() {
     
     useEffect(async () => {
         if(isMounted){
-            console.log("invite change detected");
             const tempArray = [];
             for (const notif of invites){
                 const {item} = notif;
@@ -70,7 +68,6 @@ function NotificationFeed() {
                 }
                 
                 if (item.inviteType === "Timeslot Invite"){
-                    console.log("it's a timeslot Invite");
                     newObj["timeslotInfo"] = item.timeslotId;
                 }
 

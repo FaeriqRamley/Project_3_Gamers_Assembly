@@ -4,7 +4,6 @@ import CallApi from '../hooks/CallApi';
 
 function NotificationCard(props) {
     const notif = props.data;
-
     const [loading,setLoading] = useState(false);
 
     const cardStyle = {

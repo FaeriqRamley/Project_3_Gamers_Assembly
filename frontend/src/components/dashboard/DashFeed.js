@@ -1,8 +1,7 @@
 import React from 'react'
-import {Row,Col,Typography} from 'antd';
+import {Row,Col} from 'antd';
 import FeedNewsCard from './FeedNewsCard';
 import newsData from './dummyNewsData';
-const {Title} = Typography;
 
 function DashFeed() {
     return (
