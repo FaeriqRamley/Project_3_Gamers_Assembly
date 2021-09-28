@@ -2,10 +2,10 @@ import { Modal, Button } from 'antd';
 import React,{useState} from 'react';
 const TimeslotModal = (props) => {
   const [confirmLoading, setConfirmLoading] = React.useState(false);
-  const [modalText, setModalText] = React.useState('Content of the modal');
+  const [modalText, setModalText] = React.useState(JSON.stringify(props.data));
 
   const handleOk = () => {
-    setModalText('The modal will be closed after two seconds');
+    setModalText(JSON.stringify(props.data));
     setConfirmLoading(true);
     setTimeout(() => {
       props.setVisible(false);

@@ -6,7 +6,7 @@ const Schedule = require("../models/Schedule");
 module.exports.createTimeslot_post = async (req, res) => {
   const newTimeslot = new Timeslot({
     ...req.body,
-    attendees: [req.body.ownerId],
+    attendees: [req.body.ownerId]
   });
   await newTimeslot.save();
   await Schedule.updateOne({ownerId: req.body.ownerId}, {

@@ -1,11 +1,9 @@
 import React,{useState,useEffect} from 'react';
-import {useSelector} from 'react-redux';
 import FullCalendar from '@fullcalendar/react' // must go before plugins
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from "@fullcalendar/interaction"; // needed for dayClick
-import CallApi from '../hooks/CallApi';
-import { Modal, Button } from 'antd';
 import TimeslotModal from './TimeslotModal';
+import AddTimeslotModal from './AddTimeslotModal';
 
 function renderEventContent(eventInfo) {
   return (
@@ -17,9 +15,11 @@ function renderEventContent(eventInfo) {
 }
 
 function UserSchedule(props) {
-    const [visible,setVisible] = useState(false);
+    const [visibleAdd,setVisibleAdd] = useState(false);
+    const [visibleDetails,setVisibleDetails] = useState(false);
     const [fetchedTimeslots,setFetchedTimeslot] = useState([]);
     const [timeslotDisplay,setTimeslotDisplay] = useState([]);
+    const [timeslotDetails,setTimeslotDetails] = useState([]);
 
     useEffect(() => {
         const fetchInterval = setInterval(async()=>{
@@ -34,38 +34,54 @@ function UserSchedule(props) {
     useEffect(() => {
         const temp = [];
         for ( const timeslot of fetchedTimeslots){
-            console.log(timeslot);
+            // console.log(timeslot);
             temp.push({
                 title:"Game title here",
                 start: timeslot.timeStart,
-                end: timeslot.timeEnd
+                end: timeslot.timeEnd,
             })
         }
 
-        console.log(temp);
+        // console.log(temp);
         setTimeslotDisplay(temp);
     }, [fetchedTimeslots])
     
-    const showModal = (arg) => {
-        
-        setVisible(true);
+    const onClickShowTimeslotDetails = async (arg) => {
+        console.log(arg.event._def);
+        setVisibleDetails(true);
     }
-    
+
+    const onClickShowAddTimeslot = () => {
+        setVisibleAdd(true);
+    }
+
+
     return (
         <div className="calendar-container">
             <FullCalendar
                 plugins={[ timeGridPlugin,interactionPlugin ]}
-                timeZone= 'UTC'
+                timeZone= 'local'
                 initialView= 'timeGridWeek'
                 headerToolbar= {{
                     left: 'prev,next today',
                     center: 'title',
-                    right: 'timeGridWeek,timeGridDay'
+                    right: 'myCustomButton timeGridWeek'
                 }}
-                eventClick={showModal}
+                eventClick={onClickShowTimeslotDetails}
                 events={timeslotDisplay}
+                customButtons={{
+                    myCustomButton: {
+                        text: 'Add Timeslot',
+                        click: onClickShowAddTimeslot
+                    },
+                }}
             />
-            <TimeslotModal visible={visible} setVisible={setVisible}/>
+            <TimeslotModal data={timeslotDetails} visible={visibleDetails} setVisible={setVisibleDetails}/>
+            <AddTimeslotModal
+                visible={visibleAdd}
+                setVisible={setVisibleAdd}
+                userData={props.data}
+            />
         </div>
     )
 }
