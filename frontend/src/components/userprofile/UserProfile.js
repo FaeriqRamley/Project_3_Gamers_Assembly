@@ -18,6 +18,7 @@ function UserProfile(props) {
             {error && <div>{error}</div>}
             <div className="profile-container">
                 {loading && <Spin size="large" className="loading-spinner"/>}
+                {loading ? <Spin size="large" className="loading-spinner"/> :
                 <Tabs defaultActiveKey="1" className="profile-tabs">
                     <TabPane tab="Profile" key="1">
                         {data && 
@@ -25,12 +26,12 @@ function UserProfile(props) {
                         }
                     </TabPane>
                     <TabPane tab="Schedule" key="2">
-                        <UserSchedule data={data}/>
+                       {data && <UserSchedule data={data} user={user}/>}
                     </TabPane>
                     <TabPane tab="Match History" key="3">
                         Coming soon!
                     </TabPane>
-                </Tabs>
+                </Tabs>}
             </div>
         </>
     );
