@@ -1,10 +1,23 @@
-import React from "react";
-import { Row, Col, Avatar } from "antd";
+import React,{useState,useEffect} from "react";
+import { Row, Col, Avatar, Button, Divider,Form,Select} from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { connect } from "react-redux";
+import CallApi from "../hooks/CallApi";
+const {Option} = Select;
 
-function UserProfileCard({ data }) {
-    console.log(data)
+function UserProfileCard({ data,user,timeslots}) {
+    const [form] = Form.useForm();
+    
+    const onFinish = async (values) => {
+        const res = await CallApi("/api/schedule/createInvite","POST",{
+            inviteType: "Timeslot Invite",
+            senderId: user._id,
+            receiverId: data._id,
+            timeslotId: values.timeslot
+        });
+        alert("Invite Sent!");
+    }
+
     return (
         <div className="card-container">
             <Row>
@@ -24,6 +37,26 @@ function UserProfileCard({ data }) {
                         <br></br>
                         <p>{data.bio}</p>
                     </div>
+                </Col>
+                <Col span={24}><Divider/></Col>
+                <Col span={24}>
+                    <Row justify="space-around">
+                        <Col><Button type="primary">Add Friend</Button></Col>
+                        <Col>
+                            <Form layout="inline" name="selector" form={form} onFinish={onFinish}>
+                                <Form.Item name="timeslot">
+                                    <Select placeholder="Choose a slot to invite">
+                                        {timeslots.userSchedule.timeslots.map((timeslot,index)=>{
+                                            return <Option key={index} value={timeslot._id}>{timeslot.eventTitle}</Option>
+                                        })}
+                                    </Select>
+                                </Form.Item>
+                                <Form.Item>
+                                    <Button type="primary" htmlType="submit">Invite</Button>
+                                </Form.Item>
+                            </Form>
+                        </Col>
+                    </Row>
                 </Col>
             </Row>
         </div>

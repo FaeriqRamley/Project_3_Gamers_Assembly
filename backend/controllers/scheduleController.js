@@ -101,11 +101,13 @@ module.exports.removeRespondedTimeslotInvite_delete = async (req, res) => {
 
 // schedule get w middleware
 module.exports.schedule_get = async (req, res) => {
+    console.log(req.user._id);
     try {
-        const userSchedule = await Schedule.findById(req.user._id).populate(
-            "Timeslot"
+        const userSchedule = await Schedule.findOne({ownerId:req.user._id}).populate(
+            "timeslots"
         );
-
+        console.log("this is userSchedule");
+        console.log(userSchedule);
         res.status(200).json({ userSchedule })
     } catch (err) {
         console.log(err);

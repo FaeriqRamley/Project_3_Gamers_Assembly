@@ -16,7 +16,7 @@ const scheduleReducer = (state = initState, action) => {
         case "GET_SCHEDULE_SUCCESS":
             console.log('get schedule success', action.payload)
             return {
-                ...state,
+                timeslots: action.payload,
                 loading: false,
                 error: null,
             }
