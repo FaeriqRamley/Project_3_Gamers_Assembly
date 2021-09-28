@@ -15,6 +15,7 @@ const AddTimeslotModal = (props) => {
             const {timeStart,timeEnd,duration} = convertTime(values)
             const input = {
                 ownerId: props.userData._id,
+                eventTitle: values.eventTitle,
                 timeStart,
                 timeEnd,
                 duration
@@ -56,8 +57,8 @@ const AddTimeslotModal = (props) => {
                     }}
                 >
                     <Form.Item
-                        name="gameTitle"
-                        label="Game Title"
+                        name="eventTitle"
+                        label="Timeslot Name"
                         rules={[
                         {
                             required: true,

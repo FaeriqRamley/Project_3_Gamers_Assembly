@@ -1,6 +1,7 @@
 // get user schedule
 export const getSchedule = () => {
     return async (dispatch, geStates) => {
+        console.log("Getting Schedule");
         dispatch({ type: "GET_SCHEDULE" })
         try {
             const res = await fetch(`/api/schedule/populate/timeslot`, {
@@ -30,14 +31,14 @@ function convertTime(values) {
 }
 
 // add new timeslot
-export const addTimeslot = (details) => {
+export const addTimeslot = (details,ownerId) => {
     return async (dispatch, getState) => {
         dispatch({ type: "ADD_TIMESLOT" })
         try {
             const { timeStart, timeEnd, duration } = convertTime(details)
 
             const input = {
-                ownerId: props.userData._id,
+                ownerId: ownerId,
                 timeStart,
                 timeEnd,
                 duration
@@ -65,23 +66,26 @@ export const addTimeslot = (details) => {
 
 // edit timeslot
 export const editTimeslot = (details) => {
-    dispatch({ type: "EDIT_TIMESLOT" })
-    try {
-        const res = await fetch("/api/timeslot/", {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(input),
-        });
+    return async (dispatch,input) => {
+        dispatch({ type: "EDIT_TIMESLOT" })
+        try {
+            const res = await fetch("/api/timeslot/", {
+                method: "POST",
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(input),
+            });
+    
+            const data = await res.json();
+    
+            console.log(data)
+            dispatch({ type: "EDIT_TIMESLOT_SUCCESS", payload: data})
+        } catch (err) {
+            console.log(err)
+            dispatch({ type: "EDIT_TIMESLOT_FAILED", payload: err.message })
+        }
 
-        const data = await res.json();
-
-        console.log(data)
-        dispatch({ type: "EDIT_TIMESLOT_SUCCESS", payload: data})
-    } catch (err) {
-        console.log(err)
-        dispatch({ type: "EDIT_TIMESLOT_FAILED", payload: err.message })
     }
 }

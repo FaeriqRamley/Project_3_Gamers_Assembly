@@ -11,8 +11,9 @@ import { getSchedule } from "../../store/actions/scheduleActions"
 function UserProfile(props) {
     const { TabPane } = Tabs;
     const { id } = useParams();
-    const { user } = props.auth.user
+    const { user } = props.auth.user;
     const { data, loading, error } = useGetUserId(id);
+    const { timeslots } = props.schedule;
 
     return (
         <>
@@ -21,8 +22,8 @@ function UserProfile(props) {
                 {loading && <Spin size="large" className="loading-spinner"/>}
                 <Tabs defaultActiveKey="1" className="profile-tabs">
                     <TabPane tab="Profile" key="1">
-                        {data && 
-                            <UserProfileCard data={data} user={user} /> 
+                        {data && timeslots &&
+                            <UserProfileCard data={data} user={user} timeslots={timeslots}/> 
                         }
                     </TabPane>
                     <TabPane tab="Schedule" key="2">
