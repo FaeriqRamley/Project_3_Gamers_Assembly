@@ -41,7 +41,7 @@ function NotificationFeed() {
             
             return () => clearInterval(getInvites);
         }
-    },[userLoaded])
+    },[currentUser,userLoaded])
 
     useEffect(()=> {
         if(fetchedInvites.length !== invites.length){

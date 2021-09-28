@@ -70,7 +70,7 @@ function UserSchedule(props) {
         } else{
             setRightSide("timeGridWeek")
         }
-    },[props])
+    },[props.data._id,props.user._id])
 
     return (
         <div className="calendar-container">
