@@ -64,6 +64,20 @@ const authReducer = (state = initState, action) => {
                 authError: "Change password failed"
             }
 
+        case "UPDATE_PROFILE_SUCCESS":
+            console.log('update profile success');
+            return {
+                user: action.payload,
+                authError: null
+            }
+
+        case "UPDATE_PROFILE_FAILED":
+            console.log('update profile failed');
+            return {
+                ...state,
+                authError: "Could not update profile"
+            }
+
         default:
             return state;
     }

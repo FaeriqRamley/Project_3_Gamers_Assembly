@@ -4,11 +4,43 @@ body {
   background-color: #4C566A;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
+  color: #ECEFF4;
+  height: auto;
+}
+h2, a {
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 500;
+  color: #ECEFF4
+}
+::-webkit-scrollbar {
+  width: 10px;
+  /* height: 5px; */
+}
+
+::-webkit-scrollbar-track {
+  background: #2E3440; 
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #88C0D0; 
+  border-radius: 0.25rem;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #7cabb8; 
+}
+/* */
+.spin-large {
+  display: flex;
+  margin-top: 15rem;
+  justify-content: center;
 }
 
 /* navigation bar */
 .navigationbar {
   background-color: #2E3440;
+  z-index: 9210384791264791826412;
 }
 .navbar-brand {
   margin-left: 0.5rem;
@@ -53,6 +85,7 @@ body {
   font-size: 14px;
   color: #2E3440;
   background-color: #D8DEE9;
+  z-index: 12034801284;
 }
 .dropdown-item:focus, .dropdown-item:hover {
   background-color: #ECEFF4;
@@ -87,7 +120,7 @@ body {
 /* form */
 .form-container {
   display: flex;
-  margin-top: 5rem;
+  margin-top: 4rem;
   justify-content: center;
 }
 
@@ -178,4 +211,84 @@ body {
 
 .ant-modal-confirm-body .ant-modal-confirm-content {
   color: #2E3440;
+}
+
+/* user page */
+.profile-container {
+  display:flex;
+  margin-top: 4rem;
+  justify-content: center;
+}
+
+.profile-tabs {
+  width: 75vw;
+  height: 75vh;
+}
+
+@media screen and (max-width: 600px) {
+  .profile-container {
+    display:flex;
+    margin-top: 2rem;
+    justify-content: center;
+  }
+  .profile-tabs {
+    width: 85vw;
+    height: 85vh;
+  }
+}
+
+.loading-spinner {
+  position: absolute;
+  z-index: 10000;
+}
+
+/* user page > profile */
+.card-container {
+  padding: 1rem;
+}
+
+.avatar-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-wrapper {
+  padding: 2rem;
+}
+
+.profile-wrapper, .profile-wrapper h4 {
+  color: #D8DEE9;
+}
+
+/* calendar */
+.calendar-container {
+  margin-top: 1rem;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  --fc-daygrid-event-dot-width: 8px;
+  --fc-button-text-color: #ECEFF4;
+  --fc-button-bg-color: #5E81AC;
+  --fc-button-border-color: #5E81AC;
+  --fc-button-hover-bg-color: #4d6a8d;
+  --fc-button-hover-border-color: #4d6a8d;
+  --fc-button-active-bg-color: #4d6a8d;
+  --fc-button-active-border-color: #4d6a8d;
+  --fc-border-color: #D8DEE9;
+  --fc-today-bg-color: rgba(129, 161, 193, 0.5);
+}
+
+.fc-view-harness {
+  height: 55vh!important;
+}
+
+.fc .fc-toolbar-title {
+  font-size: 1.25rem!important;
+  color:#8FBCBB!important;
+}
+
+.fc-scrollgrid-sync-inner > a {
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 500;
+  color: #ECEFF4;
 }

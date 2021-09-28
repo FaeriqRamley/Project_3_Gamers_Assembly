@@ -8,7 +8,7 @@ import { connect } from "react-redux"
 function Navigation(props) {
     const { auth } = props
     return (
-        <Navbar collapseOnSelect expand="lg" variant="dark" className="navigationbar">
+        <Navbar collapseOnSelect sticky="top" expand="lg" variant="dark" className="navigationbar">
             <Container>
                 <LinkContainer to="/">
                     <Navbar.Brand>Gamers Assembly</Navbar.Brand>
