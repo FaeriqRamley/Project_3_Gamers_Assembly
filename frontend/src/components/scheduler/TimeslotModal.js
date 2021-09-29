@@ -1,11 +1,10 @@
 import { Modal, Button } from "antd";
-import React,{useState} from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import CallApi from "../hooks/CallApi";
 const TimeslotModal = (props) => {
   const auth = useSelector((state) => state.auth);
   const daysArr = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-  const [disableDelete,setDisableDelete] = useState(false);
   const handleCancel = () => {
     console.log("Clicked cancel button");
     props.setVisible(false);
@@ -82,7 +81,6 @@ const TimeslotModal = (props) => {
             key={2}
             type="primary"
             style={{backgroundColor:"#BF616A"}}
-            disabled={disableDelete}
           >
             Delete
           </Button>,

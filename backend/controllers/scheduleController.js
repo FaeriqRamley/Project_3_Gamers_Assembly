@@ -61,20 +61,22 @@ module.exports.respondTimeslotInvite_put = async (req, res) => {
         const inviteTimeslot = await Timeslot.findById(timeslotId);
         console.log(inviteTimeslot);
         // Default case: another user invites timeslot owner | Alternate case: timeslot owner invites user
-        let joinerId = senderId;
-        if (inviteTimeslot.ownerId !== receiverId.toString()) {
-            joinerId = receiverId;
+        if(inviteTimeslot){
+            let joinerId = senderId;
+            if (inviteTimeslot.ownerId !== receiverId.toString()) {
+                joinerId = receiverId;
+            }
+            //Add timeslot reference to joiner's timeslots
+            await Schedule.findOneAndUpdate(
+                { ownerId: joinerId },
+                { $push: { timeslots: mongoose.Types.ObjectId(timeslotId) } }
+            );
+            //Add joiner's ID to the timeslot's attendees
+            await Timeslot.findByIdAndUpdate(timeslotId, {
+                $push: { attendees: joinerId },
+            });
+    
         }
-        //Add timeslot reference to joiner's timeslots
-        await Schedule.findOneAndUpdate(
-            { ownerId: joinerId },
-            { $push: { timeslots: mongoose.Types.ObjectId(timeslotId) } }
-        );
-        //Add joiner's ID to the timeslot's attendees
-        await Timeslot.findByIdAndUpdate(timeslotId, {
-            $push: { attendees: joinerId },
-        });
-
         //Remove invite from receiver's received notifications array (cause he's already seen it)
         await Schedule.findOneAndUpdate(
             { ownerId: receiverId },
