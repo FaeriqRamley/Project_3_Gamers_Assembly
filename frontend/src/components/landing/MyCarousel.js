@@ -2,6 +2,10 @@ import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "antd/dist/antd.css";
+import components from "./assets/components.png";
+import dashboard from "./assets/dashboard.png";
+import schedule from "./assets/dashboard.png";
+import search from "./assets/searchPage.png";
 function MyCarousel() {
   const arrowStyles = {
     position: "absolute",
@@ -10,6 +14,7 @@ function MyCarousel() {
     width: 70,
     height: 130,
   };
+
   return (
     <React.Fragment>
       <div>
@@ -54,28 +59,28 @@ function MyCarousel() {
           <div>
             <img
               style={{ height: "500px", objectFit: "contain" }}
-              src="https://venturebeat.com/wp-content/uploads/2020/12/discord.jpg?w=1200&strip=all"
+              src={components}
               alt=""
             />
           </div>
           <div>
             <img
               style={{ height: "500px", objectFit: "contain" }}
-              src="https://techcrunch.com/wp-content/uploads/2021/03/Invited.png?w=680"
+              src={search}
               alt=""
             />
           </div>
           <div>
             <img
               style={{ height: "500px", objectFit: "contain" }}
-              src="https://preview.redd.it/x9vsiutqh2z51.png?width=2880&format=png&auto=webp&s=9c3c788db30a718f0a2c11a3eb048457daf422e1"
+              src={dashboard}
               alt=""
             />
           </div>
           <div>
             <img
               style={{ height: "500px", objectFit: "contain" }}
-              src="https://www.gannett-cdn.com/presto/2019/08/09/USAT/b1d25399-ae60-498c-b959-7e778ea30fa0-DISCORD-go-live-spectating.png"
+              src={schedule}
               alt=""
             />
           </div>
