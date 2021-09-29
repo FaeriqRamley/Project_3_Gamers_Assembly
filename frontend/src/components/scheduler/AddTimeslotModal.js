@@ -8,6 +8,10 @@ const AddTimeslotModal = (props) => {
     const [form] = Form.useForm();
     const today = moment(Date.now());
 
+    const disabledDate = (current) => {
+        return current < moment().startOf('day');
+    }
+
     const onCreate = async (values) => {
         try{
             const {timeStart,timeEnd,duration} = convertTime(values)
@@ -67,7 +71,7 @@ const AddTimeslotModal = (props) => {
                         <Input />
                     </Form.Item>
                     <Form.Item name="dateStart" label="Select Date">
-                    <DatePicker/>
+                    <DatePicker disabledDate={disabledDate}/>
                     </Form.Item>
                     <Form.Item name="duration" label="Select Time">
                         <TimePicker.RangePicker showSecond={false}/>
