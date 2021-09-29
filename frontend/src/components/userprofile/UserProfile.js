@@ -19,7 +19,7 @@ function UserProfile(props) {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getUserById(id)).then(()=>console.log('useEffect on userProfile page'))
+        dispatch(getUserById(id))
     },[id, dispatch])
 
     return (
