@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
 import { Row, Col } from "antd";
 import UserCard from "../userdetails/UserCardSm";
 import "./query.css";
-
-import { Card } from "semantic-ui-react";
 import { Input } from "antd";
 
 export default function Query() {
@@ -48,16 +45,16 @@ export default function Query() {
       <div className="cardContainer">
         <Row gutter={[16, 25]}>
           {searchInput.length > 1
-            ? filteredResults.map((item) => {
+            ? filteredResults.map((item, i) => {
                 return (
-                  <Col span={6}>
+                  <Col span={6} key={i}>
                     <UserCard data={item} style={{ padding: 20 }} />
                   </Col>
                 );
               })
-            : APIData.map((item) => {
+            : APIData.map((item, i) => {
                 return (
-                  <Col span={6}>
+                  <Col span={6} key={i}>
                     <UserCard data={item} style={{ padding: 20 }} />
                   </Col>
                 );

@@ -8,27 +8,26 @@ function FeaturedUsers() {
   const [APIData, setAPIData] = useState([]);
   const [error, setError] = useState(null);
 
-  const fetchPost = async () => {
-    const url = "http://localhost:5000/api/users/all/5";
-    try {
-      const res = await fetch(url);
-      const data = await res.json();
-
-      setAPIData(data);
-    } catch (err) {
-      setError(err.message);
-    }
-
-    console.log("error:", error);
-  };
-
   useEffect(() => {
+    const fetchPost = async () => {
+      const url = "http://localhost:5000/api/users/all/5";
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+
+        setAPIData(data);
+      } catch (err) {
+        setError(err.message);
+      }
+
+      console.log("error:", error);
+    };
     fetchPost();
-  }, []);
+  }, [error]);
 
   let profilePicture = APIData.map((item, i) => {
     return (
-      <Col className="featured-col" span={4}>
+      <Col className="featured-col" span={4} key={i}>
         <button>
           <Tooltip placement="bottom" title={<UserCard data={item} />}>
             <img
