@@ -20,7 +20,7 @@ function UserSchedule(props) {
     const [visibleDetails,setVisibleDetails] = useState(false);
     const [fetchedTimeslots,setFetchedTimeslot] = useState([]);
     const [timeslotDisplay,setTimeslotDisplay] = useState([]);
-    const [timeslotDetails,setTimeslotDetails] = useState([]);
+    const [timeslotDetails,setTimeslotDetails] = useState(null);
     const [rightSide,setRightSide] = useState("myCustomButton timeGridWeek")
 
     useEffect(()=>{
@@ -30,6 +30,8 @@ function UserSchedule(props) {
     useEffect(() => {
         const temp = [];
         for ( const timeslot of fetchedTimeslots){
+            const actualStart = new Date(timeslot.timeStart);
+            const actualEnd = new Date(timeslot.timeEnd);
             const newObj = {
                 title:timeslot.eventTitle,
                 start: timeslot.timeStart,
@@ -37,6 +39,9 @@ function UserSchedule(props) {
                 borderColor: "rgba(0,0,0,0)",
                 extendedProps:{
                     attendees: timeslot.attendees,
+                    actualStart: actualStart,
+                    actualEnd: actualEnd,
+                    timeslotId: timeslot._id
                 }
             }
             if(timeslot.isOpen){
@@ -50,13 +55,11 @@ function UserSchedule(props) {
         setTimeslotDisplay(temp);
     }, [fetchedTimeslots])
     
-    const onClickShowTimeslotDetails = async (arg) => {
+    const onClickShowTimeslotDetails = (arg) => {
         console.log("argEvent here");
-        console.log(arg.event);
-        setTimeslotDetails(arg.event);
-        const timer = setTimeout(()=>{
-            setVisibleDetails(true);
-        },500);
+        console.log(arg.event._def);
+        setTimeslotDetails(arg.event._def);
+        setVisibleDetails(true);
         
     }
 
