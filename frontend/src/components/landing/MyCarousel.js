@@ -4,7 +4,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "antd/dist/antd.css";
 import components from "./assets/components.png";
 import dashboard from "./assets/dashboard.png";
-import schedule from "./assets/dashboard.png";
+import schedule from "./assets/schedule.png";
 import search from "./assets/searchPage.png";
 function MyCarousel() {
   const arrowStyles = {
