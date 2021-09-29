@@ -2,8 +2,13 @@ import React from 'react'
 import {Layout} from 'antd';
 import DashFeed from './DashFeed';
 import NotificationFeed from './DashNotification';
-const {Content,Sider} = Layout
-export default function Dashboard() {
+import { connect } from "react-redux"
+import { Redirect } from "react-router-dom"
+
+
+function Dashboard(props) {
+    const { Content, Sider } = Layout
+    const { loggedUser } = props.auth;
 
     const siderStyle = {
         backgroundColor:"rgba(0,0,0,0.2)",
@@ -11,6 +16,8 @@ export default function Dashboard() {
         height: '100vh',
         position: 'fixed'
     }
+
+    if (!loggedUser) return <Redirect to="/login" />
 
     return (
         <Layout style={{backgroundColor:"rgba(0,0,0,0)"}}>
@@ -26,3 +33,11 @@ export default function Dashboard() {
         </Layout>
     )
 }
+
+const mapStateToProps = (state) => {
+    return {
+        auth: state.auth,
+    };
+};
+
+export default connect(mapStateToProps)(Dashboard)

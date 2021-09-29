@@ -4,11 +4,14 @@ import { Row, Col } from "antd";
 import UserCard from "../userdetails/UserCardSm";
 import "./query.css";
 import { Input } from "antd";
+import { connect } from "react-redux"
+import { Redirect } from "react-router-dom"
 
-export default function Query() {
+function Query(props) {
   const [APIData, setAPIData] = useState([]);
   const [filteredResults, setFilteredResults] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const { loggedUser } = props.auth;
 
   useEffect(() => {
     axios.get(`http://localhost:5000/api/users/all/50`).then((response) => {
@@ -31,6 +34,8 @@ export default function Query() {
     }
   };
 
+  if (!loggedUser) return <Redirect to="/login" />
+  
   return (
     <div style={{ padding: 20 }}>
       <div className="searchWrapper">
@@ -64,3 +69,11 @@ export default function Query() {
     </div>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+      auth: state.auth,
+  };
+};
+
+export default connect(mapStateToProps)(Query)
