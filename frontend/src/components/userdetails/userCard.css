@@ -1,6 +1,5 @@
 .ant-card-meta-title {
   color: #d8dee9;
-  height: 100px;
 }
 .ant-card-meta-description {
   color: #d8dee9;
@@ -21,10 +20,11 @@ p {
   font-size: x-small;
   color: #8fbcbb;
 }
-/* img {
-  width: 200px;
+
+.ant-card-cover img {
+  width: 250px;
   height: 200px;
-} */
+} 
 .cards {
   transition: transform 0.2s ease-out;
   border-radius: 0.5rem;

@@ -1,56 +1,29 @@
 .container-header {
-  padding: 50px;
+  padding: 10px;
   text-align: center;
   border: 0px;
 }
 .site-container {
-  /* border: 1px solid black; */
   font-size: 40px;
   color: #c86466;
-}
-/* body {
-  background-image: url("https://myrepublic.net/sg/content/uploads/2020/07/different-game-controls.jpg");
-  background-size: cover;
-} */
-.carousel-container {
-  border: 1px solid #2e3440;
 }
 .featured-container {
   text-align: center;
 
-  height: 400px;
+  height: 250px;
 }
 .featured-col {
-  border: 1px solid transparent;
+  padding: 25px;
 }
 .featured-img {
   border-radius: 5px;
   border: 1px solid #88c0d0;
   margin-top: 20px;
   object-fit: fill;
+  height: 200px;
+  width: 200px;
 }
-/* .featured-img:before,
-.featured-img:after {
-  
-  position: absolute;
-  content: "";
-  box-shadow: 0 10px 25px 20px #8fbcbb;
-  top: 40px;
-  left: 10px;
-  bottom: 50px;
-  width: 15%;
-  z-index: -1;
-  -webkit-transform: rotate(-8deg);
-  -moz-transform: rotate(-8deg);
-  transform: rotate(-8deg);
-} */
-/* .featured-img:after {
-  -webkit-transform: rotate(8deg);
-  -moz-transform: rotate(8deg);
-  transform: rotate(8deg);
-  right: 10px;
-  left: auto;
-} */
+
 button {
   background-color: transparent;
   border: 0px;
@@ -59,8 +32,4 @@ button {
   border: 1px solid red;
   margin-right: 0px;
   margin-left: 0px;
-}
-img {
-  height: 200px;
-  width: 200px;
 }
