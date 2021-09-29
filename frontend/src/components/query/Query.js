@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Card, Input } from "semantic-ui-react";
+import { Card } from "semantic-ui-react";
 import UserCard from "../userdetails/UserCard";
+import { Input } from 'antd';
+
 
 export default function Query() {
   const [APIData, setAPIData] = useState([]);
   const [filteredResults, setFilteredResults] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  
+  
   useEffect(() => {
     axios.get(`http://localhost:5000/api/users/all/50`).then((response) => {
       setAPIData(response.data);
@@ -30,9 +34,9 @@ export default function Query() {
 
   return (
     <div style={{ padding: 20 }}>
-      <Input
+      <Input className="search-bar"
         icon="search"
-        placeholder="Search..."
+        placeholder="Search for user..."
         onChange={(e) => searchItems(e.target.value)}
       />
       <Card.Group itemsPerRow={3} style={{ marginTop: 20 }}>
