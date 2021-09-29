@@ -22,6 +22,10 @@
   object-fit: fill;
   height: 200px;
   width: 200px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 0, 0, 0.1) insert;
+}
+.featured-img:before,
+.featured-img:after {
 }
 button {
   background-color: transparent;
