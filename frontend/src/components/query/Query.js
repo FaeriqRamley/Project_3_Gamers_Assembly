@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Card, Input } from "semantic-ui-react";
+import { Input } from "semantic-ui-react";
+import { Row, Col } from "antd";
 import UserCard from "../userdetails/UserCard";
+import "./query.css";
 
 export default function Query() {
   const [APIData, setAPIData] = useState([]);
@@ -35,17 +37,21 @@ export default function Query() {
         placeholder="Search..."
         onChange={(e) => searchItems(e.target.value)}
       />
-      <Card.Group itemsPerRow={3} style={{ marginTop: 20 }}>
-        {searchInput.length > 1
-          ? filteredResults.map((item) => {
-              return (
-               <UserCard data={item} />
-              );
-            })
-          : APIData.map((item) => {
-              return <UserCard data={item} />;
-            })}
-      </Card.Group>
+      <div className="cardContainer">
+        <Row gutter={[16, 16]}>
+          {searchInput.length > 1
+            ? filteredResults.map((item) => {
+                return <UserCard data={item} style={{ padding: 20 }} />;
+              })
+            : APIData.map((item) => {
+                return (
+                  <Col span={6}>
+                    <UserCard data={item} style={{ padding: 20 }} />
+                  </Col>
+                );
+              })}
+        </Row>
+      </div>
     </div>
   );
 }

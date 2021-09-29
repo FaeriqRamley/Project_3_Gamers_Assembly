@@ -20,3 +20,10 @@ p {
   font-size: x-small;
   color: #d8dee9;
 }
+img {
+  height: 240px;
+}
+.cardDisplayContainer {
+  padding: 100px;
+  border: 1px solid black;
+}

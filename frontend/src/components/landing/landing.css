@@ -25,8 +25,7 @@
 }
 .featured-img {
   padding: 20px 0px 20px 0px;
-  max-width: 100px;
-  max-height: 100px;
+
   object-fit: fill;
 }
 button {
@@ -35,4 +34,8 @@ button {
 }
 .row {
   border: 1px solid #2e3440;
+}
+img {
+  height: 200px;
+  width: 200px;
 }
