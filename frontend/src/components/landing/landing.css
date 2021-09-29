@@ -1,26 +1,19 @@
 .container-header {
-  padding: 50px;
+  padding: 10px;
   text-align: center;
   border: 0px;
 }
 .site-container {
-  /* border: 1px solid black; */
   font-size: 40px;
   color: #c86466;
-}
-/* body {
-  background-image: url("https://myrepublic.net/sg/content/uploads/2020/07/different-game-controls.jpg");
-  background-size: cover;
-} */
-.carousel-container {
-  border: 1px solid #2e3440;
 }
 .featured-container {
   text-align: center;
 
-  height: 400px;
+  height: 250px;
 }
 .featured-col {
+  padding: 25px;
   border: 1px solid transparent;
 }
 .featured-img {
@@ -29,6 +22,7 @@
   margin-left: 6%;
   border: 2px dashed #f7eeee;
   border-radius: 5px;
+<<<<<<< Updated upstream
 }
 .featured-img:before,
 .featured-img:after {
@@ -55,6 +49,14 @@
   right: 10px;
   left: auto;
 }
+=======
+  border: 1px solid #88c0d0;
+  margin-top: 20px;
+  object-fit: fill;
+  height: 200px;
+  width: 200px;
+}
+>>>>>>> Stashed changes
 button {
   background-color: transparent;
   border: 0px;
@@ -63,8 +65,4 @@ button {
   border: 1px solid red;
   margin-right: 0px;
   margin-left: 0px;
-}
-img {
-  height: 200px;
-  width: 200px;
 }
