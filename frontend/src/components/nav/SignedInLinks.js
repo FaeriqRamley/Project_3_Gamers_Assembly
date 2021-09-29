@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 
 function SignedInLinks(props) {
   const history = useHistory();
-  const { user } = props.auth.user;
+  const { user } = props.auth.loggedUser;
 
   const handleLogOut = () => {
     props.logOut();

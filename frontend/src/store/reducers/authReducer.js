@@ -1,5 +1,5 @@
 const initState = {
-    user: null,
+    loggedUser: null,
     authError: null
 }
 
@@ -15,7 +15,7 @@ const authReducer = (state = initState, action) => {
         case "LOGIN_SUCCESS":
             console.log('login success');
             return {
-                user: action.payload,
+                loggedUser: action.payload,
                 authError: null
             }
 
@@ -26,7 +26,7 @@ const authReducer = (state = initState, action) => {
         case "SIGNUP_SUCCESS":
             console.log('signup success');
             return {
-                user: action.payload,
+                loggedUser: action.payload,
                 authError: null
             }
 
@@ -40,7 +40,7 @@ const authReducer = (state = initState, action) => {
         case "USER_AUTHORIZED":
             console.log('user authorized');
             return {
-                user: action.payload,
+                loggedUser: action.payload,
                 authError: null
             }
         case "USER_NOT_AUTHORIZED":
@@ -53,7 +53,7 @@ const authReducer = (state = initState, action) => {
         case "CHANGE_PASSWORD_SUCCESS":
             console.log('change password success')
             return {
-                user: action.payload,
+                loggedUser: action.payload,
                 authError: null
             }
         
@@ -67,7 +67,7 @@ const authReducer = (state = initState, action) => {
         case "UPDATE_PROFILE_SUCCESS":
             console.log('update profile success');
             return {
-                user: action.payload,
+                loggedUser: action.payload,
                 authError: null
             }
 

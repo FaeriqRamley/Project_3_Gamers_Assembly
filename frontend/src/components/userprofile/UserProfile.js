@@ -11,7 +11,7 @@ function UserProfile(props) {
     const { TabPane } = Tabs;
     const { id } = useParams();
     // loggedUser info & schedule
-    const { loggedUser } = props.auth.user;
+    const { loggedUser } = props.auth;
     const { timeslots } = props.schedule;
     // user profile's info
     const { userProfile, loading, error } = props.user
