@@ -296,3 +296,15 @@ h2, a {
 .fc .fc-timegrid-slot {
   border-bottom: none!important;
 }
+
+.search-bar{
+  width: 100%;
+  border: 3px solid #E5E9F0;
+  font-family: 'Poppins', sans-serif;
+  border-right: none;
+  padding: 5px;
+  height: 40px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: black;
+}
