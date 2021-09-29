@@ -15,11 +15,15 @@ function UserProfile(props) {
     const { timeslots } = props.schedule;
     // user profile's info
     const { userProfile, loading, error } = props.user
-    
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getUserById(id)).then(()=>console.log('useEffect on userProfile page'))
+        dispatch(getUserById(id))
+        const refreshSchedule = setInterval(()=>{
+            console.log("refresh viewed user...")
+            dispatch(getUserById(id))
+        },5000)
+        return ()=> clearInterval(refreshSchedule)
     },[id, dispatch])
 
     return (
