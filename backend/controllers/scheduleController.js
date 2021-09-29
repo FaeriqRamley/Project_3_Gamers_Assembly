@@ -72,7 +72,7 @@ module.exports.respondTimeslotInvite_put = async (req, res) => {
         );
         //Add joiner's ID to the timeslot's attendees
         await Timeslot.findByIdAndUpdate(timeslotId, {
-            $push: { attendees: joinerId.toString() },
+            $push: { attendees: joinerId },
         });
 
         //Remove invite from receiver's received notifications array (cause he's already seen it)

@@ -31,10 +31,13 @@ function UserSchedule(props) {
         const temp = [];
         for ( const timeslot of fetchedTimeslots){
             const newObj = {
-                title:"Game title here",
+                title:timeslot.eventTitle,
                 start: timeslot.timeStart,
                 end: timeslot.timeEnd,
                 borderColor: "rgba(0,0,0,0)",
+                extendedProps:{
+                    attendees: timeslot.attendees,
+                }
             }
             if(timeslot.isOpen){
                 newObj["backgroundColor"] = "#8FBCBB"
@@ -48,6 +51,7 @@ function UserSchedule(props) {
     }, [fetchedTimeslots])
     
     const onClickShowTimeslotDetails = async (arg) => {
+        console.log("argEvent here");
         console.log(arg.event);
         setTimeslotDetails(arg.event);
         const timer = setTimeout(()=>{

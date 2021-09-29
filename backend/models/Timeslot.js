@@ -11,7 +11,12 @@ const timeslotSchema = new mongoose.Schema(
     duration: { type: Number, min: 0 },
     isActive: { type: Boolean, default: false },
     isOpen: { type: Boolean, default: true },
-    attendees: { type: Array },
+    attendees: [
+      {
+          type: Schema.Types.ObjectId,
+          ref: "Attendees"
+      }
+  ]
   },
   { timestamps: true }
 );
