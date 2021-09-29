@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from 'react';
+import { useSelector } from 'react-redux';
 import FullCalendar from '@fullcalendar/react' // must go before plugins
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from "@fullcalendar/interaction"; // needed for dayClick
@@ -22,16 +23,9 @@ function UserSchedule(props) {
     const [timeslotDetails,setTimeslotDetails] = useState([]);
     const [rightSide,setRightSide] = useState("myCustomButton timeGridWeek")
 
-    useEffect(() => {
-        const fetchInterval = setInterval(async()=>{
-            // const timeslotRes = await fetch(`/api/timeslot/byOwnerId/${props.data._id}`);
-            console.log(props.data._id);
-            const timeslotRes = await fetch(`/api/schedule/populateForUser/timeslots/${props.data._id}`);
-            const timeslotList = await timeslotRes.json();
-            setFetchedTimeslot(timeslotList.userSchedule.timeslots);
-        },2000)
-        return () => clearInterval(fetchInterval);
-    },[])
+    useEffect(()=>{
+        setFetchedTimeslot(props.data.schedule.timeslots);
+    },[props.data])
 
     useEffect(() => {
         const temp = [];
@@ -67,12 +61,13 @@ function UserSchedule(props) {
     }
     
     useEffect(()=>{
-        if(props.data._id === props.user._id){
+
+        if(props.data._id === props.user.user._id){
             setRightSide("myCustomButton timeGridWeek")
         } else{
             setRightSide("timeGridWeek")
         }
-    },[props.data._id,props.user._id])
+    },[props])
 
     return (
         <div className="calendar-container">

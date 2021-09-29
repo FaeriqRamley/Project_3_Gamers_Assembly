@@ -7,7 +7,7 @@ import Landing from "./components/landing/Landing";
 import Dashboard from "./components/dashboard/Dashboard";
 import Query from "./components/query/Query";
 import { useDispatch } from "react-redux";
-import { userAuth } from "./store/actions/authActions";
+import { userAuth, refreshUserData } from "./store/actions/authActions";
 import { getSchedule } from "./store/actions/scheduleActions";
 import ChangePasswordForm from "./components/auth/ChangePasswordForm";
 import UserProfile from "./components/userprofile/UserProfile";
@@ -23,6 +23,16 @@ export default function App() {
             setLoading(false)
         })
     }, [dispatch]);
+
+    //Remove Later
+    useEffect(()=> {
+        const refreshSchedule = setInterval(()=>{
+            console.log("dispatching refresh...")
+            dispatch(refreshUserData())
+        },5000)
+        return ()=> clearInterval(refreshSchedule)
+
+    },[dispatch])
 
     return (
         <>
