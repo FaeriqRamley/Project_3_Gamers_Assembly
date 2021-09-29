@@ -24,7 +24,6 @@ export default function App() {
         })
     }, [dispatch]);
 
-    //Remove Later
     useEffect(()=> {
         const refreshSchedule = setInterval(()=>{
             console.log("dispatching refresh...")
