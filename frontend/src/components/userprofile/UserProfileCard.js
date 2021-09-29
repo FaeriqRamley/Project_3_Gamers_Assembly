@@ -1,21 +1,44 @@
-import React from "react";
-import { Row, Col, Avatar, Button, Divider,Form,Select} from "antd";
+import { useState, useEffect } from "react";
+import { Row, Col, Avatar, Button, Divider, Form, Select, Modal } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { connect } from "react-redux";
 import CallApi from "../hooks/CallApi";
 const {Option} = Select;
 
-function UserProfileCard({ data,user,timeslots}) {
+function UserProfileCard({ data, user, timeslots }) {
+    const [isLoggedUser, setIsLoggedUser] = useState(false)
     const [form] = Form.useForm();
+
+    useEffect(()=>{
+        if(data._id === user.user._id){
+            setIsLoggedUser(true)
+        } else{
+            setIsLoggedUser(false)
+        }
+    },[data, user])
+
+    const success = () => {
+        Modal.success({
+            content: 'Invite sent!',
+            onOk() {
+                console.log('close success modal')
+            }
+        });
+    }
     
     const onFinish = async (values) => {
-        await CallApi("/api/schedule/createInvite","POST",{
-            inviteType: "Timeslot Invite",
-            senderId: user._id,
-            receiverId: data._id,
-            timeslotId: values.timeslot
-        });
-        alert("Invite Sent!");
+        try {
+            await CallApi("/api/schedule/createInvite","POST",{
+                inviteType: "Timeslot Invite",
+                senderId: user.user._id,
+                receiverId: data._id,
+                timeslotId: values.timeslot
+            })
+
+            success();
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     return (
@@ -28,36 +51,43 @@ function UserProfileCard({ data,user,timeslots}) {
                 </Col>
                 <Col span={16}>
                     <div className="profile-wrapper">
-                        <h4>
-                            {data.firstName ? data.firstName + ' "' : ''}
+                        <h4 className="upc-username">
                             {data.userName}
-                            {data.lastName ? '" ' + data.lastName : ''}
                         </h4>
-                        <p>{data.location ? data.location : ''}</p>
+                        <p className="upc-name-location">
+                            {data.firstName ? data.firstName : ''}
+                            {data.lastName ? ` ${data.lastName}` : ''}
+                            {data.location ?  `, ${data.location}` : ''}</p>
                         <br></br>
-                        <p>{data.bio}</p>
+                        <p className="upc-bio">{data.bio}</p>
                     </div>
                 </Col>
-                <Col span={24}><Divider/></Col>
-                <Col span={24}>
-                    <Row justify="space-around">
-                        <Col><Button type="primary">Add Friend</Button></Col>
-                        <Col>
-                            <Form layout="inline" name="selector" form={form} onFinish={onFinish}>
-                                <Form.Item name="timeslot">
-                                    <Select placeholder="Choose a slot to invite">
-                                        {timeslots.userSchedule.timeslots.map((timeslot,index)=>{
-                                            return <Option key={index} value={timeslot._id}>{timeslot.eventTitle}</Option>
-                                        })}
-                                    </Select>
-                                </Form.Item>
-                                <Form.Item>
-                                    <Button type="primary" htmlType="submit">Invite</Button>
-                                </Form.Item>
-                            </Form>
+                {isLoggedUser 
+                ? ( '' 
+                ) : ( 
+                    <>
+                        <Col span={24}><Divider/></Col>
+                        <Col span={24}>
+                            <Row justify="space-around">
+                                <Col><Button type="primary">Add Friend</Button></Col>
+                                <Col>
+                                    <Form layout="inline" name="selector" form={form} onFinish={onFinish}>
+                                        <Form.Item name="timeslot">
+                                            <Select placeholder="Choose a slot to invite">
+                                                {timeslots.userSchedule.timeslots.map((timeslot,index)=>{
+                                                    return <Option key={index} value={timeslot._id}>{timeslot.eventTitle}</Option>
+                                                })}
+                                            </Select>
+                                        </Form.Item>
+                                        <Form.Item>
+                                            <Button type="primary" htmlType="submit">Invite</Button>
+                                        </Form.Item>
+                                    </Form>
+                                </Col>
+                            </Row>
                         </Col>
-                    </Row>
-                </Col>
+                    </>
+                )}
             </Row>
         </div>
     );

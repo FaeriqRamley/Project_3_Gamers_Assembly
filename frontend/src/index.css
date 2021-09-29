@@ -257,12 +257,22 @@ a {
 }
 
 .profile-wrapper {
-  padding: 2rem;
+  padding-top: 1rem;
 }
 
-.profile-wrapper,
-.profile-wrapper h4 {
-  color: #d8dee9;
+.upc-username {
+  font-size: 2rem;
+  color: #D8DEE9;
+}
+
+.upc-name-location {
+  font-size: 14px;
+  color: #81A1C1;
+}
+
+.upc-bio {
+  font-size: 12px;
+  color:#88C0D0;
 }
 
 /* calendar */
