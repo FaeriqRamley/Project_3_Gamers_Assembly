@@ -21,10 +21,10 @@ p {
   font-size: x-small;
   color: #8fbcbb;
 }
-img {
+/* img {
   width: 200px;
   height: 200px;
-}
+} */
 .cards {
   transition: transform 0.2s ease-out;
   border-radius: 0.5rem;

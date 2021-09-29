@@ -326,3 +326,25 @@ a {
   text-align: center;
   padding-bottom: 20px;
 }
+
+.newsfeed-details {
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.newsfeed-details h5 {
+  color:#D8DEE9;
+}
+
+.newsfeed-details p {
+  color:#8fbcbb;
+  font-size: 0.75rem;
+  margin-bottom: 0;
+}
+
+
+
+/* .newsfeed-meta .ant-card-meta-detail .ant-card-meta-title{
+  height: auto;
+} */
