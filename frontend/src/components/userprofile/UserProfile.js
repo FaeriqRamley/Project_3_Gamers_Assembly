@@ -24,7 +24,6 @@ function UserProfile(props) {
             dispatch(getUserById(id))
         },5000)
         return ()=> clearInterval(refreshSchedule)
-
     },[id, dispatch])
 
     return (
