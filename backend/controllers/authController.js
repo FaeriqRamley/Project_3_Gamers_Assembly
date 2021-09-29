@@ -125,6 +125,31 @@ module.exports.user_get = async (req, res) => {
     }
 }
 
+// update userInfo
+module.exports.userUpdate_get = async (req, res) => {
+    try {
+        const user = await User.findById(req.user._id).populate({
+            path:"schedule", populate:[
+                { path: "timeslots", model:"Timeslot" },
+                { path: "sentNotifications", model:"Invite", populate:[
+                    { path: "receiverId" , model: "User" },
+                    { path: "senderId" , model: "User" },
+                    { path: "timeslotId" , model: "Timeslot" }
+                ]},
+                { path: "receivedNotifications", model: "Invite", populate: [
+                    { path: "receiverId" , model: "User" },
+                    { path: "senderId" , model: "User" },
+                    { path: "timeslotId" , model: "Timeslot" }
+                ]},
+            ],
+        }).select("-password, -__v")
+        res.status(200).json({ user })
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ msg: "status 500" })
+    }
+}
+
 // change password 
 module.exports.changePassword_put = async (req, res) => {
     let { newPassword } = req.body;

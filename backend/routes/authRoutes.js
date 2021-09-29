@@ -8,6 +8,7 @@ const {
     user_get,
     changePassword_put,
     updateProfile_put,
+    userUpdate_get,
 } = require('../controllers/authController');
 const { checkUser } = require('../middleware/authMiddleware');
 
@@ -19,6 +20,7 @@ router.get('/login', login_get);
 router.post('/login', login_post);
 router.get('/logout', logout_get);
 router.get('/auth/user', checkUser, user_get)
+router.get('/auth/userupdates', checkUser, userUpdate_get)
 router.put('/auth/changepassword', checkUser, changePassword_put)
 router.put('/auth/updateprofile', checkUser, updateProfile_put)
 
