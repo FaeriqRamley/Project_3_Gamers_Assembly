@@ -1,10 +1,9 @@
 import React from 'react'
-import {Layout} from 'antd';
+import { Layout } from 'antd';
 import DashFeed from './DashFeed';
 import NotificationFeed from './DashNotification';
 import { connect } from "react-redux"
 import { Redirect } from "react-router-dom"
-
 
 function Dashboard(props) {
     const { Content, Sider } = Layout

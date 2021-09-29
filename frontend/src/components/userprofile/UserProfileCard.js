@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Row, Col, Avatar, Button, Divider, Form, Select, Modal } from "antd";
+import { Row, Col, Avatar, Button, Divider, Form, Select, Modal, Image } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { connect } from "react-redux";
 import CallApi from "../hooks/CallApi";
@@ -60,11 +60,18 @@ function UserProfileCard({ data, user }) {
             <Row>
                 <Col span={8}>
                     <div className="avatar-wrapper">
-                        <Avatar
-                            shape="square"
-                            size={200}
-                            icon={<UserOutlined />}
-                        />
+                        {data.image 
+                        ? ( <Image
+                                width={250}
+                                src={data.image}
+                            />
+                        ) : (
+                            <Avatar
+                                shape="square"
+                                size={250}
+                                icon={<UserOutlined />}
+                            />
+                        )}
                     </div>
                 </Col>
                 <Col span={16}>
