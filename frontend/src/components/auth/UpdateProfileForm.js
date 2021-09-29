@@ -5,6 +5,7 @@ import { updateProfile, userAuth } from "../../store/actions/authActions";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import countries from "../../lib/countries";
+import UploadImage from "./UploadImage";
 
 function UpdateProfileForm(props) {
   const [loading, setLoading] = useState(false);
@@ -12,6 +13,7 @@ function UpdateProfileForm(props) {
   const { loggedUser, authError } = props.auth;
   const { Option } = Select;
   const history = useHistory();
+  const [img, setImg] = useState()
 
   const success = () => {
     Modal.success({
@@ -24,6 +26,8 @@ function UpdateProfileForm(props) {
 
   const onFinish = async (values) => {
     setLoading(true);
+    values.image = img
+    
     props.updateProfile(values).then(() => {
       setTimeout(() => {
         if (!authError) {
@@ -38,6 +42,9 @@ function UpdateProfileForm(props) {
   return (
     <div className="form-container">
       <Card title="Update Profile" style={{ width: 400 }}>
+        <div className="upload-center">
+            <UploadImage setImg={setImg} />
+        </div>
         <Form
           layout="vertical"
           form={form}

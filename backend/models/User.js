@@ -20,6 +20,7 @@ const userSchema = new mongoose.Schema(
         lastName: String,
         userName: String,
         location: String,
+        image: String,
         bio: { type: String, maxlength: 150 },
         rating: [{ type: String, max: 5, min: 0 }],
         friendList: {

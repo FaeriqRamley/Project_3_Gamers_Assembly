@@ -1,5 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
 import { Row, Col } from "antd";
 import "antd/dist/antd.css";
 import MyCarousel from "./MyCarousel";
@@ -13,7 +12,7 @@ function Landing(data) {
         <Row>
           <Col span={8}></Col>
           <Col span={8} className="site-container">
-            GamersAssemble
+            Gamers Assembly
           </Col>
           <Col span={8}></Col>
         </Row>
@@ -26,10 +25,4 @@ function Landing(data) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    auth: state.auth,
-  };
-};
-
-export default connect(mapStateToProps)(Landing);
+export default Landing;

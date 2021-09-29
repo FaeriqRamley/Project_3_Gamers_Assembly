@@ -1,4 +1,4 @@
-import { Tabs, Spin } from "antd";
+import { Tabs } from "antd";
 import UserProfileCard from "./UserProfileCard";
 import { connect, useDispatch } from "react-redux"
 import { getUserById } from "../../store/actions/userActions";
@@ -13,7 +13,7 @@ function UserProfile(props) {
     // loggedUser info & schedule
     const { loggedUser } = props.auth;
     // user profile's info
-    const { userProfile, loading, error } = props.user
+    const { userProfile, error } = props.user
     const dispatch = useDispatch();
 
     useEffect(() => {
