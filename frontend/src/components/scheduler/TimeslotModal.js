@@ -4,31 +4,31 @@ import { useSelector } from "react-redux";
 import CallApi from "../hooks/CallApi";
 const TimeslotModal = (props) => {
   const auth = useSelector((state) => state.auth);
-
+  const daysArr = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
   const handleCancel = () => {
     console.log("Clicked cancel button");
     props.setVisible(false);
   };
 
-  const success = () => {
+  const success = (body) => {
     Modal.success({
-      content: "Invite sent!",
+      content: body,
       onOk() {
         console.log("close success modal");
       },
     });
   };
 
-  const warning = () => {
+  const warning = (body) => {
     Modal.warning({
-      title: "You're already attending :)",
+      title: body,
     });
   };
 
   const error = () => {
     Modal.error({
-      title: "Invitation Error",
-      content: "Something went wrong with send your invite",
+      title: "Error",
+      content: "Something went wrong :(",
     });
   };
 
@@ -44,14 +44,31 @@ const TimeslotModal = (props) => {
           receiverId: props.data.extendedProps.attendees[0]._id,
           timeslotId: props.data.extendedProps.timeslotId,
         });
-        success();
+        success("Invite sent!");
       } catch (err) {
         error();
       }
     } else {
-      warning();
+      warning("You're already attending :)");
     }
   };
+
+  const onClickDeleteTimeslot = async () => {
+    if(auth.loggedUser.user._id !== props.data.extendedProps.attendees[0]._id){
+      warning("Only the owner can delete the timeslot")
+    } else {
+      try {
+        await CallApi("/api/timeslot/v2","DELETE",{
+          timeslotId: props.data.extendedProps.timeslotId
+        })
+        success("Successfully deleted timeslot!");
+      } catch (err) {
+        error();
+      }
+    }
+  }
+
+
   return (
     <>
       <Modal
@@ -59,6 +76,14 @@ const TimeslotModal = (props) => {
         visible={props.visible}
         onCancel={handleCancel}
         footer={[
+          <Button
+            onClick={onClickDeleteTimeslot}
+            key={2}
+            type="primary"
+            style={{backgroundColor:"#BF616A"}}
+          >
+            Delete
+          </Button>,
           <Button
             onClick={onClickSendInvite}
             key={2}
@@ -71,17 +96,19 @@ const TimeslotModal = (props) => {
       >
         {props.data ? (
           <>
-            <h5>Date:</h5>
-            <h6>
-              {props.data.extendedProps.actualStart.getDay()}/
-              {props.data.extendedProps.actualStart.getMonth()}/
-              {props.data.extendedProps.actualStart.getYear()}
+            <h5 style={{marginBottom:"2px"}}>Date</h5>
+            <h6 style={{color:"#D08770"}}>
+              {daysArr[props.data.extendedProps.actualStart.getDay()]} {props.data.extendedProps.actualStart.getDate()}/
+              {props.data.extendedProps.actualStart.getMonth()+1}/
+              {props.data.extendedProps.actualStart.getFullYear()}
             </h6>
-            <h5>Timeslot Owner</h5>
-            <h6>{props.data.extendedProps.attendees[0].userName}</h6>
-            <h5>Attendees</h5>
+            <h5 style={{marginBottom:"2px"}}>Time</h5>
+            <h6 style={{color:"#D08770"}}>{props.data.extendedProps.actualStart.toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"})} - {props.data.extendedProps.actualEnd.toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"})}</h6>
+            <h5 style={{marginBottom:"2px"}}>Timeslot Owner</h5>
+            <h6 style={{color:"#D08770"}}>{props.data.extendedProps.attendees[0].userName}</h6>
+            <h5 style={{marginBottom:"2px"}}>Attendees</h5>
             {props.data.extendedProps.attendees.map((data, index) => {
-              return <h6 key={index}>{data.userName}</h6>;
+              return <h6 style={{color:"#D08770"}} key={index}>{data.userName}</h6>;
             })}
           </>
         ) : (

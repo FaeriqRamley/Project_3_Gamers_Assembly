@@ -20,12 +20,18 @@ function NotificationCardResponded(props) {
     let body= <p>Body here</p>
     if (notif.inviteType === "Timeslot Invite"){
         const timeslot = props.data.timeslotInfo;
-        const {timeStart,timeEnd} = props.data.timeslotInfo;
-        body = <>
-            <p style={{marginBottom:"2px"}}>Has {response} to play <span style={{color:"#D08770",textDecoration:"underline"}}>{timeslot.eventTitle}</span></p>
-            <p style={{marginBottom:"0px"}}>{timeStart.split("T")[0]}</p>
-            <p>{timeStart.split("T")[1].substring(0,5)}-{timeEnd.split("T")[1].substring(0,5)}</p>
-        </>
+        if(timeslot){
+            const {timeStart,timeEnd} = props.data.timeslotInfo;
+            body = <>
+                <p style={{marginBottom:"2px"}}>Has {response} to play <span style={{color:"#D08770",textDecoration:"underline"}}>{timeslot.eventTitle}</span></p>
+                <p style={{marginBottom:"0px"}}>{timeStart.split("T")[0]}</p>
+                <p>{timeStart.split("T")[1].substring(0,5)}-{timeEnd.split("T")[1].substring(0,5)}</p>
+            </>
+        } else {
+            body = <>
+                <p>Oops... the event was deleted. Btw {props.data.receiverName} did say {notif.status === "Accepted" ? <b style={{color:"#A3BE8C"}}>Yes :D</b>: <b style={{color:"#BF616A"}}>No :\</b>}</p>
+            </>
+        }
     } else{
         body = <>
             <p>Has {response} your friend request</p>
