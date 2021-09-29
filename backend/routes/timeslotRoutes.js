@@ -8,6 +8,7 @@ const {
   editTimeslotDuration_put,
   editTimeSlotAttendees_put,
   deleteTimeslot_put,
+  deleteTimeslotVer2_put
 } = require("../controllers/timeslotController");
 
 router.get("/byOwnerId/:id", viewTimeslot_get);
@@ -17,5 +18,6 @@ router.put("/edit/booked_status", editTimeslotBookedStatus_put);
 router.put("/edit/duration", editTimeslotDuration_put);
 router.put("/edit/attendees/:action", editTimeSlotAttendees_put);
 router.delete("/", deleteTimeslot_put);
+router.delete("/v2",deleteTimeslotVer2_put)
 
 module.exports = router;

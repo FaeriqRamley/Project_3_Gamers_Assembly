@@ -88,3 +88,21 @@ module.exports.deleteTimeslot_put = async (req, res) => {
   );
   res.json({ status: "ok", msg: "Deleted from timeslot and schedule" });
 };
+
+//Delete: Remove Timeslot v2
+module.exports.deleteTimeslotVer2_put = async (req, res) => {
+  //Delete timeslot from timeslot db
+  try{
+    const deletingTimeslot = await Timeslot.findById(req.body.timeslotId);
+    await Schedule.updateMany(
+      { ownerId: deletingTimeslot.attendees },
+      { $pull: { "timeslots": {$in: [req.body.timeslotId]} } }
+    );
+    await Timeslot.findByIdAndDelete(req.body.timeslotId);
+    res.json({ status: "ok", msg:"Successfully deleted",deletedFrom: deletingTimeslot.attendees });
+  } catch(err){
+    console.error(err.message);
+    res.json({status:"failed",msg:err.message});
+  }
+
+};

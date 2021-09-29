@@ -12,7 +12,7 @@ function FeedNewsCard(props) {
                     >
                         <Image width="100%" preview={false} src={props.data.image}/>
                         <a href={props.data.source.url} target="_blank" rel="noreferrer">
-                            <div className="newsfeed-details"> 
+                            <div className="newsfeed-details">
                                 <h5>
                                     {props.data.title} 
                                 </h5>
