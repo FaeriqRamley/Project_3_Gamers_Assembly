@@ -334,6 +334,7 @@ a {
 }
 
 .newsfeed-details h5 {
+  font-size: 1.25rem;
   color:#D8DEE9;
 }
 
@@ -342,9 +343,3 @@ a {
   font-size: 0.75rem;
   margin-bottom: 0;
 }
-
-
-
-/* .newsfeed-meta .ant-card-meta-detail .ant-card-meta-title{
-  height: auto;
-} */
