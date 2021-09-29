@@ -3,6 +3,13 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "antd/dist/antd.css";
 function MyCarousel() {
+  const arrowStyles = {
+    position: "absolute",
+    zIndex: 2,
+    top: "calc(35% )",
+    width: 70,
+    height: 130,
+  };
   return (
     <React.Fragment>
       <div>
@@ -10,34 +17,64 @@ function MyCarousel() {
           dynamicHeight={true}
           autoPlay
           infiniteLoop
+          showStatus={false}
           showArrows={true}
           stopOnHover={false}
           showThumbs={false}
+          style={{ ...arrowStyles }}
+          renderArrowPrev={(onClickHandler, hasPrev, label) =>
+            hasPrev && (
+              <button
+                type="button"
+                onClick={onClickHandler}
+                title={label}
+                style={{
+                  ...arrowStyles,
+                  left: 15,
+                  fontSize: "50px",
+                }}
+              >
+                {`<`}
+              </button>
+            )
+          }
+          renderArrowNext={(onClickHandler, hasNext, label) =>
+            hasNext && (
+              <button
+                type="button"
+                onClick={onClickHandler}
+                title={label}
+                style={{ ...arrowStyles, right: 15, fontSize: "50px" }}
+              >
+                {`>`}
+              </button>
+            )
+          }
         >
           <div>
             <img
-              style={{ height: "500px", objectFit: "cover" }}
+              style={{ height: "500px", objectFit: "contain" }}
               src="https://venturebeat.com/wp-content/uploads/2020/12/discord.jpg?w=1200&strip=all"
               alt=""
             />
           </div>
           <div>
             <img
-              style={{ height: "500px", objectFit: "cover" }}
+              style={{ height: "500px", objectFit: "contain" }}
               src="https://techcrunch.com/wp-content/uploads/2021/03/Invited.png?w=680"
               alt=""
             />
           </div>
           <div>
             <img
-              style={{ height: "500px", objectFit: "cover" }}
+              style={{ height: "500px", objectFit: "contain" }}
               src="https://preview.redd.it/x9vsiutqh2z51.png?width=2880&format=png&auto=webp&s=9c3c788db30a718f0a2c11a3eb048457daf422e1"
               alt=""
             />
           </div>
           <div>
             <img
-              style={{ height: "500px", objectFit: "cover" }}
+              style={{ height: "500px", objectFit: "contain" }}
               src="https://www.gannett-cdn.com/presto/2019/08/09/USAT/b1d25399-ae60-498c-b959-7e778ea30fa0-DISCORD-go-live-spectating.png"
               alt=""
             />
