@@ -1,6 +1,8 @@
 export const getUserById = (id) => {
     return async (dispatch, getState) => {
         console.log('getUserByid', id)
+        dispatch({ type: "LOAD_USER_DATA" })
+        
         try {
             const res = await fetch(`/api/users/user/${id}`, {
                 method: "GET",

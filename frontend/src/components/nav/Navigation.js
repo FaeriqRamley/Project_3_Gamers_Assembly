@@ -15,7 +15,7 @@ function Navigation(props) {
                 </LinkContainer>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
-                    { auth.user 
+                    { auth.loggedUser 
                     ? <SignedInLinks /> 
                     : <SignedOutLinks />
                     }

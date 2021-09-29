@@ -9,7 +9,7 @@ import countries from "../../lib/countries";
 function UpdateProfileForm(props) {
     const [loading, setLoading] = useState(false);
     const [form] = Form.useForm();
-    const { user, authError } = props.auth;
+    const { loggedUser, authError } = props.auth;
     const { Option } = Select;
     const history = useHistory();
 
@@ -17,7 +17,7 @@ function UpdateProfileForm(props) {
         Modal.success({
             content: 'Profile successfully updated!',
             onOk() {
-                history.push(`/profile/${user.user._id}`)
+                history.push(`/profile/${loggedUser.user._id}`)
             }
         });
     }

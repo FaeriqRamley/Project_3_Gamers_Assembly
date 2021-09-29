@@ -18,8 +18,8 @@ function Registration(props) {
         });
     };
 
-    const { user, authError } = props.auth;
-    if (user) return <Redirect to="/dashboard" />;
+    const { loggedUser, authError } = props.auth;
+    if (loggedUser) return <Redirect to="/dashboard" />;
 
     return (
         <>

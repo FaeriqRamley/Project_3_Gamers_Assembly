@@ -1,32 +1,43 @@
 import { Tabs, Spin } from "antd";
 import UserProfileCard from "./UserProfileCard";
-import { connect } from "react-redux"
+import { connect, useDispatch } from "react-redux"
 import { getUserById } from "../../store/actions/userActions";
 import { userAuth } from "../../store/actions/authActions";
 import { useParams } from "react-router-dom";
-import useGetUserId from "../hooks/useGetUserId";
 import UserSchedule from "../scheduler/UserSchedule";
+import { useEffect } from "react"
 
 function UserProfile(props) {
     const { TabPane } = Tabs;
     const { id } = useParams();
-    const { user } = props.auth.user;
-    const { data, loading, error } = useGetUserId(id);
+    // loggedUser info & schedule
+    const { loggedUser } = props.auth;
     const { timeslots } = props.schedule;
+    // user profile's info
+    const { userProfile, loading, error } = props.user
+    
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getUserById(id)).then(()=>console.log('useEffect on userProfile page'))
+    },[id, dispatch])
 
     return (
         <>
-            {error && <div>{error}</div>}
             <div className="profile-container">
                 {loading && <Spin size="large" className="loading-spinner"/>}
                 <Tabs defaultActiveKey="1" className="profile-tabs">
                     <TabPane tab="Profile" key="1">
-                        {data && timeslots &&
-                            <UserProfileCard data={data} user={user} timeslots={timeslots}/> 
+                        {error && <div>{error}</div>}
+                        {userProfile && timeslots &&
+                            <UserProfileCard data={userProfile} user={loggedUser} timeslots={timeslots}/> 
                         }
                     </TabPane>
                     <TabPane tab="Schedule" key="2">
-                       {data && <UserSchedule data={data} user={user}/>}
+                        {error && <div>{error}</div>}
+                        {userProfile && 
+                            <UserSchedule data={userProfile} user={loggedUser}/>
+                        }
                     </TabPane>
                     <TabPane tab="Match History" key="3">
                         Coming soon!
