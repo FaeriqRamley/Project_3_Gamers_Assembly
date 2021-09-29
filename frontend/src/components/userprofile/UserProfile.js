@@ -28,18 +28,18 @@ function UserProfile(props) {
     return (
         <>
             <div className="profile-container">
-                {loading && <Spin size="large" className="loading-spinner"/>}
+                {/* {loading && <Spin size="large" className="loading-spinner"/>} */}
                 <Tabs defaultActiveKey="1" className="profile-tabs">
                     <TabPane tab="Profile" key="1">
                         {error && <div>{error}</div>}
                         {(userProfile && loggedUser) &&
-                            <UserProfileCard data={userProfile} user={loggedUser}/> 
+                            <UserProfileCard data={userProfile} user={loggedUser} /> 
                         }
                     </TabPane>
                     <TabPane tab="Schedule" key="2">
                         {error && <div>{error}</div>}
-                        {userProfile && 
-                            <UserSchedule data={userProfile} user={loggedUser}/>
+                        {(userProfile && loggedUser) && 
+                            <UserSchedule data={userProfile} user={loggedUser} />
                         }
                     </TabPane>
                     <TabPane tab="Match History" key="3">

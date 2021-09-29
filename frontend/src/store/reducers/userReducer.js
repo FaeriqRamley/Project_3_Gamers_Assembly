@@ -26,7 +26,7 @@ const userReducer = (state = initState, action) => {
             return {
                 ...state,
                 loading: false,
-                error: "Could not fetch user's profile"
+                error: action.payload
             }
 
         default:
