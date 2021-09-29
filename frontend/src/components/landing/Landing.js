@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Row, Col } from "antd";
 import "antd/dist/antd.css";
 import MyCarousel from "./MyCarousel";
-import FeaturedUsers from "./FeaturedUsers";
+import FeaturedUsers from "./MyFeaturedUsers";
 import "./landing.css";
 
 function Landing(data) {

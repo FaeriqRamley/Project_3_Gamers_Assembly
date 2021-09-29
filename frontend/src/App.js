@@ -31,7 +31,6 @@ export default function App() {
             dispatch(refreshUserData())
         },5000)
         return ()=> clearInterval(refreshSchedule)
-
     },[dispatch])
 
     return (

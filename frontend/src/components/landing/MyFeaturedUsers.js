@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Row, Col, Tooltip } from "antd";
 import "antd/dist/antd.css";
 import "./landing.css";
-import UserCard from "../userdetails/UserCard";
+import UserCard from "../userdetails/UserCardSm";
 
 function FeaturedUsers() {
   const [APIData, setAPIData] = useState([]);
