@@ -6,6 +6,7 @@ import NotificationCardResponded from './NotificationCardResponded';
 
 function NotificationFeed() {
     const auth = useSelector(state => state.auth);
+    const userInfo = auth.loggedUser.user
     const [fetchedInvites,setFetchedInvites] = useState([]);
     const [invites, setInvites] = useState([]);
     const [notificationInfo,setNotificationInfo] = useState([]);
@@ -14,41 +15,33 @@ function NotificationFeed() {
     const [isMounted,setMounted] = useState(false);
 
     useEffect(()=>{
-        if(auth.user){
-            setCurrentUser(auth.user.user);
-            setUserLoaded(true);
+        console.log("AUTH:",userInfo);
+        if(userInfo.schedule.receivedNotifications && userInfo.schedule.sentNotifications){
+            const allNotifs = []
+            const receivedNotifs = userInfo.schedule.receivedNotifications;
+            const sentNotifs = userInfo.schedule.sentNotifications;
+            console.log(receivedNotifs);
+            console.log(sentNotifs);
+            for (const notif of receivedNotifs){
+                allNotifs.push({type:"received",item:notif});
+            }
+            for (const notif of sentNotifs){
+                if(notif.status !== "Pending"){
+                    allNotifs.push({type:"responded",item:notif});
+                }
+            }
+            console.log("AllNotifications:",allNotifs);
+            setFetchedInvites(allNotifs);
         }
     },[auth])
 
-    useEffect(() => {
-        if(currentUser){
-            const getInvites = setInterval( async ()=>{
-                const allNotifs = []
-                const receivedNotifsRes = await fetch(`/api/schedule/populate/notifications`);
-                const receivedNotifsJSON = await receivedNotifsRes.json();
-                const receivedNotifs = receivedNotifsJSON.userSchedule.receivedNotifications;
-                const sentNotifs = receivedNotifsJSON.userSchedule.sentNotifications;
-                for (const notif of receivedNotifs){
-                    allNotifs.push({type:"received",item:notif});
-                }
-                for (const notif of sentNotifs){
-                    if(notif.status !== "Pending"){
-                        allNotifs.push({type:"responded",item:notif});
-                    }
-                }
-                setFetchedInvites(allNotifs);
-            },2000)
-            
-            return () => clearInterval(getInvites);
-        }
-    },[currentUser,userLoaded])
-
     useEffect(()=> {
-        if(fetchedInvites.length !== invites.length){
-            console.log(fetchedInvites.length);
-            console.log(invites.length);
-            setInvites(fetchedInvites);
-        }
+        // if(fetchedInvites.length !== invites.length){
+        //     console.log(fetchedInvites.length);
+        //     console.log(invites.length);
+        //     setInvites(fetchedInvites);
+        // }
+        setInvites(fetchedInvites)
     },[fetchedInvites])
     
     useEffect(async () => {
@@ -73,6 +66,7 @@ function NotificationFeed() {
 
                 tempArray.push(newObj);
             }
+            console.log("TempArr",tempArray);
             setNotificationInfo(tempArray);
         } else {
             setMounted(true);
