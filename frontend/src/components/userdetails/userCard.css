@@ -1,5 +1,6 @@
 .ant-card-meta-title {
   color: #d8dee9;
+  height: 100px;
 }
 .ant-card-meta-description {
   color: #d8dee9;
@@ -19,4 +20,8 @@ h3 {
 p {
   font-size: x-small;
   color: #d8dee9;
+}
+img {
+  width: 200px;
+  height: 200px;
 }
