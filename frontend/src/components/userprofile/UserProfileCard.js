@@ -5,9 +5,10 @@ import { connect } from "react-redux";
 import CallApi from "../hooks/CallApi";
 const {Option} = Select;
 
-function UserProfileCard({ data, user, timeslots }) {
+function UserProfileCard({ data, user }) {
     const [isLoggedUser, setIsLoggedUser] = useState(false)
     const [form] = Form.useForm();
+    const { timeslots } = user.user.schedule
 
     useEffect(()=>{
         if(data._id === user.user._id){
@@ -74,7 +75,7 @@ function UserProfileCard({ data, user, timeslots }) {
                                     <Form layout="inline" name="selector" form={form} onFinish={onFinish}>
                                         <Form.Item name="timeslot">
                                             <Select placeholder="Choose a slot to invite">
-                                                {timeslots.userSchedule.timeslots.map((timeslot,index)=>{
+                                                {timeslots.map((timeslot,index)=>{
                                                     return <Option key={index} value={timeslot._id}>{timeslot.eventTitle}</Option>
                                                 })}
                                             </Select>
