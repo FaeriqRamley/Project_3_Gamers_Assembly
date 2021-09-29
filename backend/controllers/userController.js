@@ -3,7 +3,9 @@ const User = require("../models/User");
 module.exports.getUserByUserId_get = async (req,res) => {
     const thisUser = await User.findById(req.params.id).populate({
         path:"schedule", populate:[
-            { path: "timeslots", model:"Timeslot" },
+            { path: "timeslots", model:"Timeslot", populate:[
+                { path: "attendees", model:"User", select:["userName"]}
+            ]},
             { path: "sentNotifications", model:"Invite", populate:[
                 { path: "receiverId" , model: "User" },
                 { path: "senderId" , model: "User" },
