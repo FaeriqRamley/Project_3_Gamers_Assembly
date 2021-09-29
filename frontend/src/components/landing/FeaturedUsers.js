@@ -64,7 +64,10 @@ function FeaturedUsers() {
   return (
     <React.Fragment>
       <div className="featured-container">
-        <Row gutter={16} className="row">
+        <Row
+          gutter={[24, 16]}
+          style={{ marginLeft: "0px", marginRight: "0px" }}
+        >
           {newLimit}
         </Row>
       </div>

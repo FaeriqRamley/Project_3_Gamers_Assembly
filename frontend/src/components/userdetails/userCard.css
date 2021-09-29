@@ -1,5 +1,6 @@
 .ant-card-meta-title {
   color: #d8dee9;
+  height: 100px;
 }
 .ant-card-meta-description {
   color: #d8dee9;
@@ -21,9 +22,6 @@ p {
   color: #d8dee9;
 }
 img {
-  height: 240px;
-}
-.cardDisplayContainer {
-  padding: 100px;
-  border: 1px solid black;
+  width: 200px;
+  height: 200px;
 }

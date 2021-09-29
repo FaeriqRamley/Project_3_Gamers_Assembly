@@ -9,7 +9,7 @@ function UserCard(props) {
     <React.Fragment>
       <div>
         <Card
-          style={{ width: 240, background: "#182938" }}
+          style={{ width: 250, maxHeight: 360, background: "#182938" }}
           cover={<img alt="example" src={props.data.profilePic} />}
         >
           <div>
