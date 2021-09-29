@@ -4,6 +4,7 @@ import CallApi from '../hooks/CallApi';
 
 function NotificationCard(props) {
     const notif = props.data;
+    console.log("Notif Card props.data",props.data);
     const [loading,setLoading] = useState(false);
 
     const cardStyle = {
@@ -16,13 +17,17 @@ function NotificationCard(props) {
 
     let body= <p>Body here</p>
     if (notif.inviteType === "Timeslot Invite"){
-        const timeslot = props.data.timeslotInfo;
-        const {timeStart,timeEnd} = props.data.timeslotInfo;
-        body = <>
-            <p style={{marginBottom:"2px"}}>Has invited you to play <span style={{color:"#D08770",textDecoration:"underline"}}>{timeslot.eventTitle}</span></p>
-            <p>{timeStart.split("T")[0]}</p>
-            <p>{timeStart.split("T")[1].substring(0,5)}-{timeEnd.split("T")[1].substring(0,5)}</p>
-        </>
+        if(props.data.timeslotInfo){
+            const timeslot = props.data.timeslotInfo;
+            const {timeStart,timeEnd} = props.data.timeslotInfo;
+            body = <>
+                <p style={{marginBottom:"2px"}}>Has invited you to play <span style={{color:"#D08770",textDecoration:"underline"}}>{timeslot.eventTitle}</span></p>
+                <p>{timeStart.split("T")[0]}</p>
+                <p>{timeStart.split("T")[1].substring(0,5)}-{timeEnd.split("T")[1].substring(0,5)}</p>
+            </>
+        } else {
+            body = <>Has invited you to... something? Let him know if you're down!</>
+        }
     } else{
         body = <>
             <p>Wants to be your friend!</p>

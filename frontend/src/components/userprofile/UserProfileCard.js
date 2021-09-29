@@ -9,13 +9,17 @@ function UserProfileCard({ data,user,timeslots}) {
     const [form] = Form.useForm();
     
     const onFinish = async (values) => {
-        await CallApi("/api/schedule/createInvite","POST",{
-            inviteType: "Timeslot Invite",
-            senderId: user._id,
-            receiverId: data._id,
-            timeslotId: values.timeslot
-        });
-        alert("Invite Sent!");
+        try{
+            await CallApi("/api/schedule/createInvite","POST",{
+                inviteType: "Timeslot Invite",
+                senderId: user.user._id,
+                receiverId: data._id,
+                timeslotId: values.timeslot
+            });
+            alert("Invite Sent!");
+        } catch(err){
+            console.error(err.message);
+        }
     }
 
     return (

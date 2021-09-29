@@ -4,6 +4,7 @@ import DashFeed from './DashFeed';
 import NotificationFeed from './DashNotification';
 const {Content,Sider} = Layout
 export default function Dashboard() {
+
     const siderStyle = {
         backgroundColor:"rgba(0,0,0,0.2)",
         overflow: 'auto',

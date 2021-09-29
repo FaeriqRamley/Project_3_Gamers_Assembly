@@ -33,7 +33,7 @@ function UserProfile(props) {
                 <Tabs defaultActiveKey="1" className="profile-tabs">
                     <TabPane tab="Profile" key="1">
                         {error && <div>{error}</div>}
-                        {userProfile && timeslots &&
+                        {(userProfile && timeslots) &&
                             <UserProfileCard data={userProfile} user={loggedUser} timeslots={timeslots}/> 
                         }
                     </TabPane>
