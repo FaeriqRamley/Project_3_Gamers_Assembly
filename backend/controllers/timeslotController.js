@@ -88,4 +88,3 @@ module.exports.deleteTimeslot_put = async (req, res) => {
   );
   res.json({ status: "ok", msg: "Deleted from timeslot and schedule" });
 };
-
