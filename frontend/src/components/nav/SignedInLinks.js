@@ -13,6 +13,7 @@ function SignedInLinks(props) {
     props.logOut();
     history.push("/");
   };
+
   return (
     <>
       <Nav className="me-auto">

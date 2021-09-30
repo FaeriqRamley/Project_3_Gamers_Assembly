@@ -14,7 +14,6 @@ function UserCard(props) {
                     style={{
                         width: 250,
                         maxHeight: 360,
-                        background: "#182938",
                         margin: "20px",
                     }}
                     cover={

@@ -403,13 +403,18 @@ a {
   flex-wrap: wrap;
   margin-left: auto;
   margin-right: auto;
-  width: 1450px;
+  justify-content: center
+}
+
+.cardContainer > a > .cards {
+  background-color: #4C566A;
+  background: #2E3440;
 }
 
 .cards > .ant-card-body {
-  padding: 0;
+  padding: 12px 24px 12px 24px;
 }
 
 .card-details {
-  padding: 12px 24px 12px 24px;
+  height: 85px;
 }

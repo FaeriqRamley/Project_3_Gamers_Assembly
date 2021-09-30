@@ -28,15 +28,20 @@ export const logIn = (credentials) => {
 // user log out
 export const logOut = () => {
     return async (dispatch, getState) => {
-        fetch("/api/auth/logout", {
-            method: "GET",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application//json",
-            },
-        }).then(() => {
+        console.log('log out action')
+        try {
+            const res = await fetch("/api/auth/logout", {
+                method: "GET",
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            })
+
             dispatch({ type: "LOGOUT_SUCCESS" });
-        });
+        } catch (err) {
+            console.log(err);
+        }
     };
 };
 

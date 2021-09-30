@@ -37,6 +37,14 @@ function Registration(props) {
                             required: true,
                             message: "Please enter your username!",
                         },
+                        {
+                            min: 3,
+                            message: "minimum 3 characters required",
+                        },
+                        {
+                            max: 15,
+                            message: "maximum 15 characters",
+                        },
                     ]}
                 >
                     <Input
