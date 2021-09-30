@@ -306,6 +306,250 @@ const dummy = [
       url: "https://manilastandard.net",
     },
   },
+  {
+    "title": "Valorant Last Chance Qualifier for NA and OCE details announced",
+    "description": "Riot Games announced the date, brackets, format and everything else that needs to be known about NA and OCE Last Chance Qualifiers for Valorant Champions 2021.",
+    "content": "Riot Games announced the date, brackets, format and everything else that needs to be known about NA and OCE Last Chance Qualifiers for Valorant Champions 2021.\nLast Chance Qualifiers (LCQ) for NA and OCE regions in Valorant run from October 12 to 17,... [1137 chars]",
+    "url": "https://www.altchar.com/game-news/valorant-last-chance-qualifier-for-na-and-oce-details-announced-aBaek8G1FbUP",
+    "image": "https://media.altchar.com/prod/images/940_530/gm-5bd36a9a-ae57-4459-af33-aea2fa6b0807-valorant-logo.jpg",
+    "publishedAt": "2021-09-29T23:09:00Z",
+    "source": {
+    "name": "AltChar",
+    "url": "https://www.altchar.com"
+    }
+  },
+  {
+    "title": "“This Isn’t the End of Steel”- 100Thieves Owner Nadeshot Shares a Heartfelt Message About Changes in Valorant Roster",
+    "description": "100Thieves Valorant roster sees a major change, as the team decides to bench in-game leader Steel following a bad outing in Berlin.",
+    "content": "Published 09/29/2021, 2:54 PM EDT\nValorant Champions Tour Berlin concluded a few weeks ago with EMEA’s Team Gambit lifting the trophy. However, the same cannot be said about North American teams. With The Sentinels flopping out in the first playoff a... [1992 chars]",
+    "url": "https://www.essentiallysports.com/esports-news-this-isnt-the-end-of-steel-100thieves-owner-nadeshot-shares-a-heartfelt-message-about-changes-in-valorant-roster/",
+    "image": "https://image-cdn.essentiallysports.com/wp-content/uploads/20210216163027/GettyImages-1178828193.jpg",
+    "publishedAt": "2021-09-29T18:54:34Z",
+    "source": {
+    "name": "Essentially Sports",
+    "url": "https://www.essentiallysports.com"
+    }
+  },
+  {
+    "title": "Does Valorant Mobile support cross-play?",
+    "description": "Valorant Mobile will let players experience the tactical first-person gameplay of Riot Games' Valorant. Many players are wondering, however, does Valorant Mobile support cross-play? Here's what we found.",
+    "content": "Best answer: No, Valorant Mobile does not support cross-play with the existing version of Valorant available on PC. These are two separate forms of the game.\nDoes Valorant Mobile support cross-play?\nValorant Mobile is an upcoming mobile spin on Riot ... [2464 chars]",
+    "url": "https://www.androidcentral.com/does-valorant-mobile-support-cross-play",
+    "image": "https://www.androidcentral.com/sites/androidcentral.com/files/styles/large/public/article_images/2021/06/valorant-jett.jpg",
+    "publishedAt": "2021-09-29T12:00:02Z",
+    "source": {
+    "name": "Android Central",
+    "url": "https://www.androidcentral.com"
+    }
+  },
+  {
+    "title": "Nadeshot on why 100T benched Steel: \"Just gotta try something different\"",
+    "description": "Valorant: Nadeshot provided a little clarification on why they benched Steel.",
+    "content": "Source: 100 Thieves and Nadeshot\nDuring a stream on Tuesday, Nadeshot answered a question about the removal of Joshua \"steel\" Nissan from the active roster of 100 Thieves VALORANT team following their semifinal finish at the VCT Berlin Major earlier ... [1890 chars]",
+    "url": "https://www.invenglobal.com/articles/15218/nadeshot-on-why-100t-benched-steel-just-gotta-try-something-different",
+    "image": "https://static.invenglobal.com/upload/image/2021/09/29/r1632896348264855.png",
+    "publishedAt": "2021-09-29T06:23:55Z",
+    "source": {
+    "name": "InvenGlobal",
+    "url": "https://www.invenglobal.com"
+    }
+  },
+  {
+    "title": "VALORANT: dicas para mandar bem no novo mapa Fracture",
+    "description": "Dicas e tutoriais dos principais jogos para Playstation 4, Xbox One, Nintendo e PC. Notícias, gameplays e entrevistas.",
+    "content": "Fracture é o mais recente, inovador e interessante mapa lançado em VALORANT. Disponível no lançamento do Episódio 3 do Ato 2, o mapa abre mão dos convencionais \"lado terrorista\" e \"lado CT\". Agora, os defensores ficam no centro, enquanto os atacantes... [4923 chars]",
+    "url": "https://www.uol.com.br/start/ultimas-noticias/2021/09/29/valorant-dicas-para-mandar-bem-em-fracture.htm",
+    "image": "https://conteudo.imguol.com.br/c/entretenimento/be/2021/09/01/valorant-mapa-fracture-1630525634208_v2_615x300.jpg",
+    "publishedAt": "2021-09-29T03:00:00Z",
+    "source": {
+    "name": "UOL",
+    "url": "https://www.uol.com.br"
+    }
+  },
+  {
+    "title": "VALORANT dará una última oportunidad a los equipos para clasificar a Champions 2021, el Mundial",
+    "description": "G2 Esports, uno de los equipos que más aficionados tiene en el mundo, se juega la última oportunidad de clasificar al torneo más importante de VALORANT.",
+    "content": "VALORANT, el shooter de Riot Games, también contará con un Mundial este año. A través del blog oficial de la empresa, anunciaron que el 2 de diciembre comenzará VALORANT Champions 2021, el torneo que enfrentará a los mejores equipos del shooter del m... [1189 chars]",
+    "url": "https://depor.com/depor-play/esports/valorant-dara-una-ultima-oportunidad-a-los-equipos-para-clasificar-a-champions-2021-el-mundial-noticia/",
+    "image": "https://depor.com/resizer/4eqwpSea8yVAZSyD33EnbbMElDY=/980x528/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/PJT64WVS4VGWBALMRLPGCODRNI.jpg",
+    "publishedAt": "2021-09-29T01:04:54Z",
+    "source": {
+    "name": "Diario Depor",
+    "url": "https://depor.com"
+    }
+  },
+  {
+    "title": "Twitch: Pokimane explota contra usuario que la llamó \"carreada\"",
+    "description": "Pokimane es una famosa streamer que actualmente se dedica a jugar Valorant en sus transmisiones.",
+    "content": "Pokimane es una conocida streamer de Twitch, quien últimamente realiza transmisiones de Valorant, demostrando en reiteradas oportunidades sus buenas habilidades en el shooter de Riot Games.\nSu esfuerzo dentro del competitivo la ha llevado a ganarse e... [1724 chars]",
+    "url": "https://libero.pe/esports/videojuegos/2021/09/28/twitch-pokimane-explota-usuario-llamo-carreada-pc-playstation-xbox-mexico-peru-colombia-argentina-chile-venezuela-ecuador-bolivia-noticia-21078",
+    "image": "https://libero.cronosmedia.glr.pe/original/2021/09/28/61534bd53755a6060c157600.jpg",
+    "publishedAt": "2021-09-28T17:08:27Z",
+    "source": {
+    "name": "Libero.pe",
+    "url": "https://libero.pe"
+    }
+  },
+  {
+    "title": "Valorant: Developers Apologise for Lack of Yoru Buffs",
+    "description": "Riot Games address Yoru not getting buffed",
+    "content": "Once you have subscribed we will use the email you provided to send you the newsletter. You can unsubscribe at any time by clicking the unsubscribe link at the bottom of the newsletter email.\nValorant fans have been requesting that Yoru gets changes ... [2112 chars]",
+    "url": "https://www.givemesport.com/1760250-valorant-developers-apologise-for-lack-of-yoru-buffs",
+    "image": "https://site-cdn.givemesport.com/images/21/09/28/ba9b8c55660de2bf33debe59a51f52e4/960.jpg",
+    "publishedAt": "2021-09-28T13:55:42Z",
+    "source": {
+    "name": "GIVEMESPORT",
+    "url": "https://www.givemesport.com"
+    }
+  },
+  {
+    "title": "Valorant Episode 3 Act 3: Developers Reveal More on New Agent 17",
+    "description": "Riot Games have revealed more on Deadeye in Valorant",
+    "content": "Once you have subscribed we will use the email you provided to send you the newsletter. You can unsubscribe at any time by clicking the unsubscribe link at the bottom of the newsletter email.\nFans have been anticipating the release of Agent 17 in Val... [2353 chars]",
+    "url": "https://www.givemesport.com/1760194-valorant-episode-3-act-3-developers-reveal-more-on-new-agent-17",
+    "image": "https://site-cdn.givemesport.com/images/21/09/28/b24fb9b5623ed56d5cb963c3e3e66be3/960.jpg",
+    "publishedAt": "2021-09-28T13:14:23Z",
+    "source": {
+    "name": "GIVEMESPORT",
+    "url": "https://www.givemesport.com"
+    }
+  },
+  {
+    "title": "Torneio solidário Valorant Spike Nations vai ter segunda edição",
+    "description": "A BLAST e a Riot Games anunciaram um novo torneio para ajudar causas sociais. Portugal foi a equipa vencedora da primeira edição, contribuindo com o prémio para o Banco ...",
+    "content": "A Riot Games e a organizadora de eventos de eSports BLAST anunciaram a segunda edição do torneio Valorant Spike Nations, uma competição solidária, com prémios atribuídos pelas equipas vencedoras a instituições de caridade. A primeira edição deste eve... [1433 chars]",
+    "url": "https://desporto.sapo.pt/esports/artigos/torneio-solidario-valorant-spike-nations-vai-ter-segunda-edicao",
+    "image": "https://thumbs.web.sapo.io/?W=1200&H=630&delay_optim=1&tv=1&crop=center&bottom_overlay=https%3A%2F%2Fdesporto.sapo.pt%2Fassets%2Fimg%2Fdesporto-sapo%2Ffacebook-overlay.png&epic=NmY5Dl77qAxcvpsZlROs/YEAMgNXzWHF7koJ6nzQl7VzbFWP6rjqUlSoN8Xa2pNGwPUmcoxO9dE4C5upLkplu0DSGFNhUeCLeFyOiVHlIkszVKE=",
+    "publishedAt": "2021-09-27T17:16:42Z",
+    "source": {
+    "name": "SAPO Desporto",
+    "url": "https://desporto.sapo.pt"
+    }
+  },
+  {
+    "title": "Overwatch apre le porte di Malevento, la nuova mappa immersa nella campagna italiana",
+    "description": "Blizzard ha ufficialmente annunciato l'arrivo in Overwatch di una nuovissima mappa che fa sprofondare le sue radici nella cultura paesaggistica italian",
+    "content": "Il nome a lei associato è Malevento , e il team di lavoro per la sua realizzazione ha tratto ispirazione dalle pittoresche cittadine della toscana, come Montepulciano, delle quale hanno cercato di rendere in-game la medesima atmosfera.\nBlizzard ha uf... [1256 chars]",
+    "url": "https://www.smartworld.it/videogiochi/overwatch-apre-le-porte-di-malavento-la-nuova-mappa-immersa-nella-campagna-italiana.html",
+    "image": "https://www.smartworld.it/images/2021/09/29/overwatch-malavento_1200x675.png",
+    "publishedAt": "2021-09-29T10:25:00Z",
+    "source": {
+    "name": "SmartWorld",
+    "url": "https://www.smartworld.it"
+    }
+  },
+  {
+    "title": "Overwatch: disponibile Malevento, la mappa deathmatch ambientata in Italia",
+    "description": "Blizzard ha rilasciato Malevento, una mappa deathmatch free-for-all per Overwatch ambientata in Italia, come le architetture e alcuni dettagli fanno...",
+    "content": "Blizzard ha rilasciato al pubblico Malevento, una mappa deathmatch free-for-all di Overwatch, ambientata in Italia, come le architetture e alcuni dettagli fanno ben intuire. Si tratta dell'ultimo aggiunta in termini di contenuti al noto hero shooter.... [4773 chars]",
+    "url": "https://multiplayer.it/notizie/overwatch-disponibile-malevento-mappa-deathmatch-ambientata-in-italia.html",
+    "image": "https://multiplayer.net-cdn.it/thumbs/images/2021/09/29/overwatch-2-malevento-06_png_750x400_crop_upscale_q85.jpg",
+    "publishedAt": "2021-09-29T07:18:34Z",
+    "source": {
+    "name": "Multiplayer.it",
+    "url": "https://multiplayer.it"
+    }
+  },
+  {
+    "title": "Overwatch: jugadores de T1 dan positivo a COVID-19 antes de importante encuentro",
+    "description": "El equipo tuvo que ceder su puesto en la semifinal del Overwatch Contenders.",
+    "content": "El equipo de Overwatch de la organización de Esports T1 recibió una dura esta madrugada: tendrían que abandonar la semifinal del torneo OW Contenders debido a que cuatro de los jugadores se contagiaron de la COVID-19.\nSin duda alguna, el golpe es muy... [1388 chars]",
+    "url": "https://libero.pe/esports/2021/09/27/overwatch-jugadores-t1-dan-positivo-covid-19-antes-importante-encuentro-ow-activision-blizzard-battlenet-peru-argentina-chile-bolivia-ecuador-colombia-venezuela-mexico-noticia-21010",
+    "image": "https://libero.cronosmedia.glr.pe/original/2021/09/27/6152459f07d16625ae0e7cb2.jpg",
+    "publishedAt": "2021-09-27T22:29:16Z",
+    "source": {
+    "name": "Libero.pe",
+    "url": "https://libero.pe"
+    }
+  },
+  {
+    "title": "Did Blizzard just make Sombra and Bastion even more annoying?",
+    "description": "Overwatch: Did they make these characters... more frustrating to play against somehow?",
+    "content": "This past weekend the Overwatch League hosted its Grand Final match. As part of the event, not only did they give us our first look at a high-level match of Overwatch 2 on the brand new push mode, they also revealed the new reworks for Bastion and So... [3201 chars]",
+    "url": "https://www.invenglobal.com/articles/15197/did-blizzard-just-make-sombra-and-bastion-even-more-annoying",
+    "image": "https://static.invenglobal.com/upload/image/2021/09/27/r1632781040261880.png",
+    "publishedAt": "2021-09-27T22:26:53Z",
+    "source": {
+    "name": "InvenGlobal",
+    "url": "https://www.invenglobal.com"
+    }
+  },
+  {
+    "title": "The Overwatch League grand finals were a storybook sendoff ahead of Overwatch 2",
+    "description": "The Shanghai Dragons won the 2021 Overwatch League Grand Finals. This will be the last game of professional Overwatch before the league debuts next season on Overwatch 2.",
+    "content": "The Shanghai Dragons’ very first Overwatch match was an 0-4 shellacking delivered by the Los Angeles Gladiators in 2018. The team would go on to lose the next 41 straight games — encompassing the entire first season of the league and the first two ga... [6164 chars]",
+    "url": "https://www.theverge.com/2021/9/27/22696933/the-shanghai-dragons-2021-overwatch-league-grand-finals",
+    "image": "https://cdn.vox-cdn.com/thumbor/b_-uTz9cfY2T2eFrPj4c1Z0oJ7w=/0x138:1920x1143/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/22882664/MY_DRAGONS.jpg",
+    "publishedAt": "2021-09-27T19:56:59Z",
+    "source": {
+    "name": "The Verge",
+    "url": "https://www.theverge.com"
+    }
+  },
+  {
+    "title": "Overwatch 2 terá grandes mudanças em Bastion e Sombra",
+    "description": "A equipe do jogo da Blizzard revelou mudanças bem significativas em Bastion e Sombra para a sequência do hero shooter",
+    "content": "A equipe de Overwatch 2 divulgou que alguns personagens irão sofrer mudanças em habilidades e gameplay na sequência da franquia. No último final de semana, 25 e 26 de setembro, dois vídeos foram lançados no perfil oficial do jogo destacando as novida... [1919 chars]",
+    "url": "https://canaltech.com.br/games/overwatch-2-tera-grandes-mudancas-em-bastion-e-sombra-196955/",
+    "image": "https://t.ctcdn.com.br/1gwTl_hK3mEFbA1gRSFjc_mDTho=/1280x720/smart/i509140.jpeg",
+    "publishedAt": "2021-09-27T16:10:00Z",
+    "source": {
+    "name": "Canaltech",
+    "url": "https://canaltech.com.br"
+    }
+  },
+  {
+    "title": "Pros Demo Overwatch 2 Changes At 2021 OWL Championship",
+    "description": "Pros take Bastion and Sombra reworks for a spin at OWL finals",
+    "content": "Some of the best players in the world took the reins to Overwatch 2 over the weekend during the recent Overwatch League 2021 championship. During the tourney broadcast, these pros showed off a couple of big character reworks and strategic overhauls c... [4879 chars]",
+    "url": "https://kotaku.com/overwatch-2-debuts-at-tourney-seemingly-missing-jeff-k-1847751895",
+    "image": "https://i.kinja-img.com/gawker-media/image/upload/c_fill,f_auto,fl_progressive,g_center,h_675,pg_1,q_80,w_1200/eace84d8c6b24008bee29972b50d3710.jpg",
+    "publishedAt": "2021-09-27T16:00:00Z",
+    "source": {
+    "name": "Kotaku",
+    "url": "https://kotaku.com"
+    }
+  },
+  {
+    "title": "Overwatch 2 Debuts At Tourney, Seemingly Missing Jeff Kaplan Nod",
+    "description": "Some of the best players in the world took the reins to Overwatch 2 over the weekend during the recent Overwatch League 2021 championship. During the",
+    "content": "Overwatch 2 Debuts At Tourney, Seemingly Missing Jeff Kaplan Nod\nSome of the best players in the world took the reins to Overwatch 2 over the weekend during the recent Overwatch League 2021 championship. During the tourney broadcast, these pros showe... [5245 chars]",
+    "url": "https://www.kotaku.com.au/2021/09/overwatch-2-debuts-at-tourney-seemingly-missing-jeff-kaplan-nod/",
+    "image": "https://imgix.kotaku.com.au/content/uploads/sites/3/2021/09/28/eace84d8c6b24008bee29972b50d3710.jpg?ar=16%3A9&auto=format&fit=crop&q=65&w=1280",
+    "publishedAt": "2021-09-27T16:00:00Z",
+    "source": {
+    "name": "Kotaku Australia",
+    "url": "https://www.kotaku.com.au"
+    }
+  },
+  {
+    "title": "Overwatch 2 reworks for Bastion and Sombra revealed",
+    "description": "Blizzard showed off Overwatch 2’s reworks for Bastion and Sombra, two heroes getting big ability changes and updated visual designs for the sequel.",
+    "content": "Blizzard Entertainment is making some big changes to the heroes of Overwatch for Overwatch 2, including everyone’s favorite point-and-kill turret robot, Bastion. In addition to sporting a baseball cap borrowed from Torbjorn, Bastion’s abilities are b... [3186 chars]",
+    "url": "https://www.polygon.com/22696233/overwatch-2-bastion-sombra-reworks-blizzard",
+    "image": "https://cdn.vox-cdn.com/thumbor/b3jylpRpq8UA5n8FDem4zCg5eT8=/0x0:1920x1005/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/22881620/bastion_ow2.jpg",
+    "publishedAt": "2021-09-27T15:13:50Z",
+    "source": {
+    "name": "Polygon",
+    "url": "https://www.polygon.com"
+    }
+  },
+  {
+    "title": "Bastion loses tank mode and self-healing in Overwatch 2",
+    "description": "But he has a new hat!",
+    "content": "Overwatch 2 will see some changes to some of its roster of characters, but it seems like none of those tweaks will be as impactful as the planned changes to Bastion.\nIn a pair of recent videos, Blizzard devs outlined the way in which two of its heroe... [1285 chars]",
+    "url": "https://www.gamesradar.com/bastion-loses-tank-mode-and-self-healing-in-overwatch-2/",
+    "image": "https://cdn.mos.cms.futurecdn.net/qMrBSuAXW4gDzHKcgyAg6h-1200-80.jpg",
+    "publishedAt": "2021-09-27T10:34:06Z",
+    "source": {
+    "name": "GamesRadar+",
+    "url": "https://www.gamesradar.com"
+    }
+  }
 ];
 
-export default dummy;
+function shuffle(array) {
+  return array.sort(() => Math.random() - 0.5);
+}
+
+export default shuffle(dummy);

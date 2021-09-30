@@ -20,10 +20,10 @@ function Dashboard(props) {
 
     return (
         <Layout style={{backgroundColor:"rgba(0,0,0,0)"}}>
-            <Sider style={{...siderStyle,left:0}} breakpoint="lg" collapsedWidth="0" width={"15vw"}>
-                Friends
+            <Sider style={{...siderStyle,left:0}} breakpoint="lg" collapsedWidth="0" width={"14vw"}>
+                Friends: Coming Soon!
             </Sider>
-            <Content style={{marginLeft:"15vw",marginRight:"19vw",height:"90vh",overflow:"auto"}}>
+            <Content style={{marginLeft:"14vw",marginRight:"19vw",height:"90vh",overflow:"auto"}}>
                 <DashFeed/>
             </Content>
             <Sider style={{...siderStyle,right:0}} breakpoint="lg" collapsedWidth="0" trigger={null} width={"19vw"}>

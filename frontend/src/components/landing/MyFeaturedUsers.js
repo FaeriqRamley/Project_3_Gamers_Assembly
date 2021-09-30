@@ -10,7 +10,7 @@ function FeaturedUsers() {
 
   useEffect(() => {
     const fetchPost = async () => {
-      const url = "http://localhost:5000/api/users/all/5";
+      const url = "/api/users/all/5";
       try {
         const res = await fetch(url);
         const data = await res.json();
