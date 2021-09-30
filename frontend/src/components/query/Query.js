@@ -13,7 +13,7 @@ function Query(props) {
     const { loggedUser } = props.auth;
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/api/users/all/50`).then((response) => {
+        axios.get(`/api/users/all/50`).then((response) => {
             setAPIData(response.data);
         });
     }, []);
