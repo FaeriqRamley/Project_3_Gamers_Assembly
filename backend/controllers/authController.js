@@ -172,8 +172,6 @@ module.exports.updateProfile_put = async (req, res) => {
             req.user._id, 
             { $set: updatedCredentials }
         )
-        
-        await user.save();
 
         console.log(user)
         res.status(200).json({ user })
