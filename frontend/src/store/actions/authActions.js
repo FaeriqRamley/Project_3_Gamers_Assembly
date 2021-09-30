@@ -30,7 +30,7 @@ export const logOut = () => {
     return async (dispatch, getState) => {
         console.log('log out action')
         try {
-            const res = await fetch("/api/auth/logout", {
+            await fetch("/api/auth/logout", {
                 method: "GET",
                 credentials: "include",
                 headers: {
