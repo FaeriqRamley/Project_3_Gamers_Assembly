@@ -10,7 +10,6 @@ const timeslotRoutes = require("./routes/timeslotRoutes");
 const inviteRoutes = require("./routes/inviteRoutes");
 const userRoutes = require("./routes/userRoutes");
 const Games = require("./models/seed/games");
-const { requireAuth, checkUser } = require("./middleware/authMiddleware");
 
 const app = express();
 
@@ -37,8 +36,8 @@ app.get("/test", (req, res) => {
 });
 
 // routes
-app.use(authRoutes);
+app.use("/api/auth", authRoutes);
 app.use("/api/timeslot", timeslotRoutes);
 app.use("/api/schedule", scheduleRoutes);
-app.use("/api/users",userRoutes);
-app.use("/api/invites",inviteRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/invites", inviteRoutes);

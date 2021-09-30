@@ -2,7 +2,7 @@
 export const logIn = (credentials) => {
     return async (dispatch, geStates) => {
         try {
-            const res = await fetch("/login", {
+            const res = await fetch("/api/auth/login", {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -28,7 +28,7 @@ export const logIn = (credentials) => {
 // user log out
 export const logOut = () => {
     return async (dispatch, getState) => {
-        fetch("/logout", {
+        fetch("/api/auth/logout", {
             method: "GET",
             credentials: "include",
             headers: {
@@ -45,7 +45,7 @@ export const signUp = (credentials) => {
     console.log("signup actions");
     return async (dispatch, getState) => {
         try {
-            const res = await fetch("/signup", {
+            const res = await fetch("/api/auth/signup", {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -73,7 +73,7 @@ export const userAuth = () => {
     console.log("authenticating user");
     return async (dispatch, getState) => {
         try {
-            const res = await fetch("/auth/user", {
+            const res = await fetch("/api/auth/user", {
                 method: "GET",
                 credentials: "include",
                 headers: {
@@ -105,7 +105,7 @@ export const changePassword = (credentials) => {
     console.log("change password actions");
     return async (dispatch, getState) => {
         try {
-            const res = await fetch("/auth/changepassword", {
+            const res = await fetch("/api/auth/changepassword", {
                 method: "PUT",
                 credentials: "include",
                 headers: {
@@ -133,7 +133,7 @@ export const updateProfile = (credentials) => {
     console.log("change password actions");
     return async (dispatch, getState) => {
         try {
-            const res = await fetch("/auth/updateprofile", {
+            const res = await fetch("/api/auth/updateprofile", {
                 method: "PUT",
                 credentials: "include",
                 headers: {
@@ -161,7 +161,7 @@ export const refreshUserData = () => {
     console.log("refreshing user data");
     return async (dispatch, getState) => {
         try {
-            const res = await fetch("/auth/userupdates", {
+            const res = await fetch("/api/auth/userupdates", {
                 method: "GET",
                 credentials: "include",
                 headers: {

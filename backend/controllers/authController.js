@@ -46,16 +46,6 @@ const createToken = (id) => {
     });
 };
 
-// signup get
-module.exports.signup_get = (req, res) => {
-    res.render("signup");
-};
-
-// login get
-module.exports.login_get = (req, res) => {
-    res.render("login");
-};
-
 // signup post
 module.exports.signup_post = async (req, res) => {
     const { userName, email, password } = req.body;
@@ -111,7 +101,6 @@ module.exports.login_post = async (req, res) => {
 // logout get
 module.exports.logout_get = (req, res) => {
     res.cookie("jwt", "", { maxAge: 1 });
-    res.redirect("/");
 };
 
 // load user
