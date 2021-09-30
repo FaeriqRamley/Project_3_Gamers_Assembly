@@ -32,7 +32,7 @@ function FeaturedUsers() {
           <Tooltip placement="bottom" title={<UserCard data={item} />}>
             <img
               className="featured-img"
-              src={APIData[i].profilePic}
+              src={APIData[i].image}
               alt=""
               type="button"
               onClick=""
