@@ -186,17 +186,26 @@ a {
   font-weight: 500;
   background-color: #ECEFF4;
 }
+
 .ant-input-affix-wrapper, .ant-input-affix-wrapper > input.ant-input {
   background-color: #ECEFF4;
 }
+
 .ant-select:not(.ant-select-customize-input) .ant-select-selector {
   background-color: #ECEFF4;
 }
+
 .ant-form-item-explain.ant-form-item-explain-error {
   color: #BF616A;
 }
 
-.ant-tag-checkable-checked {
+.error-message {
+  color: #bf616a;
+  text-align: center;
+}
+
+/* ant tag */
+.ant-tag-checkable-checked, .ant-tag-checkable:active {
   background-color: #81A1C1;
 }
 
@@ -204,9 +213,8 @@ a {
   color: #ECEFF4;
 }
 
-.error-message {
-  color: #bf616a;
-  text-align: center;
+.ant-tag-checkable:not(.ant-tag-checkable-checked):hover {
+  color: #8FBCBB;
 }
 
 /* button css */
