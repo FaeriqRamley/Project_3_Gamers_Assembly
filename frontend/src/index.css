@@ -196,6 +196,14 @@ a {
   color: #BF616A;
 }
 
+.ant-tag-checkable-checked {
+  background-color: #81A1C1;
+}
+
+.ant-tag-checkable {
+  color: #ECEFF4;
+}
+
 .error-message {
   color: #bf616a;
   text-align: center;
